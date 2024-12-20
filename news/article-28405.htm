@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-28405.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>【EF框架】DbContext的使用</title>
+        <meta name="description" content="&nbsp; DbContext类是EntityFramework （简称 EF）中的一个类，可以理解为一个数据库对象的实例。在 EF中，无需手动的拼接 SQL 语句对数据库进行增删改查，而是通过 D" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+    <!-- Web Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                                                <a class="navbar-brand" href="/">
+                                    <span class="logo">Free Stash</span>
+                                </a>
+                                                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                        <li><a href="#">关于</a></li>
+                                    <li><a href="#">联系</a></li>
+                                </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>【EF框架】DbContext的使用</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <p>&nbsp; DbContext类是EntityFramework （简称 EF）中的一个类，可以理解为一个数据库对象的实例。在 EF中，无需手动的拼接 SQL 语句对数据库进行增删改查，而是通过 DbContext 来进行相应操作。</p> </h1> <h2><span style="color:#009900;">DbContext类</span></h2> <p>&nbsp; DbContext类是实体框架的重要组成部分。它是您的域或实体类与数据库之间的桥梁。</p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20221230/d75aca4eef76e92d15e30017ddd61841.jpg"></p> <p>DbContext是负责与数据交互作为对象的主要类。DbContext负责以下活动：<br /> （1）EntitySet： DbContext包含映射到数据库表的所有实体的实体集（DbSet &lt;TEntity&gt;）。<br /> （2）查询（<span style="color:#333333;">Querying</span>）： DbContext将LINQ-to-Entities查询转换为SQL查询并将其发送到数据库。<br /> （3）更改跟踪（Change Tracking）：跟踪实体在从数据库查询后发生的更改。<br /> （4）持久数据（Persisting Data）：它还根据实体的状态对数据库执行插入，更新和删除操作。<br /> （5）缓存（Caching）： DbContext默认进行一级缓存。它存储在上下文类生命周期中已经被检索的实体。<br /> （6）管理关系（Manage Relationship）： DbContext还使用DB-First或Model-First方法使用CSDL，MSL和SSDL或者使用Code-First方法使用流利的API来管理关系。<br /> （7）对象实现（Object Materialization）： DbContext将原始表数据转换为实体对象。</p> <p>以下是小编生成的excellentmcoinEntities类（派生DbContext的上下文类）的示例。</p> <pre class="has"><code class="language-csharp">//------------------------------------------------------------------------------ // &lt;auto-generated&gt; //    此代码是根据模板生成的。 // //    手动更改此文件可能会导致应用程序中发生异常行为。 //    如果重新生成代码，则将覆盖对此文件的手动更改。 // &lt;/auto-generated&gt; //------------------------------------------------------------------------------  namespace Model {     using System;     using System.Data.Entity;     using System.Data.Entity.Infrastructure;          public partial class excellentmcoinEntities : DbContext     {         public excellentmcoinEntities()             : base("name=excellentmcoinEntities")         {         }              protected override void OnModelCreating(DbModelBuilder modelBuilder)         {             throw new UnintentionalCodeFirstException();         }              public DbSet&lt;t_accumulate&gt; t_accumulate { get; set; }         public DbSet&lt;t_addmcoinrecord&gt; t_addmcoinrecord { get; set; }         public DbSet&lt;t_announce&gt; t_announce { get; set; }         public DbSet&lt;t_attribute&gt; t_attribute { get; set; }         public DbSet&lt;t_attriuser&gt; t_attriuser { get; set; }         public DbSet&lt;t_character&gt; t_character { get; set; }         public DbSet&lt;t_controller&gt; t_controller { get; set; }         public DbSet&lt;t_dayget&gt; t_dayget { get; set; }         public DbSet&lt;t_department&gt; t_department { get; set; }         public DbSet&lt;t_departmentgrade&gt; t_departmentgrade { get; set; }         public DbSet&lt;t_departquestype&gt; t_departquestype { get; set; }         public DbSet&lt;t_grade&gt; t_grade { get; set; }         public DbSet&lt;t_healthytips&gt; t_healthytips { get; set; }         public DbSet&lt;t_mcoin&gt; t_mcoin { get; set; }         public DbSet&lt;t_mcoindb&gt; t_mcoindb { get; set; }         public DbSet&lt;t_mcoindetail&gt; t_mcoindetail { get; set; }         public DbSet&lt;t_pageset&gt; t_pageset { get; set; }         public DbSet&lt;t_quesfamily&gt; t_quesfamily { get; set; }         public DbSet&lt;t_quesfamilymemeber&gt; t_quesfamilymemeber { get; set; }         public DbSet&lt;t_question&gt; t_question { get; set; }         public DbSet&lt;t_questype&gt; t_questype { get; set; }         public DbSet&lt;t_stageconfluence&gt; t_stageconfluence { get; set; }         public DbSet&lt;t_states&gt; t_states { get; set; }         public DbSet&lt;t_suggesstion&gt; t_suggesstion { get; set; }         public DbSet&lt;t_type&gt; t_type { get; set; }         public DbSet&lt;t_user&gt; t_user { get; set; }         public DbSet&lt;t_attributerecord&gt; t_attributerecord { get; set; }         public DbSet&lt;t_notice&gt; t_notice { get; set; }     } } </code>excellentmcoinEntities : DbContext     {         public excellentmcoinEntities()             : base("name=excellentmcoinEntities")         {         }              protected override void OnModelCreating(DbModelBuilder modelBuilder)         {             throw new UnintentionalCodeFirstException();         }              public DbSet&lt;t_accumulate&gt; t_accumulate { get; set; }         public DbSet&lt;t_addmcoinrecord&gt; t_addmcoinrecord { get; set; }         public DbSet&lt;t_announce&gt; t_announce { get; set; }         public DbSet&lt;t_attribute&gt; t_attribute { get; set; }         public DbSet&lt;t_attriuser&gt; t_attriuser { get; set; }         public DbSet&lt;t_character&gt; t_character { get; set; }         public DbSet&lt;t_controller&gt; t_controller { get; set; }         public DbSet&lt;t_dayget&gt; t_dayget { get; set; }         public DbSet&lt;t_department&gt; t_department { get; set; }         public DbSet&lt;t_departmentgrade&gt; t_departmentgrade { get; set; }         public DbSet&lt;t_departquestype&gt; t_departquestype { get; set; }         public DbSet&lt;t_grade&gt; t_grade { get; set; }         public DbSet&lt;t_healthytips&gt; t_healthytips { get; set; }         public DbSet&lt;t_mcoin&gt; t_mcoin { get; set; }         public DbSet&lt;t_mcoindb&gt; t_mcoindb { get; set; }         public DbSet&lt;t_mcoindetail&gt; t_mcoindetail { get; set; }         public DbSet&lt;t_pageset&gt; t_pageset { get; set; }         public DbSet&lt;t_quesfamily&gt; t_quesfamily { get; set; }         public DbSet&lt;t_quesfamilymemeber&gt; t_quesfamilymemeber { get; set; }         public DbSet&lt;t_question&gt; t_question { get; set; }         public DbSet&lt;t_questype&gt; t_questype { get; set; }         public DbSet&lt;t_stageconfluence&gt; t_stageconfluence { get; set; }         public DbSet&lt;t_states&gt; t_states { get; set; }         public DbSet&lt;t_suggesstion&gt; t_suggesstion { get; set; }         public DbSet&lt;t_type&gt; t_type { get; set; }         public DbSet&lt;t_user&gt; t_user { get; set; }         public DbSet&lt;t_attributerecord&gt; t_attributerecord { get; set; }         public DbSet&lt;t_notice&gt; t_notice { get; set; }     } } </pre> <p>上下文类（excellentmcoinEntities）包含所有实体的DbSet &lt;TEntity&gt;类型的实体集。</p> <h2><span style="color:#009900;">DbContext具体使用</span></h2> <h3><span style="color:#990000;">增</span></h3> <pre class="has"><code class="language-csharp">excellentmcoinEntities db = new excellentmcoinEntities(); //创建对象实体，注意，这里需要对所有属性进行赋值（除了自动增长主键外），如果不赋值，则会数据库中会被设置为NULL（注意是否可空） var user = new User             {                 Name = "bomo",                 Age = 21,                 Gender = "male"             }; db.User.Add(user); db.SaveChanges();</code></pre> <h3><span style="color:#990000;">删</span></h3> <pre class="has"><code class="language-csharp"> public bool deleteUser(string UserID)         {          excellentmcoinEntities dbcontext = new excellentmcoinEntities();             try             {                 string[] testUserID = UserID.Split(',');                                  for (int i = 0; i &lt; testUserID.Length; i++)                 {                     t_user usermodel = dbcontext.t_user.Find(testUserID[i]);                     dbcontext.t_user.Remove(usermodel);                     int flag = dbcontext.SaveChanges();                     if (flag &gt; 0)                     {                         continue;                     }                     else                     {                         return false;                     }                 }                 return true;             }             catch (Exception)             {                  throw new Exception("删除失败");             }         }</code></pre> <h3><span style="color:#990000;">改</span></h3> <pre class="has"><code class="language-csharp">public bool EditUser(t_user usermodel)         {             excellentmcoinEntities dbcontext = new excellentmcoinEntities();             try             {                 t_user user = dbcontext.t_user.Find(usermodel.userID);                 if (user == null)                 {                     return false;                 }                 user.userName = usermodel.userName;                 user.levelID = usermodel.levelID;                 user.state = usermodel.state;                 user.passWord = usermodel.passWord;                  //修改多个字段值                 dbcontext.Entry&lt;t_user&gt;(user).State = System.Data.EntityState.Modified;                 dbcontext.SaveChanges();                 return true;             }             catch (Exception)             {                  throw new Exception("用户修改失败");             }          }</code></pre> <h3><span style="color:#990000;">查</span></h3> <pre class="has"><code class="language-csharp">   public List&lt;userModel&gt; QueryAUser()         {             //定义了上下文实体             excellentmcoinEntities dbcontext = new excellentmcoinEntities();             var allUser = (from u in dbcontext.t_user                            join g in dbcontext.t_grade on u.gradeID equals g.gradeID                            orderby u.totalMcoin descending                            select new userModel()                            {                                userID = u.userID,                                userName = u.userName,                                userGrade = g.userGrade,                                totalMcoin = u.totalMcoin,                                gradeID = g.gradeID,                            }).ToList();             return allUser;         }</code></pre> </h1> <p>&nbsp; &nbsp; DbContext通常与包含模型的根实体的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://msdn.microsoft.com/en-us/library/gg696460%28v=vs.113%29.aspx"  title="DbSet&nbsp;<TEntity>" rel="nofollow">DbSet&nbsp;&lt;TEntity&gt;</a>属性的派生类型一起使用。当派生类的实例被创建时，这些集合会自动初始化。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-27945.htm">同城宠物狗免费领养 同城宠物狗免费领养电话</a></p>
+                                        <p>下一个：<a href="/news/article-28407.htm">动物接种疫苗多少次有效果（动物接种疫苗多少次有效果呢）</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-23-free-node-subscribe-links.htm" title="10月23日→19M/S|2024年最新免费节点Free Stash订阅链接地址">10月23日→19M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-19632.htm" title="我们如何检查服务器上所有MySQL数据库的默认字符集？">我们如何检查服务器上所有MySQL数据库的默认字符集？</a></li>
+                        <li class="py-2"><a href="/news/article-20093.htm" title="动物接种疫苗多少钱一针啊视频教程下载（动物注射疫苗）">动物接种疫苗多少钱一针啊视频教程下载（动物注射疫苗）</a></li>
+                        <li class="py-2"><a href="/news/article-28405.htm" title="【EF框架】DbContext的使用">【EF框架】DbContext的使用</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-node-share-links.htm" title="11月28日→23M/S|2024年最新免费节点Free Stash订阅链接地址">11月28日→23M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-17-free-high-speed-nodes.htm" title="11月17日→18.8M/S|2024年最新免费节点Free Stash订阅链接地址">11月17日→18.8M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-21009.htm" title="宠物救助站可以提供什么服务（宠物救助站是政府出资的吗）">宠物救助站可以提供什么服务（宠物救助站是政府出资的吗）</a></li>
+                        <li class="py-2"><a href="/news/article-26552.htm" title="小猫身上的跳蚤屎怎么去除（小猫身上的跳蚤屎怎么去除啊）">小猫身上的跳蚤屎怎么去除（小猫身上的跳蚤屎怎么去除啊）</a></li>
+                        <li class="py-2"><a href="/news/article-27017.htm" title="【C语言】指针初阶">【C语言】指针初阶</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-free-node-subscribe.htm" title="11月7日→21.6M/S|2024年最新免费节点Free Stash订阅链接地址">11月7日→21.6M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
