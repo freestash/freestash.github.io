@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-29343.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>kafka_2.13-3.0.0 Quick Start启动</title>
+        <meta name="description" content="Apache Kafkahttps://kafka.apache.org/30/documentation/#quickstart  STEP 1: GET KAFKA Download&nbsp;t" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+    <!-- Web Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                                                <a class="navbar-brand" href="/">
+                                    <span class="logo">Free Stash</span>
+                                </a>
+                                                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                        <li><a href="#">关于</a></li>
+                                    <li><a href="#">联系</a></li>
+                                </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>kafka_2.13-3.0.0 Quick Start启动</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p><a class="has-card" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://kafka.apache.org/30/documentation/#quickstart"  title="Apache Kafka" rel="nofollow"><span class="link-card-box"><span class="link-title">Apache Kafka</span><span class="link-link"><img decoding="async" class="link-link-icon" src="http://img.555519.xyz/uploads3/20220902/bb862e1a8c0f288deffbf8eed0c7dfd3.jpg" alt="kafka_2.13-3.0.0 Quick Start启动">https://kafka.apache.org/30/documentation/#quickstart</span></span></a></p> </h1> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://kafka.apache.org/30/documentation/#quickstart_download"  title="STEP 1: GET KAFKA" rel="nofollow">STEP 1: GET KAFKA</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.apache.org/dyn/closer.cgi?path=/kafka/3.0.0/kafka_2.13-3.0.0.tgz"  title="Download" rel="nofollow">Download</a>&nbsp;the latest Kafka release and extract it:</p> <pre><code>$ tar -xzf kafka_2.13-3.0.0.tgz $ cd kafka_2.13-3.0.0</code></pre> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://kafka.apache.org/30/documentation/#quickstart_startserver"  title="STEP 2: START THE KAFKA ENVIRONMENT" rel="nofollow">STEP 2: START THE KAFKA ENVIRONMENT</a></p> <p>NOTE: Your local environment must have Java 8+ installed.</p> <p>Run the following commands in order to start all services in the correct order:</p> <pre><code># Start the ZooKeeper service # Note: Soon, ZooKeeper will no longer be required by Apache Kafka. $ bin/zookeeper-server-start.sh config/zookeeper.properties</code></pre> <p>Open another terminal session and run:</p> <pre><code># Start the Kafka broker service $ bin/kafka-server-start.sh config/server.properties</code></pre> <p>Once all services have successfully launched, you will have a basic Kafka environment running and ready to use.</p> </h1> <pre><code class="language-bash">#可用命令: 创建topic bin/kafka-topics.sh --create --topic quickstart-events --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 bin/kafka-topics.sh --create --topic kafkaToMysqlTopicTest --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1  # 查看topic sh kafka-topics.sh --topic quickstart-events  --describe --bootstrap-server 127.0.0.1:9092 bin/kafka-topics.sh --topic quickstart-events  --describe --bootstrap-server 127.0.0.1:9092  # 查看topic 列表 [dq@test kafka_2.13-3.0.0]$ bin/kafka-topics.sh  --list --bootstrap-server 127.0.0.1:9092  # 查看消费者列表 sh kafka-consumer-groups.sh  --list --bootstrap-server 127.0.0.1:9092 bin/kafka-consumer-groups.sh  --list --bootstrap-server 127.0.0.1:9092  # 生产消息 bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server localhost:9092 $ bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server localhost:9092 This is my first event This is my second event  $ bin/kafka-console-producer.sh --topic test-110701-topic --bootstrap-server localhost:9092 $ bin/kafka-console-producer.sh --topic kafkaToMysqlTopicTest --bootstrap-server localhost:9092  # 消费消息 $ bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092 This is my first event This is my second event  # 消费消息 $ bin/kafka-console-consumer.sh --topic test-110701-topic --from-beginning --bootstrap-server localhost:9092 $ bin/kafka-console-consumer.sh --topic kafkaToMysqlTopicTest --from-beginning --bootstrap-server localhost:9092   # 从指定位置消费消息 $ bin/kafka-console-consumer.sh --topic quickstart-events  --offset 1 --bootstrap-server localhost:9092  # 错误</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-28875.htm">1970年4月24日出生是什么命（1970年阴历4月24日阳历是多少）</a></p>
+                                        <p>下一个：<a href="/news/article-29345.htm">动物疫苗市场分析报告（动物疫苗发展前景）</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-16-free-node-subscribe-links.htm" title="12月16日→22.8M/S|2024年最新免费节点Free Stash订阅链接地址">12月16日→22.8M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-node-share-links.htm" title="11月28日→23M/S|2024年最新免费节点Free Stash订阅链接地址">11月28日→23M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-27017.htm" title="【C语言】指针初阶">【C语言】指针初阶</a></li>
+                        <li class="py-2"><a href="/news/article-27945.htm" title="同城宠物狗免费领养 同城宠物狗免费领养电话">同城宠物狗免费领养 同城宠物狗免费领养电话</a></li>
+                        <li class="py-2"><a href="/news/article-29345.htm" title="动物疫苗市场分析报告（动物疫苗发展前景）">动物疫苗市场分析报告（动物疫苗发展前景）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-16-free-node-subscribe.htm" title="9月16日→18.6M/S|2024年最新免费节点Free Stash订阅链接地址">9月16日→18.6M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-node-share.htm" title="11月20日→19.1M/S|2024年最新免费节点Free Stash订阅链接地址">11月20日→19.1M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-6-free-stash-node.htm" title="12月6日→21M/S|2024年最新免费节点Free Stash订阅链接地址">12月6日→21M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-1-share-clash-stash.htm" title="10月1日→22.6M/S|2024年最新免费节点Free Stash订阅链接地址">10月1日→22.6M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-27-free-subscribe-node.htm" title="9月27日→22.6M/S|2024年最新免费节点Free Stash订阅链接地址">9月27日→22.6M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
