@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-45410.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue3项目中的骨架屏</title>
+        <meta name="description" content="实现场景:刚进入页面的时候,需要后端接口回传的数据,还没有回来,为了客户有更好的体验,需要设置骨架屏,效果图如下:  &nbsp;实现步骤: 1.设置通用组件骨架屏(可以设置的属性:高，宽，背景颜色，" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-45410.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="Vue3项目中的骨架屏" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/5c682bd2cc36149fb65afdcc204823cc.webp" />
+        <meta property="og:release_date" content="2025-01-24T09:27:46" />
+    <meta property="og:updated_time" content="2025-01-24T09:27:46" />
+        <meta property="og:description" content="实现场景:刚进入页面的时候,需要后端接口回传的数据,还没有回来,为了客户有更好的体验,需要设置骨架屏,效果图如下:  &nbsp;实现步骤: 1.设置通用组件骨架屏(可以设置的属性:高，宽，背景颜色，" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Vue3项目中的骨架屏">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                                                <a class="navbar-brand" href="/">
+                                    <span class="logo">Free Stash</span>
+                                </a>
+                                                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                        <li><a href="#">关于</a></li>
+                                    <li><a href="#">联系</a></li>
+                                </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>Vue3项目中的骨架屏</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>实现场景:刚进入页面的时候,需要后端接口回传的数据,还没有回来,为了客户有更好的体验,需要设置骨架屏,效果图如下:</p> <p><img fetchpriority="high" decoding="async" alt="" height="839" src="http://img.555519.xyz/uploads3/20220610/2d4593aa60d8480504ae5d88aea0d11d.jpg"><img decoding="async" alt="" height="779" src="http://img.555519.xyz/uploads3/20220610/d0a25fd7bfc056ba46af6a8dacecbd6d.jpg"></p> <p>&nbsp;实现步骤:</p> <p>1.设置通用组件骨架屏(可以设置的属性:<span style="color:#fe2c24;">高，宽，背景颜色，是否有闪动画</span>)</p> <p>基本传值如下图:</p> <p><img decoding="async" alt="" height="137" src="http://img.555519.xyz/uploads3/20220610/332d826c23c8236cbe526a99a061c55b.jpg"></p> <p>2.设置业务组件骨架屏</p> <p>1).设置通用组件骨架屏基本构建</p> <p>&nbsp;src/components/library/Skeleton.vue</p> <pre><code class="language-html">&lt;template&gt; &lt;div class="skeleton" :style="{width,height}" :class="{shan:animated}"&gt; &lt;!-- 1 盒子--&gt; &lt;div class="block" :style="{backgroundColor:bg}"&gt;&lt;/div&gt;  //一个盒子包含了另一个盒子,样式写在                                                                                                                              // 一个div中也是可以的 &lt;!-- 2 闪效果 xtx-skeleton 伪元素 ---&gt; &lt;/div&gt; &lt;/template&gt; &lt;script&gt; export default { name: 'Skeleton', // 使用的时候需要动态设置 高度，宽度，背景颜色，是否闪下 props: { bg: { type: String, default: '#efefef' }, width: { type: String, default: '100px' }, height: { type: String, default: '100px' }, animated: { type: Boolean, default: false } } } &lt;/script&gt; &lt;style scoped lang="less"&gt; .skeleton { display: inline-block; position: relative; overflow: hidden; vertical-align: middle; .block { width: 100%; height: 100%; border-radius: 2px; } } .shan { &amp;::after { content: ""; position: absolute; animation: shan 1.5s ease 0s infinite; top: 0; width: 50%; height: 100%; background: linear-gradient( to left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100% ); transform: skewX(-45deg); } } @keyframes shan { 0% { left: -100%; } 100% { left: 120%; } } &lt;/style&gt;</code></pre> <p>&nbsp;全局注册(main.js中记得导入这个文件,并用Vue中use注册)</p> <p>src/componets/library/index.j</p> <pre><code class="language-javascript">import Skeleton from './Skeleton.vue'  export default { install (app) {  app.component(Skeleton.name, XtxSkeleton) } }</code></pre> <p>实现第一个图</p> <p><img loading="lazy" decoding="async" alt="" height="181" src="http://img.555519.xyz/uploads3/20220610/69c0d7cf461b6204f9fbb5cd42cebffa.jpg"></p> <p>&nbsp;src/views/home/components/home-cate.vue</p> <pre><code class="language-javascript">&lt;ul class="menu"&gt; &lt;li :class="{active:categoryId===item.id}" v-for="item in list" :key="item.id" @mouseenter="categoryId=item.id"&gt; &lt;RouterLink to="/"&gt;{<!-- -->{item.name}}&lt;/RouterLink&gt; &lt;template v-if="item.children"&gt; &lt;RouterLink to="/" v-for="sub in item.children" :key="sub.id"&gt;{<!-- -->{sub.name}}&lt;/RouterLink&gt; &lt;/template&gt;  &lt;span v-else&gt;  &lt;Skeleton width="60px" height="18px" style="margin-right:5px" bg="rgba(255,255,255,0.2)" /&gt;  &lt;Skeleton width="50px" height="18px" bg="rgba(255,255,255,0.2)" /&gt;  &lt;/span&gt; &lt;/li&gt; &lt;/ul&gt;</code></pre> <p>封装业务组件src/views/home/components/home-skeleton.vue,实现第二图的效果</p> <p><img loading="lazy" decoding="async" alt="" height="408" src="http://img.555519.xyz/uploads3/20220610/55086381dd679ce9efa7581d2a1dd212.jpg"></p> <pre><code class="language-html">&lt;template&gt; &lt;div class='home-skeleton'&gt; &lt;div class="item" v-for="i in 4" :key="i" :style="{backgroundColor:bg}"&gt; &lt;Skeleton bg="#e4e4e4" width="306px" height="306px" animated /&gt; &lt;Skeleton bg="#e4e4e4" width="160px" height="24px" animated /&gt; &lt;Skeleton bg="#e4e4e4" width="120px" height="24px" animated /&gt; &lt;/div&gt; &lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default { name: 'HomeSkeleton', props: { bg: { type: String, default: '#fff' } } } &lt;/script&gt;  &lt;style scoped lang='less'&gt; .home-skeleton { width: 1240px; height: 406px; display: flex; justify-content: space-between; .item { width: 306px; .xtx-skeleton ~ .xtx-skeleton{ display: block; margin: 16px auto 0; } } } &lt;/style&gt;</code></pre> <p>在需要用的组件中,导入业务组件使用</p> <pre><code class="language-html">&lt;HomePanel title="人气推荐" sub-title="人气爆款 不容错过"&gt;  &lt;Transition name="fade"&gt;  // 配合了vue中的淡入淡出的动画  &lt;ul v-if="goods.length" ref="pannel" class="goods-list"&gt;  // v-if有数据显示数据 &lt;li v-for="item in goods" :key="item.id"&gt; &lt;RouterLink to="/"&gt; &lt;img :src="item.picture" alt=""&gt; &lt;p class="name"&gt;{<!-- -->{item.title}}&lt;/p&gt; &lt;p class="desc"&gt;{<!-- -->{item.alt}}&lt;/p&gt; &lt;/RouterLink&gt; &lt;/li&gt; &lt;/ul&gt;  &lt;HomeSkeleton v-else /&gt;   // 没有数据就显示骨架  &lt;/Transition&gt;  &lt;/div&gt; &lt;/HomePanel&gt;</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-44891.htm">高端宠物品牌有哪些（高端宠物品牌有哪些牌子）</a></p>
+                                        <p>下一个：<a href="/news/article-45411.htm">聊城宠物狗商家电话号码（聊城宠物狗市场）</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-11-node-share.htm" title="10月11日→20M/S|2024年最新免费节点Free Stash订阅链接地址">10月11日→20M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-linux-clash-stash.htm" title="12月14日→22.6M/S|2024年最新免费节点Free Stash订阅链接地址">12月14日→22.6M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-free-high-speed-nodes.htm" title="10月7日→18.1M/S|2024年最新免费节点Free Stash订阅链接地址">10月7日→18.1M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-26-free-node-subscribe.htm" title="11月26日→22.2M/S|2024年最新免费节点Free Stash订阅链接地址">11月26日→22.2M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-27019.htm" title="Kubernetes部署单元-Pod">Kubernetes部署单元-Pod</a></li>
+                        <li class="py-2"><a href="/news/article-21010.htm" title="三国杀武将展示替换（三国杀装备替换）">三国杀武将展示替换（三国杀装备替换）</a></li>
+                        <li class="py-2"><a href="/news/article-19177.htm" title="免费领养狗狗北京（北京去哪领养狗）">免费领养狗狗北京（北京去哪领养狗）</a></li>
+                        <li class="py-2"><a href="/news/article-40436.htm" title="Spark(30) &#8212; Spark SQL中更多Parquet文件读写(scala)">Spark(30) &#8212; Spark SQL中更多Parquet文件读写(scala)</a></li>
+                        <li class="py-2"><a href="/news/article-39464.htm" title="微信小程序navigateTo函数报错errMsg: “navigateTo:fail page “&#8230;“ is not found“">微信小程序navigateTo函数报错errMsg: “navigateTo:fail page “&#8230;“ is not found“</a></li>
+                        <li class="py-2"><a href="/news/article-26552.htm" title="小猫身上的跳蚤屎怎么去除（小猫身上的跳蚤屎怎么去除啊）">小猫身上的跳蚤屎怎么去除（小猫身上的跳蚤屎怎么去除啊）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">72</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
