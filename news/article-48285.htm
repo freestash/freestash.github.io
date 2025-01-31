@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-48285.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>spark1.6.1和2.4读取csv文件，转为为DataFrame和使用SQL</title>
+        <meta name="description" content="一、spark1.6读取csv spark2.0才开始源码支持CSV，所以1.6版本需要借助第三方包来实现读取CSV文件，有好几种方法， 1.如果有maven的，到https://spark-pack" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-48285.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="spark1.6.1和2.4读取csv文件，转为为DataFrame和使用SQL" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/6c23f29fcae469768a2edfc81a68af6d.webp" />
+        <meta property="og:release_date" content="2025-01-30T06:44:53" />
+    <meta property="og:updated_time" content="2025-01-30T06:44:53" />
+        <meta property="og:description" content="一、spark1.6读取csv spark2.0才开始源码支持CSV，所以1.6版本需要借助第三方包来实现读取CSV文件，有好几种方法， 1.如果有maven的，到https://spark-pack" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="spark1.6.1和2.4读取csv文件，转为为DataFrame和使用SQL">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                                                <a class="navbar-brand" href="/">
+                                    <span class="logo">Free Stash</span>
+                                </a>
+                                                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                        <li><a href="#">关于</a></li>
+                                    <li><a href="#">联系</a></li>
+                                </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>spark1.6.1和2.4读取csv文件，转为为DataFrame和使用SQL</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>一、spark1.6读取csv</p> <p>spark2.0才开始源码支持CSV，所以1.6版本需要借助第三方包来实现读取CSV文件，有好几种方法，</p> <p>1.如果有maven的，到https://spark-packages.org/package/databricks/spark-csv下载对应scala版本的第三方jar包然后再maven的pom里面添加denpency，然后根据官网的用法用--packages传入。这样它就会自动去maven里面寻找了。</p> <p>2.如果是Python开发的，用Python自带的库，比如pandas、csv等，可以参考<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.cnblogs.com/charlotte77/p/5437639.html"  rel="nofollow">这个博客</a>。</p> <p>3.如果没有maven可以通过textfile读入，然后通过opencsv来转化。到这里下载https://sourceforge.net/projects/opencsv/files/latest/download第三方jar包，放到spark安装目录的lib目录和Hadoop的share目录里面/usr/local/src/hadoop-2.6.1/share/hadoop/common/lib</p> <pre class="has"><code>import java.io.StringReader import au.com.bytecode.opencsv.CSVReader  val pmix=sc.textFile("file:///mnt/hgfs/vm/20170101.csv") val pmixrdd=pmix.map{line =&gt;val reader=new CSVReader(new StringReader(line)); reader.readNext()} pmixrdd.count </code></pre> <p>我放进去一个一千万行的数据，用了大概两分钟</p> <p><img decoding="async" alt="" class="has" height="39" src="http://img.555519.xyz/uploads/20230119/9ab845b2a50f8e99ae70aeb362adb6f5.jpg"></p> <p>二、转化为DataFrame</p> <p>RDD有两种方式转化df：根据反射推断方式和编程方式。</p> <p>根据反射推断的方式，scala2.10只能支持22列，但是我的表有30多列，所以我选择编程的方式，虽然编程的方式比较麻烦点。</p> <pre class="has"><code>import sqlContext.implicits._ import org.apache.spark.sql.types.{StructType,StructField,StringType}; import org.apache.spark.sql.Row; val schemaString = "region,store_type,sitename,storeid,check_no,employee,dob,dob_full,daypart,hour,minute,qcid,qc_name,qc,category,category_name,item,bohname,longname,tender_name,check_type,tot_amt,tot_amt_ala,price_tot,tot_amt_disc,disc_name,quantity,food_cost,paper_cost,burger_count,dimension_product_mix,dimension_channel_mix" val schema =   StructType(     schemaString.split(",").map(fieldName =&gt; StructField(fieldName, StringType, true))) val rowRDD= pmixrdd.map(p =&gt; Row(p(0), p(1), p(2), p(3), p(4), p(5), p(6), p(7), p(8), p(9), p(10), p(11), p(12), p(13), p(14), p(15), p(16), p(17), p(18), p(19), p(20), p(21), p(22), p(23), p(24), p(25), p(26), p(27), p(28), p(29), p(30), p(31))) val pmixdf= sqlContext.createDataFrame(rowRDD, schema)</code></pre> <p>三、使用SQL</p> <p>接下来注册一个临时表</p> <pre class="has"><code>pmixdf.registerTempTable("pmix") val results = sqlContext.sql("SELECT * FROM pmix limit 10").show() pmixdf.write.format("parquet").mode("overwrite").save("file:///mnt/hgfs/vm/pmix.parquet")</code></pre> <p>二、spark2.4读取csv</p> <pre class="has"><code> import org.apache.spark.sql.{DataFrame, SQLContext} import org.apache.spark.{SparkConf, SparkContext}  val conf = new SparkConf().setAppName("pmix").setMaster("local[2]")  //val sc = new SparkContext(conf) //如果是集群启动，就不用这句了，自动加载sc sc.setLogLevel("WARN") //http://stackoverflow.com/questions/27781187/how-to-stop-messages-displaying-on-spark-console   val spark = new SQLContext(sc)   import spark.implicits._   val df = spark.read.format("com.databricks.spark.csv")     .option("header", "false")     .option("inferSchema", "false") //也可以.option("inferSchema", true.toString) //自动推断属性列的数据类型        .option("delimiter",",")  //分隔符，默认为 ,      .load("file:///mnt/hgfs/vm/20170101.csv")     //.save(outpath) df.show() </code></pre> <p>&nbsp;</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-47849.htm">宠物口粮利润大吗 宠物口粮利润大吗知乎</a></p>
+                                        <p>下一个：<a href="/news/article-48286.htm">合肥宠物领养中心在哪里（合肥宠物领养中心在哪里啊）</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-15-linux-clash-stash.htm" title="11月15日→23M/S|2024年最新免费节点Free Stash订阅链接地址">11月15日→23M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-29-node-share-links.htm" title="12月29日→19M/S|2024年最新免费节点Free Stash订阅链接地址">12月29日→19M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-31-free-subscribe-node.htm" title="1月31日→18.8M/S|2025年最新免费节点Free Stash订阅链接地址">1月31日→18.8M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-43414.htm" title="动物医院的发展方向和趋势是什么（动物医院发展前景）">动物医院的发展方向和趋势是什么（动物医院发展前景）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-27-free-node-subscribe.htm" title="10月27日→19.3M/S|2024年最新免费节点Free Stash订阅链接地址">10月27日→19.3M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-2-free-subscribe-node.htm" title="1月2日→18.1M/S|2025年最新免费节点Free Stash订阅链接地址">1月2日→18.1M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-20093.htm" title="动物接种疫苗多少钱一针啊视频教程下载（动物注射疫苗）">动物接种疫苗多少钱一针啊视频教程下载（动物注射疫苗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-18-clash-stash.htm" title="10月18日→19M/S|2024年最新免费节点Free Stash订阅链接地址">10月18日→19M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-clash-stash-node.htm" title="12月1日→19.1M/S|2024年最新免费节点Free Stash订阅链接地址">12月1日→19.1M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-44891.htm" title="高端宠物品牌有哪些（高端宠物品牌有哪些牌子）">高端宠物品牌有哪些（高端宠物品牌有哪些牌子）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
