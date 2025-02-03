@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://freestash.github.io/news/article-36985.htm" />
@@ -9,8 +9,36 @@
     <title>Linux  C++  实现一个简易版的ping （也就是ICMP协议）</title>
         <meta name="description" content="想实现一个在没外网的时候就自动重启路由器的功能。 又不想用ping命令，因为在代码里调用system("ping"); 可能会比较耗时，得单开线程。于是找了个实现ICMP协议的代码。 参考：https" />
         <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-36985.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="Linux  C++  实现一个简易版的ping （也就是ICMP协议）" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/c92815efd0a8aca0440e316be52c7a23.webp" />
+        <meta property="og:release_date" content="2025-01-07T10:06:03" />
+    <meta property="og:updated_time" content="2025-01-07T10:06:03" />
+        <meta property="og:description" content="想实现一个在没外网的时候就自动重启路由器的功能。 又不想用ping命令，因为在代码里调用system("ping"); 可能会比较耗时，得单开线程。于是找了个实现ICMP协议的代码。 参考：https" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Web Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
     <!-- Bootstrap Core CSS -->
     <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
     <!-- Flaticon CSS -->
@@ -124,16 +152,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-29343.htm" title="kafka_2.13-3.0.0 Quick Start启动">kafka_2.13-3.0.0 Quick Start启动</a></li>
-                        <li class="py-2"><a href="/news/article-33627.htm" title="Linux 环境Skywalking部署Elasticsearch">Linux 环境Skywalking部署Elasticsearch</a></li>
-                        <li class="py-2"><a href="/news/article-22841.htm" title="动物医院仪器有哪些牌子好（动物医院常用仪器）">动物医院仪器有哪些牌子好（动物医院常用仪器）</a></li>
-                        <li class="py-2"><a href="/news/article-23291.htm" title="宠物粮食店铺名称大全 宠物粮食店铺名称大全集">宠物粮食店铺名称大全 宠物粮食店铺名称大全集</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-high-speed-nodes.htm" title="12月28日→22.4M/S|2024年最新免费节点Free Stash订阅链接地址">12月28日→22.4M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-2-node-share.htm" title="12月2日→18.3M/S|2024年最新免费节点Free Stash订阅链接地址">12月2日→18.3M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-23-free-high-speed-nodes.htm" title="11月23日→23M/S|2024年最新免费节点Free Stash订阅链接地址">11月23日→23M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-19-clash-stash.htm" title="10月19日→21.9M/S|2024年最新免费节点Free Stash订阅链接地址">10月19日→21.9M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-19-clash-stash-node.htm" title="12月19日→18.1M/S|2024年最新免费节点Free Stash订阅链接地址">12月19日→18.1M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-37467.htm" title="宠物猫疫苗价格表图片及价格（宠物疫苗多少钱一针猫咪）">宠物猫疫苗价格表图片及价格（宠物疫苗多少钱一针猫咪）</a></li>
+                        <li class="py-2"><a href="/news/article-20550.htm" title="HTML中schema.org SiteNavigationElement的正确用法是什么？">HTML中schema.org SiteNavigationElement的正确用法是什么？</a></li>
+                        <li class="py-2"><a href="/news/article-46387.htm" title="领养狗狗去哪个平台的简单介绍">领养狗狗去哪个平台的简单介绍</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-node-share.htm" title="1月30日→19.2M/S|2025年最新免费节点Free Stash订阅链接地址">1月30日→19.2M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-49862.htm" title="猫咪体外驱虫中毒怎么解毒（猫体外驱虫药过量处理方法）">猫咪体外驱虫中毒怎么解毒（猫体外驱虫药过量处理方法）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-29-linux-clash-stash.htm" title="11月29日→21.1M/S|2024年最新免费节点Free Stash订阅链接地址">11月29日→21.1M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-free-subscribe-node.htm" title="12月15日→21.1M/S|2024年最新免费节点Free Stash订阅链接地址">12月15日→21.1M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-42916.htm" title="动物疫苗扎到手里怎么办啊视频（动物疫苗扎到手里怎么办啊视频教学）">动物疫苗扎到手里怎么办啊视频（动物疫苗扎到手里怎么办啊视频教学）</a></li>
+                        <li class="py-2"><a href="/news/article-31714.htm" title="仓鼠得了皮肤病该怎么办（仓鼠得皮肤病的图片大全）">仓鼠得了皮肤病该怎么办（仓鼠得皮肤病的图片大全）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-node-share-links.htm" title="11月6日→22.4M/S|2024年最新免费节点Free Stash订阅链接地址">11月6日→22.4M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-34576.htm" title="成都领养宠物中心电话（成都领养宠物中心电话地址）">成都领养宠物中心电话（成都领养宠物中心电话地址）</a></li>
                     </ul>
     </div>
 </div>
@@ -145,16 +173,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://freestash.github.io/news/article-37466.htm" />
@@ -9,8 +9,36 @@
     <title>在Vue项目中使用mock假数据模拟后端接口</title>
         <meta name="description" content="安装 npm install --save-dev mockjs  引入  为了让mock中的数据只在开发环境中有效，防止其与生产环境的数据出现混淆，可以： 在config/dev.env.js文件中" />
         <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-37466.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="在Vue项目中使用mock假数据模拟后端接口" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/215d5a10112dbe032ebc9b77b06c5802.webp" />
+        <meta property="og:release_date" content="2025-01-08T10:01:03" />
+    <meta property="og:updated_time" content="2025-01-08T10:01:03" />
+        <meta property="og:description" content="安装 npm install --save-dev mockjs  引入  为了让mock中的数据只在开发环境中有效，防止其与生产环境的数据出现混淆，可以： 在config/dev.env.js文件中" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="在Vue项目中使用mock假数据模拟后端接口">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Web Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
     <!-- Bootstrap Core CSS -->
     <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
     <!-- Flaticon CSS -->
@@ -124,16 +152,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-28-node-share-links.htm" title="11月28日→23M/S|2024年最新免费节点Free Stash订阅链接地址">11月28日→23M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-33144.htm" title="打完疫苗能吃内脏吗（打完疫苗能吃内脏吗会过敏吗）">打完疫苗能吃内脏吗（打完疫苗能吃内脏吗会过敏吗）</a></li>
-                        <li class="py-2"><a href="/news/article-28874.htm" title="ZooKeeper的java客户端api的监听功能代码示范">ZooKeeper的java客户端api的监听功能代码示范</a></li>
-                        <li class="py-2"><a href="/news/article-32198.htm" title="开宠物店亏死了 开宠物店亏死了多少人">开宠物店亏死了 开宠物店亏死了多少人</a></li>
-                        <li class="py-2"><a href="/news/article-23291.htm" title="宠物粮食店铺名称大全 宠物粮食店铺名称大全集">宠物粮食店铺名称大全 宠物粮食店铺名称大全集</a></li>
-                        <li class="py-2"><a href="/news/article-19177.htm" title="免费领养狗狗北京（北京去哪领养狗）">免费领养狗狗北京（北京去哪领养狗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-6-node-share-links.htm" title="1月6日→21.6M/S|2025年最新免费节点Free Stash订阅链接地址">1月6日→21.6M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-28407.htm" title="动物接种疫苗多少次有效果（动物接种疫苗多少次有效果呢）">动物接种疫苗多少次有效果（动物接种疫苗多少次有效果呢）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-7-free-stash-node.htm" title="1月7日→22.7M/S|2025年最新免费节点Free Stash订阅链接地址">1月7日→22.7M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-32677.htm" title="1970年6月27日农历是多少（1970年阳历6月26号阴历是多少）">1970年6月27日农历是多少（1970年阳历6月26号阴历是多少）</a></li>
+                        <li class="py-2"><a href="/news/article-46387.htm" title="领养狗狗去哪个平台的简单介绍">领养狗狗去哪个平台的简单介绍</a></li>
+                        <li class="py-2"><a href="/news/article-24226.htm" title="让猫挠了多久之内打针有效（被猫挠了多久内打针有效）">让猫挠了多久之内打针有效（被猫挠了多久内打针有效）</a></li>
+                        <li class="py-2"><a href="/news/article-43415.htm" title="宠物店猫粮一般都在哪进货（宠物店里的猫粮是哪里批发的）">宠物店猫粮一般都在哪进货（宠物店里的猫粮是哪里批发的）</a></li>
+                        <li class="py-2"><a href="/news/article-45876.htm" title="加盟宠物店和自己开哪个划算（一般宠物美容师要多久才能学出来）">加盟宠物店和自己开哪个划算（一般宠物美容师要多久才能学出来）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-31-free-subscribe-node.htm" title="1月31日→18.8M/S|2025年最新免费节点Free Stash订阅链接地址">1月31日→18.8M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-15-linux-clash-stash.htm" title="11月15日→23M/S|2024年最新免费节点Free Stash订阅链接地址">11月15日→23M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-free-node-subscribe.htm" title="11月25日→20.7M/S|2024年最新免费节点Free Stash订阅链接地址">11月25日→20.7M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-21010.htm" title="三国杀武将展示替换（三国杀装备替换）">三国杀武将展示替换（三国杀装备替换）</a></li>
+                        <li class="py-2"><a href="/news/article-42915.htm" title="深圳宠物领养公众号 深圳宠物领养公众号有哪些">深圳宠物领养公众号 深圳宠物领养公众号有哪些</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-29-node-share-links.htm" title="12月29日→19M/S|2024年最新免费节点Free Stash订阅链接地址">12月29日→19M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -145,16 +173,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
