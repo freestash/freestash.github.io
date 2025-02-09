@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-52479.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C++数据结构之堆详解_C 语言_</title>
+        <meta name="description" content="有限数组形式  动态数组形式  向下调整结点  建立堆  初始化  打印堆  main函数  结果 目录  			  目录  堆的概念  提示：完全二叉树  堆的性质  最大堆最小堆  代码  定义 " />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-52479.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="C++数据结构之堆详解_C 语言_" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/111931940b5b4abe9c4b50c9fb572daf.webp" />
+        <meta property="og:release_date" content="2025-02-07T07:18:43" />
+    <meta property="og:updated_time" content="2025-02-07T07:18:43" />
+        <meta property="og:description" content="有限数组形式  动态数组形式  向下调整结点  建立堆  初始化  打印堆  main函数  结果 目录  			  目录  堆的概念  提示：完全二叉树  堆的性质  最大堆最小堆  代码  定义 " />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="C++数据结构之堆详解_C 语言_">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/">
+                                                                <span class="logo">Free Stash</span>
+                                                                </a>
+                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>C++数据结构之堆详解_C 语言_</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				  			 <div id="log-box">  				<div id="catalog"><ul id="catalog-ul"> <li><i class="be be-arrowright"></i> <a href="#title-0" title="有限数组形式">有限数组形式</a></li> <li><i class="be be-arrowright"></i> <a href="#title-1" title="动态数组形式">动态数组形式</a></li> <li><i class="be be-arrowright"></i> <a href="#title-2" title="向下调整结点">向下调整结点</a></li> <li><i class="be be-arrowright"></i> <a href="#title-3" title="建立堆">建立堆</a></li> <li><i class="be be-arrowright"></i> <a href="#title-4" title="初始化">初始化</a></li> <li><i class="be be-arrowright"></i> <a href="#title-5" title="打印堆">打印堆</a></li> <li><i class="be be-arrowright"></i> <a href="#title-6" title="main函数">main函数</a></li> <li><i class="be be-arrowright"></i> <a href="#title-7" title="结果">结果</a></li> </ul><span class="log-zd"><span class="log-close"><a title="隐藏目录"><i class="be be-cross"></i><strong>目录</strong></a></span></span></div>  			</div> <div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">堆的概念</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_0_0" rel="nofollow">提示：完全二叉树</a></li> </ul> <li><a href="#_label1" rel="nofollow">堆的性质</a></li> <ul class="second_class_ul"></ul> <li><a href="#_label2" rel="nofollow">最大堆最小堆</a></li> <ul class="second_class_ul"></ul> <li><a href="#_label3" rel="nofollow">代码</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_3_1" rel="nofollow">定义</a></li> <ul class="third_class_ul"> <li><a href="#_label3_3_1_0" rel="nofollow">有限数组形式</a></li> <li><a href="#_label3_3_1_1" rel="nofollow">动态数组形式</a></li> </ul> <li><a href="#_lab2_3_2" rel="nofollow">操作</a></li> <ul class="third_class_ul"> <li><a href="#_label3_3_2_2" rel="nofollow">向下调整结点</a></li> <li><a href="#_label3_3_2_3" rel="nofollow">建立堆</a></li> <li><a href="#_label3_3_2_4" rel="nofollow">初始化</a></li> <li><a href="#_label3_3_2_5" rel="nofollow">打印堆</a></li> </ul> <li><a href="#_lab2_3_3" rel="nofollow">测试</a></li> <ul class="third_class_ul"> <li><a href="#_label3_3_3_6" rel="nofollow">main函数</a></li> <li><a href="#_label3_3_3_7" rel="nofollow">结果</a></li> </ul> <li><a href="#_lab2_3_4" rel="nofollow">完整代码</a></li> <ul class="third_class_ul"></ul> </ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>堆的概念</h2> <p>堆（heap）是计算机科学中一类特殊的数据结构的统称。堆通常是一个可以被看做一棵树的数组对象，即是一种顺序储存结构的完全二叉树。</p> <p class="maodian"><a name="_lab2_0_0" rel="nofollow"></a></p> <h3>提示：完全二叉树</h3> <p>完全二叉树：对一棵深度为k、有n个结点二叉树编号后，各节点的编号与深度为k的满二叉树相同位置的结点的编号相同，这颗二叉树就被称为完全二叉树。<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/cairbin/p/16122303.html#fn2"   target="_blank" rel="nofollow">[2]</a></p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>堆的性质</h2> <ul> <li>堆中某个结点的值总是不大于或不小于其父结点的值</li> <li>堆总是一棵完全二叉树</li> <li>除了根结点和最后一个左子结点可以没有兄弟结点，其他结点<strong>必须</strong>有兄弟结点</li> </ul> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>最大堆最小堆</h2> <ul> <li> <p>最大堆：根结点的键值是所有堆结点键值中最大者，且每个结点的值都比其孩子的值大。</p> </li> <li> <p>最小堆：根结点的键值是所有堆结点键值中最小者，且每个结点的值都比其孩子的值小。</p> </li> </ul> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>代码</h2> <p class="maodian"><a name="_lab2_3_1" rel="nofollow"></a></p> <h3>定义</h3> <p class="maodian"><a name="_label3_3_1_0" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-0">有限数组形式</h4> <div class="ay1code"> <pre class="brush:cpp;">int Heap[1024];    //顺序结构的二叉树</pre> </div> <p>若某结点编号为i，且存在左儿子和右儿子，则他们分别对应</p> <div class="ay1code"> <pre class="brush:cpp;">Heap[i*2+1];      //左儿子  Heap[i*2+2];      //右儿子</pre> </div> <p>其父节点</p> <div class="ay1code"> <pre class="brush:cpp;">Heap[i/2];		//i的父节点</pre> </div> <p class="maodian"><a name="_label3_3_1_1" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-1">动态数组形式</h4> <p>在项目开发中，经常以动态数组形式出现，在本文主要对这种形式进行介绍</p> <div class="ay1code"> <pre class="brush:cpp;">//默认容量  #define DEFAULT_CAPCITY 128    typedef struct _Heap  {  	int *arr;		//储存元素的动态数组  	int size;		//元素个数  	int capacity;	//当前存储的容量	  }Heap;</pre> </div> <p class="maodian"><a name="_lab2_3_2" rel="nofollow"></a></p> <h3>操作</h3> <p>只使用InitHeap()函数进行初始化即可，AdjustDown()与BuildHeap()仅为堆建立时的内部调用</p> <p class="maodian"><a name="_label3_3_2_2" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-2">向下调整结点</h4> <ul> <li>以创建最大堆为例</li> <li>将“判断最大子结点是否大于当前父结点”处的&gt;=改为&lt;=即可创建最小堆</li> </ul> <div class="ay1code"> <pre class="brush:cpp;">//向下调整，将当前结点与其子结点调整为最大堆  //用static修饰禁止外部调用  static void AdjustDown(Heap&amp; heap, int index)  {  	int cur = heap.arr[index];	//当前待调整结点  	int parent, child;    	/*  		判断是否存在子结点大于当前结点。  		若不存在，堆是平衡的，则不调整；  		若存在，则与最大子结点与之交换，交换后该子节点若还有子结点，则以此方法继续调整。  	*/  	for (parent = index; (parent * 2 + 1) &lt; heap.size; parent = child)  	{  		child = parent * 2 + 1;	//左子结点    		//取两个子结点中最大节点,(child+1)&lt;heap.size防止越界  		if (((child + 1) &lt; heap.size &amp;&amp; (heap.arr[child] &lt; heap.arr[child + 1])))  			child++;    		//判断最大子结点是否大于当前父结点  		if (cur &gt;= heap.arr[child])	//将此处的&gt;=改成&lt;=可构建最小堆  		{  			//不大于，不需要调整  			break;  		}  		else  		{  			//大于，则交换  			heap.arr[parent] = heap.arr[child];  			heap.arr[child] = cur;  		}    	}  }</pre> </div> <p class="maodian"><a name="_label3_3_2_3" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-3">建立堆</h4> <div class="ay1code"> <pre class="brush:cpp;">//建立堆，用static修饰禁止外部调用  static void BuildHeap(Heap&amp; heap)  {  	int i;  	//从倒数第二层开始调整（若只有一层则从该层开始）  	for (i = heap.size / 2 - 1; i &gt;= 0; i--)  	{  		AdjustDown(heap, i);  	}  }</pre> </div> <p class="maodian"><a name="_label3_3_2_4" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-4">初始化</h4> <div class="ay1code"> <pre class="brush:cpp;">//初始化堆  //参数：被初始化的堆，存放初始数据的数组， 数组大小  bool InitHeap(Heap &amp;heap, int *orginal, int size)  {  	//若容量大于size，则使用默认量，否则为size  	int capacity = DEFAULT_CAPCITY&gt;size?DEFAULT_CAPCITY:size;  	  	heap.arr = new int[capacity];	//分配内存，类型根据实际需要可修改  	if(!heap.arr) return false;		//内存分配失败则返回False  	  	heap.capacity = capacity;		//容量  	heap.size = 0;					//元素个数置为0  	  	//若存在原始数组则构建堆  	if(size&gt;0)  	{  		/*  		内存拷贝，将orginal的元素拷贝到堆数组arr中  		size*sizeof(int)为元素所占内存空间大小  		*/  		memcpy(heap.arr,orginal, size*sizeof(int));  		heap.size = size;	//调整大小  		BuildHeap(heap);	//建堆  	}  	  	return true;  }</pre> </div> <p class="maodian"><a name="_label3_3_2_5" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-5">打印堆</h4> <ul> <li>实际上是一个层序遍历<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/cairbin/p/16122303.html#fn4"   target="_blank" rel="nofollow">[4]</a> </li> </ul> <div class="ay1code"> <pre class="brush:cpp;">//以树状的形式打印堆  void PrintHeapAsTreeStyle(Heap hp)  {  	queue&lt;int&gt; que;  	int r = 0;  	que.push(r);  	queue&lt;int&gt; temp;    	while (!que.empty())  	{  		r = que.front();  		que.pop();    		if (r * 2 + 1 &lt; hp.size) temp.push(r * 2 + 1);  		if (r * 2 + 2 &lt; hp.size) temp.push(r * 2 + 2);    		if (que.empty())  		{  			cout &lt;&lt; hp.arr[r] &lt;&lt; endl;  			que = temp;  			temp = queue&lt;int&gt;();  		}  		else  			cout &lt;&lt; hp.arr[r] &lt;&lt; " ";    	}  }</pre> </div> <p class="maodian"><a name="_lab2_3_3" rel="nofollow"></a></p> <h3>测试</h3> <p class="maodian"><a name="_label3_3_3_6" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-6">main函数</h4> <div class="ay1code"> <pre class="brush:cpp;">int main()  {  	Heap hp;  	int vals[] = { 1,2,3,87,93,82,92,86,95 };    	if (!InitHeap(hp, vals, sizeof(vals) / sizeof(vals[0])))  	{  		fprintf(stderr, "初始化堆失败！\n");  		exit(-1);  	}    	PrintHeapAsTreeStyle(hp);    	return 0;  }</pre> </div> <p class="maodian"><a name="_label3_3_3_7" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-7">结果</h4> <div class="ay1code"> <pre class="brush:plain;">95  93 92  87 1 82 3  86 2  </pre> </div> <p class="maodian"><a name="_lab2_3_4" rel="nofollow"></a></p> <h3>完整代码</h3> <div class="ay1code"> <pre class="brush:cpp;">#include &lt;iostream&gt;  #include &lt;queue&gt;    using namespace std;    //默认容量  #define DEFAULT_CAPCITY 128  typedef struct _Heap {  	int* arr;  	int size;  	int capacity;  }Heap;    //向下调整，将当前结点与其子结点调整为最大堆  static void AdjustDown(Heap&amp; heap, int index)  {  	int cur = heap.arr[index];	//当前待调整结点  	int parent, child;    	/*  		判断是否存在子结点大于当前结点。  		若不存在，堆是平衡的，则不调整；  		若存在，则与最大子结点与之交换，交换后该子节点若还有子结点，则以此方法继续调整。  	*/  	for (parent = index; (parent * 2 + 1) &lt; heap.size; parent = child)  	{  		child = parent * 2 + 1;	//左子结点    		//取两个子结点中最大节点,(child+1)&lt;heap.size防止越界  		if (((child + 1) &lt; heap.size &amp;&amp; (heap.arr[child] &lt; heap.arr[child + 1])))  			child++;    		//判断最大子结点是否大于当前父结点  		if (cur &gt;= heap.arr[child])	//将此处的&gt;=改成&lt;=可构建最小堆  		{  			//不大于，不需要调整  			break;  		}  		else  		{  			//大于，则交换  			heap.arr[parent] = heap.arr[child];  			heap.arr[child] = cur;  		}    	}      }    //建立堆，用static修饰禁止外部调用  static void BuildHeap(Heap&amp; heap)  {  	int i;  	//从倒数第二层开始调整（若只有一层则从该层开始）  	for (i = heap.size / 2 - 1; i &gt;= 0; i--)  	{  		AdjustDown(heap, i);  	}  }    //初始化堆  //参数：被初始化的堆，存放初始数据的数组， 数组大小  bool InitHeap(Heap&amp; heap, int* orginal, int size)  {  	//若容量大于size，则使用默认量，否则为size  	int capacity = DEFAULT_CAPCITY &gt; size ? DEFAULT_CAPCITY : size;    	heap.arr = new int[capacity];	//分配内存，类型根据实际需要可修改  	if (!heap.arr) return false;		//内存分配失败则返回False    	heap.capacity = capacity;		//容量  	heap.size = 0;					//元素个数置为0    	//若存在原始数组则构建堆  	if (size &gt; 0)  	{  		/*  		内存拷贝，将orginal的元素拷贝到堆数组arr中  		size*sizeof(int)为元素所占内存空间大小  		*/  		memcpy(heap.arr, orginal, size * sizeof(int));  		heap.size = size;	//调整大小  		BuildHeap(heap);	//建堆  	}    	return true;  }    //以树状的形式打印堆  void PrintHeapAsTreeStyle(Heap hp)  {  	queue&lt;int&gt; que;  	int r = 0;  	que.push(r);  	queue&lt;int&gt; temp;    	while (!que.empty())  	{  		r = que.front();  		que.pop();    		if (r * 2 + 1 &lt; hp.size) temp.push(r * 2 + 1);  		if (r * 2 + 2 &lt; hp.size) temp.push(r * 2 + 2);    		if (que.empty())  		{  			cout &lt;&lt; hp.arr[r] &lt;&lt; endl;  			que = temp;  			temp = queue&lt;int&gt;();  		}  		else  			cout &lt;&lt; hp.arr[r] &lt;&lt; " ";    	}    }    int main()  {  	Heap hp;  	int vals[] = { 1,2,3,87,93,82,92,86,95 };    	if (!InitHeap(hp, vals, sizeof(vals) / sizeof(vals[0])))  	{  		fprintf(stderr, "初始化堆失败！\n");  		exit(-1);  	}    	PrintHeapAsTreeStyle(hp);    	return 0;  }  </pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-52478.htm">请说一下你对分布式锁的理解，以及分布式锁的实现</a></p>
+                                        <p>下一个：<a href="/news/article-53002.htm">动物疫苗去哪里买（动物疫苗证去哪里办怎么办）</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-26100.htm" title="CSS &#8211; 隐藏浏览器自带滚动条（Chrome | Safari | Firefox | IE | Edge）">CSS &#8211; 隐藏浏览器自带滚动条（Chrome | Safari | Firefox | IE | Edge）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-31-share-clash-stash.htm" title="12月31日→19.7M/S|2025年最新免费节点Free Stash订阅链接地址">12月31日→19.7M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-6-free-node-subscribe-links.htm" title="2月6日→20.6M/S|2025年最新免费节点Free Stash订阅链接地址">2月6日→20.6M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-52479.htm" title="C++数据结构之堆详解_C 语言_">C++数据结构之堆详解_C 语言_</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-node-share.htm" title="12月4日→22.3M/S|2024年最新免费节点Free Stash订阅链接地址">12月4日→22.3M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-35687.htm" title="宠物粮食品牌大全排行榜前十名 宠物粮食品牌大全排行榜前十名有哪些">宠物粮食品牌大全排行榜前十名 宠物粮食品牌大全排行榜前十名有哪些</a></li>
+                        <li class="py-2"><a href="/news/article-22384.htm" title="动物医院管理办法规定由谁制定实施（动物医院管理办法规定由谁制定实施的）">动物医院管理办法规定由谁制定实施（动物医院管理办法规定由谁制定实施的）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-node-share-links.htm" title="11月28日→23M/S|2024年最新免费节点Free Stash订阅链接地址">11月28日→23M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-node-share.htm" title="11月11日→22M/S|2024年最新免费节点Free Stash订阅链接地址">11月11日→22M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-node-share-links.htm" title="11月6日→22.4M/S|2024年最新免费节点Free Stash订阅链接地址">11月6日→22.4M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
