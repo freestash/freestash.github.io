@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-60288.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Element UI Upload 上传文件只能上传一次 ，再次点击上传后无反应的问题</title>
+        <meta name="description" content="Element UI Upload 上传文件上传文件一次 ，不论是上传成功之后修改文件再上传还是上传失败重新上传，再次点击上传均无反应。 方法一：利用 :on-success  ref=‘upload" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-60288.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="Element UI Upload 上传文件只能上传一次 ，再次点击上传后无反应的问题" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/3a4578b75e2037e0d2e6fc1c488002d8.webp" />
+        <meta property="og:release_date" content="2025-02-21T09:19:09" />
+    <meta property="og:updated_time" content="2025-02-21T09:19:09" />
+        <meta property="og:description" content="Element UI Upload 上传文件上传文件一次 ，不论是上传成功之后修改文件再上传还是上传失败重新上传，再次点击上传均无反应。 方法一：利用 :on-success  ref=‘upload" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Element UI Upload 上传文件只能上传一次 ，再次点击上传后无反应的问题">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/">
+                                                                <span class="logo">Free Stash</span>
+                                                                </a>
+                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>Element UI Upload 上传文件只能上传一次 ，再次点击上传后无反应的问题</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <pre><code>Element UI Upload 上传文件上传文件一次 ，不论是上传成功之后修改文件再上传还是上传失败重新上传，再次点击上传均无反应。</code></pre> <h2><a id="_onsuccess_2" rel="nofollow"></a>方法一：利用 :on-success</h2> <blockquote> <p>ref=‘upload’<br /> :on-success=“handleSuccess”</p> </blockquote> <p>注意：<code>ref='upload</code> 一定要加上ref 不然不起作用</p> <pre><code>                &lt;el-upload                         class="upload-demo"                         action=""                         :limit="1"                         :show-file-list="false"                         :http-request="uploadLogo"                         ref='upload'                         :on-success="handleSuccess"                 &gt;                     &lt;el-button style="width: 150px; height: 35px;line-height: 0;margin-left: 20px" size="medium"                                type="primary"&gt;                         {<!-- -->{$t('StaffManage.bulkImport')}}                     &lt;/el-button&gt;                 &lt;/el-upload&gt;</code></pre> <pre><code>        handleSuccess(res, file) {             this.$refs.upload.clearFiles(); //上传成功之后清除历史记录             // this.tableReload()         },</code></pre> <h2><a id="if_elupload_32" rel="nofollow"></a>方法二：利用if el-upload让移除文档流</h2> <pre><code class="prism language-bash"><span class="token operator">&lt;</span>el-upload                         v-if<span class="token operator">=</span><span class="token string">"!form.contractFileUrl"</span><span class="token assign-left variable">class</span><span class="token operator">=</span><span class="token string">"upload-demo"</span><span class="token assign-left variable">action</span><span class="token operator">=</span><span class="token string">""</span>                         :limit<span class="token operator">=</span><span class="token string">"1"</span>                         :show-file-list<span class="token operator">=</span><span class="token string">"false"</span>                         :http-request<span class="token operator">=</span><span class="token string">"uploadLogo"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>el-button<span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token string">"medium"</span><span class="token assign-left variable">type</span><span class="token operator">=</span><span class="token string">"primary"</span><span class="token operator">&gt;</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">{<!-- --></span><span class="token variable">$t</span><span class="token punctuation">(</span><span class="token string">'AttendanceInformation.ClickUpload'</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span>/el-button<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/el-upload<span class="token operator">&gt;</span></code></pre> <pre><code class="prism language-bash">            uploadLogo<span class="token punctuation">(</span>param<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token builtin class-name">let</span> _this<span class="token operator">=</span> this                 _this.form.contractFileUrl<span class="token operator">=</span><span class="token string">'1'</span><span class="token builtin class-name">let</span> formData<span class="token operator">=</span> new FormData<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 formData.append<span class="token punctuation">(</span><span class="token string">"file"</span>, param.file<span class="token punctuation">)</span><span class="token punctuation">;</span>                 _this.<span class="token variable">$send</span>.post<span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>url:<span class="token string">'/contract/upload'</span>, data: formData<span class="token punctuation">}</span>, res<span class="token operator">=</span><span class="token operator">&gt;</span><span class="token punctuation">{<!-- --></span><span class="token keyword">if</span><span class="token punctuation">(</span>res.code<span class="token operator">==</span><span class="token operator">=</span><span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>                         _this.isdisabled<span class="token operator">=</span><span class="token boolean">true</span>                         _this.form.contractFileUrl<span class="token operator">=</span> res.data.url                         _this.form.contractFileId<span class="token operator">=</span> res.data.id<span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{<!-- --></span>                         _this.form.contractFileUrl<span class="token operator">=</span> null                         _this.form.contractFileId<span class="token operator">=</span> null                         _this.<span class="token variable">$msg</span>.error<span class="token punctuation">(</span>res.message<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span>,</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-59699.htm">动物疫苗公司销量排名前十（动物疫苗公司销量排名前十名）</a></p>
+                                        <p>下一个：<a href="/news/article-60289.htm">中国兽药十大名牌厂家排名百度百科知乎 中国兽药十大名牌厂家排名百度百科知乎</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-36204.htm" title="宠物免费领养网站（宠物免费领养网站）">宠物免费领养网站（宠物免费领养网站）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-node-share.htm" title="1月30日→19.2M/S|2025年最新免费节点Free Stash订阅链接地址">1月30日→19.2M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-35687.htm" title="宠物粮食品牌大全排行榜前十名 宠物粮食品牌大全排行榜前十名有哪些">宠物粮食品牌大全排行榜前十名 宠物粮食品牌大全排行榜前十名有哪些</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-13-free-node-subscribe.htm" title="2月13日→22.6M/S|2025年最新免费节点Free Stash订阅链接地址">2月13日→22.6M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-59699.htm" title="动物疫苗公司销量排名前十（动物疫苗公司销量排名前十名）">动物疫苗公司销量排名前十（动物疫苗公司销量排名前十名）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-free-subscribe-node.htm" title="12月15日→21.1M/S|2024年最新免费节点Free Stash订阅链接地址">12月15日→21.1M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-50900.htm" title="重庆宠物领养平台官网地址电话号码（重庆宠物狗领养中心）">重庆宠物领养平台官网地址电话号码（重庆宠物狗领养中心）</a></li>
+                        <li class="py-2"><a href="/news/article-57417.htm" title="合肥宠物猫领养（合肥哪里有领养猫狗的地方）">合肥宠物猫领养（合肥哪里有领养猫狗的地方）</a></li>
+                        <li class="py-2"><a href="/news/article-47350.htm" title="动物疫苗厂家招聘电话（动物疫苗供应站）">动物疫苗厂家招聘电话（动物疫苗供应站）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-24-clash-stash.htm" title="11月24日→22.7M/S|2024年最新免费节点Free Stash订阅链接地址">11月24日→22.7M/S|2024年最新免费节点Free Stash订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">63</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
