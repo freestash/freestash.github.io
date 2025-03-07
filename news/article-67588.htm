@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-67588.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Qt的.pro文件格式解析</title>
+        <meta name="description" content="在Qt中用qmake生成makefile文件，它是由.pro文件生成而来的，.pro文件的具体格式语法如下： 1.注释 .pro文件中注释采用#号，从“#”号开始，到该行的结束，例如： 2.模板TEM" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-67588.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="Qt的.pro文件格式解析" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/91390f13c74c1b3d0075358e3e6b1163.webp" />
+        <meta property="og:release_date" content="2025-03-05T11:11:22" />
+    <meta property="og:updated_time" content="2025-03-05T11:11:22" />
+        <meta property="og:description" content="在Qt中用qmake生成makefile文件，它是由.pro文件生成而来的，.pro文件的具体格式语法如下： 1.注释 .pro文件中注释采用#号，从“#”号开始，到该行的结束，例如： 2.模板TEM" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Qt的.pro文件格式解析">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/">
+                                                                <span class="logo">Free Stash</span>
+                                                                </a>
+                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>Qt的.pro文件格式解析</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				</h1> <p>在Qt中用qmake生成makefile文件，它是由.pro文件生成而来的，.pro文件的具体格式语法如下：</p> <h2 id="1注释">1.注释</h2> <p>.pro文件中注释采用#号，从“#”号开始，到该行的结束，例如：</p> <h2 id="2模板template">2.模板TEMPLATE</h2> <p>模板变量告诉qmake为这个应用程序生成那种makefile文件。下面是可提供使用的选择：</p> <pre><code class="language-makefile">TEMPLATE=app</code></pre> <ol> <li>app-建立一个应用程序的makefile。这是个默认值，所以如果模板没有被指定，该模板将会被使用。</li> <li>lib  -建立一个库的makefile。</li> <li>vcapp -建立一个应用程序的Visual Studio项目文件。</li> <li>vclib -建立一个库的VisualStudio项目文件。</li> <li>subdirs -这是一个特殊的模板，它可以创建一个能够进入特定目录并且为一个项目文件生成makefile，并且为它调用make的makefile。</li> </ol> <h2 id="3添加文件路径">3.添加文件路径</h2> <ol> <li> <p><code>HEADERS +=</code> 用来添加头文件</p> </li> <li> <p><code>SOURCES +=</code> 用来添加源文件</p> </li> <li> <p><code>FORMS +=</code> 用来添加 ui 文件</p> </li> <li> <p><code>RESOURCES +=</code> 用来添加资源文件</p> </li> <li> <p><code>INCLUDEPATH +=</code> 用来存放添加头文件的路径</p> </li> <li> <p><code>DEPENDPATH +=</code> 用来添加依赖相关路径</p> </li> <li> <p><code>LIBS +=</code> 用来添加库文件</p> </li> </ol> <p><strong>注意：</strong></p> <pre><code> INCLUDEPATH一般用在添加第三方 .dll 的时候所需的头文件路径；  HEADERS用来添加当前项目的路径；  LIBS += -LC:/Windows/System32/ -luser32  格式为：-L 路径 -l 库名  库比较多的时候可以用 \来达到换行目的  引用相对路径的库文件的时候，$$PWD 指的是项目 .pro 文件所在的路径，`$$OUT_PWD` 指的是编译的目标所在的路径。如果不清楚路径，可以使用 message($$PWD) 打印路径查看绝对路径。</code></pre> <ul> <li><code>DESTDIR +=</code> 指定生成的应用程序的存放目录。</li> <li><code>TARGET =</code> 指定生成的应用程序的名字。</li> <li><code>UI_DIR +=</code> 用来存放编译的时候 ui 生成的 ui_*.h 文件。</li> <li><code>RCC_DIR +=</code> 存放 .qrc 生成的 qrc_*.h 文件。</li> <li><code>MOC_DIR +=</code> 用来存放 moc 命令转换添加的<code>Q_OBJECT</code> 的 .h 文件为标准 .h 文件的存放路径。</li> <li><code>OBJECTS_DIR +=</code> 用来存放目标文件 .obj 存放的路径。</li> </ul> <p><strong>注：</strong></p> <p><code>UI_DIR</code> 、<code>RCC_DIR</code> 、<code>MOC_DIR</code> 、<code>OBJECTS_DIR</code> 可以认为都是用来存放中间文件，只是存放的中间文件有所不同，不指定的话默认会存放在 .pro 文件所在的路径，显得工程看起来比较乱</p> <h2 id="4添加配置信息">4.添加配置信息</h2> <ul> <li><code>CONFIG +=</code> 用来指的应用程序的配置信息。</li> </ul> <table> <thead> <tr> <th>参数</th> <th style="text-align: center">说明</th> </tr> </thead> <tbody> <tr> <td>release</td> <td style="text-align: center">项目被联编为一个发布的应用程序</td> </tr> <tr> <td>debug</td> <td style="text-align: center">项目被联编为一个debug的应用程序，debug 和 release 同时设置的时候，最后面的一个生效</td> </tr> <tr> <td>debug_and_release</td> <td style="text-align: center">项目被联编为 debug 和 release</td> </tr> <tr> <td>warn_on</td> <td style="text-align: center">编译器输出尽可能多的警告信息</td> </tr> <tr> <td>c++11</td> <td style="text-align: center">支持 c++11 的标准</td> </tr> <tr> <td>thread</td> <td style="text-align: center">支持线程，当 CONFIG 参数包含 qt 的时候，这个是默认支持的</td> </tr> </tbody> </table> <h2 id="5实例">5.实例</h2> <pre><code class="language-makefile">TEMPLATE	= app LANGUAGE	= C++  QT += widgets xml sql network opengl CONFIG	+= qt warn_on release  HEADERS	+= *.h SOURCES	+= *.cpp FORMS  += *.ui  RESOURCES += \     DiffusionFilter.qrc</code></pre> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-67587.htm">SpringSecurity核心过滤器-CsrfFilter</a></p>
+                                        <p>下一个：<a href="/news/article-68247.htm">动物检疫条件合格证明（动物检疫条件合格证明啥样的?）</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-57985.htm" title="宠物粮食品牌取名字大全四个字 宠物粮食品牌取名字大全四个字开头">宠物粮食品牌取名字大全四个字 宠物粮食品牌取名字大全四个字开头</a></li>
+                        <li class="py-2"><a href="/news/article-52478.htm" title="请说一下你对分布式锁的理解，以及分布式锁的实现">请说一下你对分布式锁的理解，以及分布式锁的实现</a></li>
+                        <li class="py-2"><a href="/news/article-48834.htm" title="太原领养狗狗 太原领养狗狗地方在那">太原领养狗狗 太原领养狗狗地方在那</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-21-clash-stash.htm" title="2月21日→22.9M/S|2025年最新免费节点Free Stash订阅链接地址">2月21日→22.9M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-60289.htm" title="中国兽药十大名牌厂家排名百度百科知乎 中国兽药十大名牌厂家排名百度百科知乎">中国兽药十大名牌厂家排名百度百科知乎 中国兽药十大名牌厂家排名百度百科知乎</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-23-node-share.htm" title="2月23日→18.3M/S|2025年最新免费节点Free Stash订阅链接地址">2月23日→18.3M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-58671.htm" title="VUE项目解决Vant组件库样式修改不生效问题">VUE项目解决Vant组件库样式修改不生效问题</a></li>
+                        <li class="py-2"><a href="/news/article-56297.htm" title="动物疫苗检测标准有哪些 动物疫苗检测标准有哪些内容">动物疫苗检测标准有哪些 动物疫苗检测标准有哪些内容</a></li>
+                        <li class="py-2"><a href="/news/article-35688.htm" title="宠物回收平台同城可靠吗（宠物回收平台同城可靠吗）">宠物回收平台同城可靠吗（宠物回收平台同城可靠吗）</a></li>
+                        <li class="py-2"><a href="/news/article-54628.htm" title="河南兽药厂家大厂排名 河南兽药厂家大厂排名第一">河南兽药厂家大厂排名 河南兽药厂家大厂排名第一</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">20</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
