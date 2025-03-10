@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-69525.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Springboot：拦截器和过滤器</title>
+        <meta name="description" content="在项目的开发中，在某些情况下，我们需要对客户端发出的请求进行拦截，常用的API拦截方式有Fliter，Interceptor，ControllerAdvice以及Aspect。 请求从Filter--" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-69525.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="Springboot：拦截器和过滤器" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/c92815efd0a8aca0440e316be52c7a23.webp" />
+        <meta property="og:release_date" content="2025-03-08T05:05:38" />
+    <meta property="og:updated_time" content="2025-03-08T05:05:38" />
+        <meta property="og:description" content="在项目的开发中，在某些情况下，我们需要对客户端发出的请求进行拦截，常用的API拦截方式有Fliter，Interceptor，ControllerAdvice以及Aspect。 请求从Filter--" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Springboot：拦截器和过滤器">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/">
+                                                                <span class="logo">Free Stash</span>
+                                                                </a>
+                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>Springboot：拦截器和过滤器</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>在项目的开发中，在某些情况下，我们需要对客户端发出的请求进行拦截，常用的API拦截方式有Fliter，Interceptor，ControllerAdvice以及Aspect。</p> <p>请求从Filter--&gt;&gt;Controller的过程中，只要在指定的环节出现异常，可以通过对应的机制进行处理。反之在任何一个环节如果异常未处理则不会进入下一个环节，会直接往外抛，例如在ControllerAdvice验证发生异常则会抛给Filter，如果Filter未处理，则最终会由Tomcat容器抛出。</p> <h3>过滤器：Filter</h3> <p>可以获得Http原始的请求和响应信息，但是拿不到响应方法的信息。<br /> 注册Filter，在springboot当中提供了FilterRegistrationBean类来注册Filter</p> <h3>示例</h3> <pre><code class="language-java">/**  * 检查用户是否已经完成登录  */ @WebFilter(filterName = "loginCheckFilter",urlPatterns = "/*") @Slf4j public class LoginCheckFilter implements Filter{     //路径匹配器，支持通配符     public static final AntPathMatcher PATH_MATCHER = new AntPathMatcher();      @Override     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {         HttpServletRequest request = (HttpServletRequest) servletRequest;         HttpServletResponse response = (HttpServletResponse) servletResponse;          //1、获取本次请求的URI         String requestURI = request.getRequestURI();// /backend/index.html          log.info("拦截到请求：{}",requestURI);          //定义不需要处理的请求路径         String[] urls = new String[]{                 "/employee/login",                 "/employee/logout",                 "/backend/**",                 "/front/**"         };           //2、判断本次请求是否需要处理         boolean check = check(urls, requestURI);          //3、如果不需要处理，则直接放行         if(check){             log.info("本次请求{}不需要处理",requestURI);             filterChain.doFilter(request,response);             return;         }          //4、判断登录状态，如果已登录，则直接放行         if(request.getSession().getAttribute("employee") != null){             log.info("用户已登录，用户id为：{}",request.getSession().getAttribute("employee"));             filterChain.doFilter(request,response);             return;         }          log.info("用户未登录");         //5、如果未登录则返回未登录结果，通过输出流方式向客户端页面响应数据         response.getWriter().write(JSON.toJSONString(R.error("NOTLOGIN")));         return;      }      /**      * 路径匹配，检查本次请求是否需要放行      * @param urls      * @param requestURI      * @return      */     public boolean check(String[] urls,String requestURI){         for (String url : urls) {             boolean match = PATH_MATCHER.match(url, requestURI);             if(match){                 return true;             }         }         return false;     } }</code></pre> <p>最后在Springboot主启动类中添加@ServletComponentScan</p> <pre><code class="language-java">@Slf4j @SpringBootApplication @ServletComponentScan //使用过滤器需加此注解 public class ReggieApplication {     public static void main(String[] args) {         SpringApplication.run(ReggieApplication.class,args);         log.info("项目启动成功...");     } }</code></pre> <h2>拦截器：Interceptor</h2> <p>可以获得Http原始的请求和响应信息，也拿得到响应方法的信息，但是拿不到方法响应中的参数的值。<br /> 在web开发中，拦截器是经常用到的功能。它可以帮我们验证是否登陆、预先设置数据以及统计方法的执行效率等。在spring中拦截器有两种，第一种是HandlerInterceptor，第二种是MethodInterceptor。HandlerInterceptor是SpringMVC中的拦截器，它拦截的是Http请求的信息，优先于MethodInterceptor。而MethodInterceptor是springAOP的。前者拦截的是请求的地址，而后者是拦截controller中的方法</p> <h3>拦截器特点</h3> <p>1.请求到达经过拦截器，响应回来也经过拦截器<br /> 2.只能拦截控制器相关请求不能拦截JSP请求<br /> 3.拦截器可以中断用户请求轨迹</p> <h3>拦截器作用</h3> <p>将多个控制器中共有代码放入拦截器可以减少控制器代码冗余</p> <h3>springmvc中开发拦截器步骤</h3> <p>1.实现HandlerInterceptor接口(或继承其实现类)或者实现实现WebRequestInterceptor(或继承其实现类)。<br /> 2.XML文件中配置拦截器</p> <h3>创建一个<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://so.csdn.net/so/search?q=%E6%8B%A6%E6%88%AA%E5%99%A8&amp;spm=1001.2101.3001.7020"  title="拦截器" rel="nofollow">拦截器</a>实现HandlerInterceptor接口</h3> <pre><code class="language-java">package wmq.fly.mybatis.interceptor;  import javax.servlet.http.HttpServletRequest; import javax.servlet.http.HttpServletResponse;  import org.springframework.stereotype.Component; import org.springframework.web.servlet.HandlerInterceptor; import org.springframework.web.servlet.ModelAndView;  @Component public class LoginInterceptor implements HandlerInterceptor {     /**      * 预处理回调方法，实现处理器的预处理      * 返回值：true表示继续流程；false表示流程中断，不会继续调用其他的拦截器或处理器    */     @Override     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)             throws Exception {         System.out.println("开始拦截.........");         //业务代码         return false;     }       /**      * 后处理回调方法，实现处理器（controller）的后处理，但在渲染视图之前      * 此时我们可以通过modelAndView对模型数据进行处理或对视图进行处理      */     @Override     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,             ModelAndView modelAndView) throws Exception {         // TODO Auto-generated method stub      }     /**      * 整个请求处理完毕回调方法，即在视图渲染完毕时回调，      * 如性能监控中我们可以在此记录结束时间并输出消耗时间，      * 还可以进行一些资源清理，类似于try-catch-finally中的finally，      * 但仅调用处理器执行链中      */     @Override     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)             throws Exception {         // TODO Auto-generated method stub      }  }</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-69524.htm">vue项目如何刷新当前页面</a></p>
+                                        <p>下一个：<a href="/news/article-70169.htm">小动物医院情景剧（动物医院故事）</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-36985.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
+                        <li class="py-2"><a href="/news/article-35688.htm" title="宠物回收平台同城可靠吗（宠物回收平台同城可靠吗）">宠物回收平台同城可靠吗（宠物回收平台同城可靠吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-8-free-node-subscribe-links.htm" title="1月8日→22.3M/S|2025年最新免费节点Free Stash订阅链接地址">1月8日→22.3M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-15-node-share.htm" title="1月15日→20.2M/S|2025年最新免费节点Free Stash订阅链接地址">1月15日→20.2M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-16-free-node-subscribe.htm" title="2月16日→19.9M/S|2025年最新免费节点Free Stash订阅链接地址">2月16日→19.9M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-57416.htm" title="Java的接口详解">Java的接口详解</a></li>
+                        <li class="py-2"><a href="/news/article-65723.htm" title="怎么在同城领养猫（怎么在同城领养猫呢）">怎么在同城领养猫（怎么在同城领养猫呢）</a></li>
+                        <li class="py-2"><a href="/news/article-40927.htm" title="动物疫苗公司广告牌图片大全 动物疫苗公司广告牌图片大全集">动物疫苗公司广告牌图片大全 动物疫苗公司广告牌图片大全集</a></li>
+                        <li class="py-2"><a href="/news/article-65082.htm" title="南京领养宠物的地方在哪里呀电话（南京领养宠物的地方在哪里呀电话多少）">南京领养宠物的地方在哪里呀电话（南京领养宠物的地方在哪里呀电话多少）</a></li>
+                        <li class="py-2"><a href="/news/article-51941.htm" title="猫咪3针疫苗一共多少元钱啊图片视频（猫咪三针疫苗管多久）">猫咪3针疫苗一共多少元钱啊图片视频（猫咪三针疫苗管多久）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

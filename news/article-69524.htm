@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-69524.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>vue项目如何刷新当前页面</title>
+        <meta name="description" content="想必大家在刨坑vue的时候也遇到过下面情形：比如在删除或者增加一条记录的时候希望当前页面可以重新刷新或者如下面这种：  如果希望点击确定的时候，Dialog 对话框关闭的时候，当前http://loc" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-69524.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="vue项目如何刷新当前页面" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/91390f13c74c1b3d0075358e3e6b1163.webp" />
+        <meta property="og:release_date" content="2025-03-08T05:05:38" />
+    <meta property="og:updated_time" content="2025-03-08T05:05:38" />
+        <meta property="og:description" content="想必大家在刨坑vue的时候也遇到过下面情形：比如在删除或者增加一条记录的时候希望当前页面可以重新刷新或者如下面这种：  如果希望点击确定的时候，Dialog 对话框关闭的时候，当前http://loc" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue项目如何刷新当前页面">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/">
+                                                                <span class="logo">Free Stash</span>
+                                                                </a>
+                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>vue项目如何刷新当前页面</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>想必大家在刨坑vue的时候也遇到过下面情形：比如在删除或者增加一条记录的时候希望当前页面可以重新刷新或者如下面这种：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221207/312e3981df13f27c132b0a6f04de0580.jpg" alt="vue项目如何刷新当前页面"></p> <p>如果希望点击确定的时候，<span style="font-family:'Microsoft YaHei';font-size:14px;color:rgb(31,47,61);">Dialog 对话框关闭的时候，当前http://localhost:9530/#/supplier/supplierAll页面可以重新刷新下</span></p> <p><span style="font-family:'Microsoft YaHei';font-size:14px;color:rgb(31,47,61);">那么表格的数据可以重新加载，<span style="color:rgb(31,47,61);font-family:'Microsoft YaHei';font-size:14px;">Dialog 对话框设置的数据可以在确定后刷新出现在页面上</span></span></p> <p>这时候我们最直接的思维就是想到下面这种：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221207/5d92c40058c415c62e12aa8b3c73fa21.jpg" alt="vue项目如何刷新当前页面"></p> <p>但是，试过的会发现<strong><span style="color:rgb(0,0,0);font-family:Verdana, Arial, Helvetica, sans-serif;font-size:13px;text-align:left;background-color:rgb(254,254,242);">用vue-router重新路由到当前页面，页面是不进行刷新的</span>，</strong>根本没有任何作用~所以这个方法out！</p> <p>下面我这边整理几种可圈可点的三种方式，大家可以自行的选择：</p> <p>1、最直接整个页面重新刷新：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221207/8ea952504d72789b185271cf5ca07674.jpg" alt="vue项目如何刷新当前页面"></p> <div style="color:rgb(212,212,212);background-color:rgb(30,30,30);font-family:Consolas, 'Courier New', monospace;font-size:14px;line-height:19px;white-space:pre;">  <span style="color:#9cdcfe;">location</span>.<br />  <span style="color:#dcdcaa;">reload</span>() </div> <div style="color:rgb(212,212,212);background-color:rgb(30,30,30);font-family:Consolas, 'Courier New', monospace;font-size:14px;line-height:19px;white-space:pre;">  <span style="color:#569cd6;">this</span>.<br />  <span style="color:#9cdcfe;">$router</span>.<br />  <span style="color:#dcdcaa;">go</span>(<br />  <span style="color:#b5cea8;">0</span>) </div> <p>这两种都可以刷新当前页面的，缺点就是相当于按ctrl+F5 强制刷新那种，整个页面重新加载，会出现一个瞬间的空白页面，体验不好</p> <p>2、新建一个空白页面supplierAllBack.vue，点击确定的时候先跳转到这个空白页，然后再立马跳转回来</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221207/f64deb62df5f5c578886f43daab701e5.jpg" alt="vue项目如何刷新当前页面"></p> <p>空白页supplierAllBack.vue里面的内容：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221207/8fa0ccebac02f6eb8160d8993995ce52.jpg" alt="vue项目如何刷新当前页面"></p> <p>这个方式，相比第一种不会出现一瞬间的空白页，只是地址栏有个快速的切换的过程，可采用</p> <p>3、<span style="color:rgb(0,0,0);text-align:left;background-color:rgb(254,254,242);"><span style="font-family:'Microsoft YaHei';font-size:14px;">provide / inject&nbsp;组合 方式是我试过最实用的，下面用项目截图给大家说明下：</span></span><span style="font-family:'Microsoft YaHei';font-size:14px;background-color:rgb(254,254,242);color:rgb(0,0,0);text-align:left;">首先，要修改下你的app.vue</span></p> <p><span style="font-family:'Microsoft YaHei';font-size:14px;background-color:rgb(254,254,242);color:rgb(0,0,0);text-align:left;"><img decoding="async" src="http://img.555519.xyz/uploads/20221207/bc8d268dd4f8aa382f417bcf22102aee.jpg" alt="vue项目如何刷新当前页面"><br /></span></p> <p><span style="color:rgb(0,0,0);text-align:left;background-color:rgb(254,254,242);"><span style="font-family:'Microsoft YaHei';font-size:14px;"><span style="color:rgb(0,0,0);font-family:Verdana, Arial, Helvetica, sans-serif;font-size:13px;text-align:left;background-color:rgb(254,254,242);">通过声明reload方法，控制router-view的显示或隐藏，从而控制页面的再次加载，这边定义了</span></span></span></p> <div style="color:rgb(212,212,212);background-color:rgb(30,30,30);font-family:Consolas, 'Courier New', monospace;font-size:14px;line-height:19px;white-space:pre;">  <span style="color:#9cdcfe;">isRouterAlive //true or false 来控制</span> </div> <p><span style="color:rgb(0,0,0);text-align:left;background-color:rgb(254,254,242);"><span style="font-family:'Microsoft YaHei';font-size:14px;">然后在需要当前页面刷新的页面中<span style="color:rgb(0,0,0);font-family:Verdana, Arial, Helvetica, sans-serif;font-size:13px;text-align:left;background-color:rgb(254,254,242);">注入App.vue组件提供（provide）的 reload 依赖，然后直接用this.reload来调用就行</span></span></span></p> <p><span style="color:rgb(0,0,0);text-align:left;background-color:rgb(254,254,242);"><span style="font-family:'Microsoft YaHei';font-size:14px;"><span style="color:rgb(0,0,0);font-family:Verdana, Arial, Helvetica, sans-serif;font-size:13px;text-align:left;background-color:rgb(254,254,242);"><img decoding="async" src="http://img.555519.xyz/uploads/20221207/378322545f4900a8854e870ced7e1a69.jpg" alt="vue项目如何刷新当前页面"><br /></span></span></span></p> <p><span style="color:rgb(0,0,0);text-align:left;background-color:rgb(254,254,242);"><span style="font-family:'Microsoft YaHei';font-size:14px;"><span style="color:rgb(0,0,0);font-family:Verdana, Arial, Helvetica, sans-serif;text-align:left;background-color:rgb(254,254,242);">至此，三种方式都介绍完了，如果对你有帮助记得给个赞哈~</span></span></span></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-68884.htm">猫咪喜欢你的10种表现（猫喜欢靠近有灵气的人）</a></p>
+                                        <p>下一个：<a href="/news/article-69525.htm">Springboot：拦截器和过滤器</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-51942.htm" title="新手开店卖什么产品好（新手开店卖什么产品好一点）">新手开店卖什么产品好（新手开店卖什么产品好一点）</a></li>
+                        <li class="py-2"><a href="/news/article-62052.htm" title="宠爱国际动物医疗机构 宠爱国际动物医疗机构有限公司">宠爱国际动物医疗机构 宠爱国际动物医疗机构有限公司</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-11-free-subscribe-node.htm" title="1月11日→21.7M/S|2025年最新免费节点Free Stash订阅链接地址">1月11日→21.7M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-40437.htm" title="上海免费领养猫咪网站（上海免费领养猫咪网站有哪些）">上海免费领养猫咪网站（上海免费领养猫咪网站有哪些）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-free-node-subscribe.htm" title="1月10日→18M/S|2025年最新免费节点Free Stash订阅链接地址">1月10日→18M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-67588.htm" title="Qt的.pro文件格式解析">Qt的.pro文件格式解析</a></li>
+                        <li class="py-2"><a href="/news/article-56296.htm" title="1970年农历四月二十七是几号呢（1970年农历4月27日）">1970年农历四月二十七是几号呢（1970年农历4月27日）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-15-free-clash-stash.htm" title="2月15日→21.6M/S|2025年最新免费节点Free Stash订阅链接地址">2月15日→21.6M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-69525.htm" title="Springboot：拦截器和过滤器">Springboot：拦截器和过滤器</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-27-free-stash-node.htm" title="1月27日→18.9M/S|2025年最新免费节点Free Stash订阅链接地址">1月27日→18.9M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
