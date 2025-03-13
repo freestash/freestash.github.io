@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-72800.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spring Cloud中使用Feign实现负载均衡详解</title>
+        <meta name="description" content="本文属于【夯实Spring Cloud】系列文章，该系列旨在用通俗易懂的语言，带大家了解和学习Spring Cloud技术，希望能给读者带来一些干货。系列目录如下：  【夯实Spring Cloud】" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-72800.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="Spring Cloud中使用Feign实现负载均衡详解" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/b85825561ac8fe0c463cd874283811bc.webp" />
+        <meta property="og:release_date" content="2025-03-13T09:21:12" />
+    <meta property="og:updated_time" content="2025-03-13T09:21:12" />
+        <meta property="og:description" content="本文属于【夯实Spring Cloud】系列文章，该系列旨在用通俗易懂的语言，带大家了解和学习Spring Cloud技术，希望能给读者带来一些干货。系列目录如下：  【夯实Spring Cloud】" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spring Cloud中使用Feign实现负载均衡详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/">
+                                                                <span class="logo">Free Stash</span>
+                                                                </a>
+                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>Spring Cloud中使用Feign实现负载均衡详解</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>本文属于【夯实Spring Cloud】系列文章，该系列旨在用通俗易懂的语言，带大家了解和学习Spring Cloud技术，希望能给读者带来一些干货。系列目录如下：</p> <blockquote> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/eson_15/article/details/83651732"  rel="nofollow">【夯实Spring Cloud】Dubbo沉睡5年，Spring Cloud开始崛起！</a><br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/eson_15/article/details/83585344"  rel="nofollow">【夯实Spring Cloud】Spring Cloud中基于maven的分布式项目框架的搭建</a><br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/eson_15/article/details/85002026"  rel="nofollow">【夯实Spring Cloud】Spring Cloud中的Eureka服务注册与发现详解</a><br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/eson_15/article/details/85226439"  rel="nofollow">【夯实Spring Cloud】Spring Cloud中如何完善Eureka中的服务信息</a><br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/eson_15/article/details/85252697"  rel="nofollow">【夯实Spring Cloud】Spring Cloud中使用Eureka集群搭建高可用服务注册中心</a><br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/eson_15/article/details/85561179"  rel="nofollow">【夯实Spring Cloud】Spring Cloud中的Eureka和Zookeeper的区别在哪？</a><br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/eson_15/article/details/86182477"  rel="nofollow">【夯实Spring Cloud】Spring Cloud中使用Ribbon实现负载均衡详解（上）</a><br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/eson_15/article/details/86225272"  rel="nofollow">【夯实Spring Cloud】Spring Cloud中使用Ribbon实现负载均衡详解（下）</a><br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/eson_15/article/details/86578207"  rel="nofollow">【夯实Spring Cloud】Spring Cloud中自定义Ribbon负载均衡策略</a><br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/eson_15/article/details/86590402"  rel="nofollow">【夯实Spring Cloud】Spring Cloud中使用Feign实现负载均衡详</a><br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/eson_15/article/details/86628622"  rel="nofollow">【夯实Srping Cloud】Spring Cloud中使用Hystrix实现断路器原理详解（上）</a><br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/eson_15/article/details/86673843"  rel="nofollow">【夯实Srping Cloud】Spring Cloud中使用Hystrix实现断路器原理详解（下）</a><br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/eson_15/article/details/86689681"  rel="nofollow">【夯实Spring Cloud】Spring Cloud中使用Zuul实现路由网关详解</a><br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/eson_15/article/details/86715157"  rel="nofollow">【夯实Spring Cloud】Spring Cloud分布式配置中心详解</a><br /> 【夯实Spring Cloud】未完待续</p> </blockquote> <hr/> <p>前面几篇文章，对 Ribbon 负载均衡做了详细的分析，这一节来介绍一下使用 Feign 负载均衡。在介绍之前，我们先来对 Feign 做一下简单的介绍，先来理解一下什么是 Feign。</p> <h2><a id="1_Feign__21" rel="nofollow"></a>1. Feign 是什么？</h2> <p>我们看一下官方的解释：Feign 是一个声明式 WebService 客户端。使用 Feign 能让编写的 WebService 客户端更加简洁，它的使用方法式定义一个接口，然后在上面添加注解。Spring Cloud 对 Feign 进行了封装，使其支持了 Spring MVC 标准注解和 HttpMessageConverters。Feign 可以与 Eureka 和 Ribbon 组合使用以支持负载均衡。</p> <h2><a id="2__Feign_24" rel="nofollow"></a>2. 为什么要使用 Feign？</h2> <p>Feign 旨在使编写 Java Http 客户端变得更容易。</p> <p>前面在使用 Ribbon + RestTemplate 时，利用 RestTemplate 对 http 请求的封装处理，形成了一套模板化的调用方法。<strong>但是在实际开发中，由于对服务依赖的调用可能不止一处，往往一个接口会被多处调用，所以通常都会针对每个微服务自行封装一些客户端类来包装这些依赖服务的调用</strong>。</p> <p>所以，Feign 在此基础上做了进一步的封装，由它来帮助我们定义和实现依赖服务接口的定义。<strong>使用 Feign 只需要创建一个接口并使用一个注解来配置它即可</strong>。这就类似于我们在 dao 层的接口上标注 @Mapper 注解一样。这样的话，即完成了对服务提供方的接口绑定，简化了使用 Spring Cloud Ribbon 时的开发量。</p> <p>我们用实例来说明。</p> <h2><a id="3_Feign__33" rel="nofollow"></a>3. Feign 的使用</h2> <h3><a id="31__34" rel="nofollow"></a>3.1 依赖导入</h3> <pre><code class="prism language-xml"><span class="token comment">&lt;!--eureka Client--&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-cloud-starter-netflix-eureka-client<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span class="token comment">&lt;!-- feign的支持 --&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-cloud-starter-openfeign<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span></code></pre> <h3><a id="32__48" rel="nofollow"></a>3.2 启动类注解配置</h3> <pre><code class="prism language-java"><span class="token annotation punctuation">@SpringBootApplication</span><span class="token annotation punctuation">@EnableEurekaClient</span><span class="token annotation punctuation">@EnableFeignClients</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">OrderConsumerFeign</span><span class="token punctuation">{<!-- --></span><span class="token keyword">public</span><span class="token keyword">static</span><span class="token keyword">void</span><span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>OrderConsumerFeign<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>启动类需要添加注解<code>@EnableFeignClients</code>，表示启用 Feign 客户端。</p> <h3><a id="33_Feign__62" rel="nofollow"></a>3.3 Feign 客户端</h3> <p>我们先来回忆一下，提供订单的服务名称为：MICROSERVICE-ORDER，然后订单服务中提供的两个获取订单信息的接口url如下：</p> <pre><code class="prism language-java"><span class="token comment">/**  * feign客户端  * @author shengwu ni  */</span><span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"MICROSERVICE-ORDER"</span><span class="token punctuation">)</span><span class="token keyword">public</span><span class="token keyword">interface</span><span class="token class-name">OrderClientService</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/provider/order/get/{id}"</span><span class="token punctuation">)</span>     TOrder<span class="token function">getOrder</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"id"</span><span class="token punctuation">)</span> Long id<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/provider/order/get/list"</span><span class="token punctuation">)</span>     List<span class="token generics function"><span class="token punctuation">&lt;</span>TOrder<span class="token punctuation">&gt;</span></span><span class="token function">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <p>可以看到，Feign 客户端要添加<code>@FeignClient</code> 注解，value 属性表示作用到哪个微服务上，这里表示负载均衡作用到请求订单服务上。要记住，Feign 也是客户端的负载均衡。</p> <p>方法内定义了两个接口，接口上即和普通的 SpringMVC 没什么区别，url 即订单提供服务的url。这就是 Feign 客户端，通过注解 + 接口的方式来和订单服务的接口绑定。</p> <h3><a id="34_Feign__83" rel="nofollow"></a>3.4 Feign 客户端的使用</h3> <p>定义好了 Feign 客户端接口后，我们就可以在代码里通过<code>@Resource</code> 正常引入进来，然后通过普通的方法调用即可实现对订单服务的调用，如下：</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@RestController</span><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/consumer/order"</span><span class="token punctuation">)</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">OrderConsumerController</span><span class="token punctuation">{<!-- --></span><span class="token comment">/**      * 上面定义的 Feign Client      */</span><span class="token annotation punctuation">@Resource</span><span class="token keyword">private</span> OrderClientService orderClientService<span class="token punctuation">;</span><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/get/{id}"</span><span class="token punctuation">)</span><span class="token keyword">public</span> TOrder<span class="token function">getOrder</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span> Long id<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span> orderClientService<span class="token punctuation">.</span><span class="token function">getOrder</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/get/list"</span><span class="token punctuation">)</span><span class="token keyword">public</span> List<span class="token generics function"><span class="token punctuation">&lt;</span>TOrder<span class="token punctuation">&gt;</span></span><span class="token function">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span> orderClientService<span class="token punctuation">.</span><span class="token function">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>启动 eureka 集群、三个订单提供服务和这个带有 Feign 的服务消费方（端口 9001）。通过在浏览器中访问：http://localhost:9001//consumer/order/get/1 可以看到，轮流访问三个订单服务。说明 Feign 默认是集成了 Ribbon 的轮询方案。</p> <h2><a id="4_Feign__Ribbon__110" rel="nofollow"></a>4. Feign 如何结合 Ribbon 切换均衡算法</h2> <p>以上就是 Feign 的使用，很简单，也符合我们平时的接口调用习惯。但是这是默认的轮询负载均衡算法。在上一节我们知道，Ribbon 中支持很多自带的均衡算法，我们只要在代码中根据具体情况，选择合适的均衡算法即可。甚至我们可以选择自己自定义的均衡算法。</p> <p>那么使用 Feign 的时候，如何去切换到 Ribbon 中其他均衡策略呢？甚至切换到自定义的策略呢？</p> <p>也很简单，我们可以在 application.yml 配置文件中来指定，如下：</p> <pre><code class="prism language-yml"><span class="token comment"># feign和ribbon结合，指定策略。feign默认的是轮询的策略，这里的配置可以自定义</span><span class="token key atrule">MICROSERVICE-ORDER</span><span class="token punctuation">:</span><span class="token key atrule">ribbon</span><span class="token punctuation">:</span><span class="token key atrule">NFLoadBalancerRuleClassName</span><span class="token punctuation">:</span> com.netflix.loadbalancer.RandomRule</code></pre> <p>MICROSERVICE-ORDER 表示作用到哪个微服务，<code>com.netflix.loadbalancer.RandomRule</code> 即前面介绍 Ribbon 时里面的随机策略，当然，我们也可以指定为其他策略，包括我们自己定义的，只要把相应的包路径写到这即可，很方便。</p> <p>重新启动一下服务消费方的程序，访问上面那个测试 url，可以看到三个订单服务是随机调用的，说明配置生效。</p> <p></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-72143.htm">天津狗狗领养吧 天津狗狗领养吧最新消息</a></p>
+                                        <p>下一个：<a href="/news/article-72801.htm">北京美联众合动物医院电话（北京美联众合动物医院招聘）</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-8-free-subscribe-node.htm" title="3月8日→20.4M/S|2025年最新免费节点Free Stash订阅链接地址">3月8日→20.4M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-28-free-subscribe-node.htm" title="2月28日→18.7M/S|2025年最新免费节点Free Stash订阅链接地址">2月28日→18.7M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-66334.htm" title="长沙宠物领养救助站电话 长沙宠物领养救助站电话号码">长沙宠物领养救助站电话 长沙宠物领养救助站电话号码</a></li>
+                        <li class="py-2"><a href="/news/article-58671.htm" title="VUE项目解决Vant组件库样式修改不生效问题">VUE项目解决Vant组件库样式修改不生效问题</a></li>
+                        <li class="py-2"><a href="/news/article-55728.htm" title="动物疫苗市场的现状和趋势研究（动物疫苗市场规模）">动物疫苗市场的现状和趋势研究（动物疫苗市场规模）</a></li>
+                        <li class="py-2"><a href="/news/article-39934.htm" title="《24小时宠物医院》（青岛24小时宠物医院）">《24小时宠物医院》（青岛24小时宠物医院）</a></li>
+                        <li class="py-2"><a href="/news/article-68883.htm" title="宠物狗送养是什么意思（送养的狗有权力要回来吗）">宠物狗送养是什么意思（送养的狗有权力要回来吗）</a></li>
+                        <li class="py-2"><a href="/news/article-65722.htm" title="动物医学实训总结500字（动物医学实训报告怎么写）">动物医学实训总结500字（动物医学实训报告怎么写）</a></li>
+                        <li class="py-2"><a href="/news/article-51942.htm" title="新手开店卖什么产品好（新手开店卖什么产品好一点）">新手开店卖什么产品好（新手开店卖什么产品好一点）</a></li>
+                        <li class="py-2"><a href="/news/article-39464.htm" title="微信小程序navigateTo函数报错errMsg: “navigateTo:fail page “&#8230;“ is not found“">微信小程序navigateTo函数报错errMsg: “navigateTo:fail page “&#8230;“ is not found“</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">38</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
