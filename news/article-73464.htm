@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-73464.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Java指令重排序在多线程环境下的应对策略</title>
+        <meta name="description" content="一、序言 指令重排在单线程环境下有利于提高程序的执行效率，不会对程序产生负面影响；在多线程环境下，指令重排会给程序带来意想不到的错误。 本文对多线程指令重排问题进行复原，并针对指令重排给出相应的解决方" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-73464.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="Java指令重排序在多线程环境下的应对策略" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/6c23f29fcae469768a2edfc81a68af6d.webp" />
+        <meta property="og:release_date" content="2025-03-14T07:05:13" />
+    <meta property="og:updated_time" content="2025-03-14T07:05:13" />
+        <meta property="og:description" content="一、序言 指令重排在单线程环境下有利于提高程序的执行效率，不会对程序产生负面影响；在多线程环境下，指令重排会给程序带来意想不到的错误。 本文对多线程指令重排问题进行复原，并针对指令重排给出相应的解决方" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Java指令重排序在多线程环境下的应对策略">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/">
+                                                                <span class="logo">Free Stash</span>
+                                                                </a>
+                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>Java指令重排序在多线程环境下的应对策略</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h3 id="一序言">一、序言</h3> <p>指令重排在单线程环境下有利于提高程序的执行效率，不会对程序产生负面影响；在多线程环境下，指令重排会给程序带来意想不到的错误。</p> <p>本文对多线程指令重排问题进行复原，并针对指令重排给出相应的解决方案。</p> <h3 id="二问题复原">二、问题复原</h3> <h4 id="一关联变量">（一）关联变量</h4> <p>下面给出一个能够百分之百复原指令重排的例子。</p> <pre><code class="language-java">public class D {     static Integer a;     static Boolean flag;          public static void writer() {         a = 1;         flag = true;     }          public static void reader() {         if (flag != null &amp;&amp; flag) {             System.out.println(a);             a = 0;             flag = false;         }     } }</code></pre> <h5 id="1结果预测">1、结果预测</h5> <p><code>reader</code>方法仅在<code>flag</code>变量为true时向控制台打印变量<code>a</code>的值。</p> <p><code>writer</code>方法先执行变量<code>a</code>的赋值操作，后执行变量<code>flag</code>的赋值操作。</p> <p>如果按照上述分析逻辑，那么控制台打印的结果一定全为1。</p> <h5 id="2指令重排">2、指令重排</h5> <p>假如代码未发生指令重排，那么当<code>flag</code>变量为true时，变量<code>a</code>一定为1。</p> <p>上述代码中关于变量<code>a</code>和变量<code>flag</code>在两个方法类均存在指令重排的情况。</p> <pre><code class="language-java">public static void writer() {     a = 1;     flag = true; }</code></pre> <p>通过观察日志输出，发现有大量的0输出。</p> <p>当<code>writer</code>方法内部发生指令重排时，<code>flag</code>变量先完成赋值，此时假如当前线程发生中断，其它线程在调用<code>reader</code>方法，检测到<code>flag</code>变量为true，那么便打印变量<code>a</code>的值。此时控制台存在超出期望值的结果。</p> <h4 id="二new创建对象">（二）new创建对象</h4> <p>使用关键字new创建对象时，因其非原子操作，故存在指令重排，指令重排在多线程环境下会带来负面影响。</p> <pre><code class="language-java">public class Singleton {     private static UserModel instance;          public static UserModel getInstance() {         if (instance == null) {             synchronized (Singleton.class) {                 if (instance == null) {                     instance = new UserModel(2, "B");                 }             }         }         return instance;     } }  @Data @AllArgsConstructor class UserModel {     private Integer userId;     private String userName; }</code></pre> <h5 id="1解析创建过程">1、解析创建过程</h5> <ul> <li>使用关键字new创建一个对象，大致分为一下过程：</li> <li>在栈空间创建引用地址</li> <li>以类文件为模版在堆空间对象分配内存</li> <li>成员变量初始化</li> <li>使用构造函数初始化</li> <li>将引用值赋值给左侧存储变量</li> </ul> <h5 id="2重排序过程分析">2、重排序过程分析</h5> <p>针对上述示例，假设第一个线程进入synchronized代码块，并开始创建对象，由于重排序存在，正常的创建对象过程被打乱，可能会出现在栈空间创建引用地址后，将引用值赋值给左侧存储变量，随后因CPU调度时间片耗尽而产生中断的情况。</p> <p>后续线程在检测到<code>instance</code>变量不为空，则直接使用。因为单例对象并为实例化完成，直接使用会带来意想不到的结果。</p> <h3 id="三应对指令重排">三、应对指令重排</h3> <h4 id="一atomicreference原子类">（一）AtomicReference原子类</h4> <p>使用原子类将一组相关联的变量封装成一个对象，利用原子操作的特性，有效回避指令重排问题。</p> <pre><code class="language-java">@Data @NoArgsConstructor @AllArgsConstructor public class ValueModel {     private Integer value;     private Boolean flag; }</code></pre> <p>原子类应该是解决多线程环境下指令重排的首选方案，不仅通俗易懂，而且线程间使用的非重量级互斥锁，效率相对较高。</p> <pre><code class="language-java">public class E {     private static final AtomicReference&lt;ValueModel&gt; ar = new AtomicReference&lt;&gt;(new ValueModel());          public static void writer() {         ar.set(new ValueModel(1, true));     }          public static void reader() {         ValueModel valueModel = ar.get();         if (valueModel.getFlag() != null &amp;&amp; valueModel.getFlag()) {             System.out.println(valueModel.getValue());             ar.set(new ValueModel(0, false));         }     } }</code></pre> <blockquote> <p>当一组相关联的变量发生指令重排时，使用原子操作类是比较优的解法。</p> </blockquote> <h4 id="二volatile关键字">（二）volatile关键字</h4> <pre><code class="language-java">public class Singleton {     private volatile static UserModel instance;          public static UserModel getInstance() {         if (instance == null) {             synchronized (Singleton.class) {                 if (instance == null) {                     instance = new UserModel(2, "B");                 }             }         }         return instance;     } }  @Data @AllArgsConstructor class UserModel {     private Integer userId;     private String userName; }</code></pre> <h3 id="四指令重排的理解">四、指令重排的理解</h3> <h5 id="1指令重排广泛存在">1、指令重排广泛存在</h5> <p>指令重排不仅限于Java程序，实际上各种编译器均有指令重排的操作，从软件到CPU硬件都有。指令重排是对单线程执行的程序的一种性能优化，需要明确的是，指令重排在单线程环境下，不会改变顺序程序执行的预期结果。</p> <h5 id="2多线程环境指令重排">2、多线程环境指令重排</h5> <p>上面讨论了两种典型多线程环境下指令重排，分析其带来负面影响，并分别提供了应对方式。</p> <ul> <li>对于关联变量，先封装成一个对象，然后使用原子类来操作</li> <li>对于new对象，使用volatile关键字修饰目标对象即可</li> </ul> <h5 id="3synchronized锁与重排序无关">3、synchronized锁与重排序无关</h5> <p>synchronized锁通过互斥锁，有序的保证线程访问特定的代码块。代码块内部的代码正常按照编译器执行的策略重排序。</p> <p>尽管synchronized锁能够回避多线程环境下重排序带来的不利影响，但是互斥锁带来的线程开销相对较大，不推荐使用。</p> <blockquote> <p>synchronized 块里的非原子操作依旧可能发生指令重排</p> </blockquote> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-73463.htm">详解数据库连接池概念、原理、运行机制等</a></p>
+                                        <p>下一个：<a href="/news/article-74127.htm">JavaScript中querySelector使用详解</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-50899.htm" title="小孩儿被猫抓伤需要打针吗（小孩被猫抓伤了要打疫苗吗）">小孩儿被猫抓伤需要打针吗（小孩被猫抓伤了要打疫苗吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-20-node-share-links.htm" title="1月20日→22.9M/S|2025年最新免费节点Free Stash订阅链接地址">1月20日→22.9M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-50385.htm" title="成人本科考兽医（成人本科兽医可以考证么）">成人本科考兽医（成人本科兽医可以考证么）</a></li>
+                        <li class="py-2"><a href="/news/article-64467.htm" title="参观动物园心得300字（参观动物园心得体会80字）">参观动物园心得300字（参观动物园心得体会80字）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-11-free-clash-stash.htm" title="2月11日→20.1M/S|2025年最新免费节点Free Stash订阅链接地址">2月11日→20.1M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-70170.htm" title="打动物疫苗要花多少（动物防疫打针收费吗）">打动物疫苗要花多少（动物防疫打针收费吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-4-free-subscribe-node.htm" title="3月4日→21.6M/S|2025年最新免费节点Free Stash订阅链接地址">3月4日→21.6M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-72143.htm" title="天津狗狗领养吧 天津狗狗领养吧最新消息">天津狗狗领养吧 天津狗狗领养吧最新消息</a></li>
+                        <li class="py-2"><a href="/news/article-61449.htm" title="SpringMVC接受参数">SpringMVC接受参数</a></li>
+                        <li class="py-2"><a href="/news/article-68247.htm" title="动物检疫条件合格证明（动物检疫条件合格证明啥样的?）">动物检疫条件合格证明（动物检疫条件合格证明啥样的?）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">47</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-74127.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JavaScript中querySelector使用详解</title>
+        <meta name="description" content="本文记录，JavaScript 中 querySelector 的使用方法。小白贡献，语失莫怪。  // 两种 query 的 method (方法) document.querySelector(s" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-74127.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="JavaScript中querySelector使用详解" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/d479fd4ebf7bdac20077a4d31b2c73c9.webp" />
+        <meta property="og:release_date" content="2025-03-15T07:19:20" />
+    <meta property="og:updated_time" content="2025-03-15T07:19:20" />
+        <meta property="og:description" content="本文记录，JavaScript 中 querySelector 的使用方法。小白贡献，语失莫怪。  // 两种 query 的 method (方法) document.querySelector(s" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="JavaScript中querySelector使用详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/">
+                                                                <span class="logo">Free Stash</span>
+                                                                </a>
+                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>JavaScript中querySelector使用详解</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<blockquote> <p>本文记录，JavaScript 中 querySelector 的使用方法。小白贡献，语失莫怪。</p> </blockquote> <pre><code class="language-js">// 两种 query 的 method (方法) document.querySelector(selectors); document.querySelectorAll(selectors);</code></pre> <p></p> <h2 id="为什么要学习-queryselector">为什么要学习 querySelector：</h2> <p>因为 front end 中，JavaScript 的基本逻辑就是：<span style="color: rgba(255, 192, 203, 1)"><strong>选取一个 element，然后 do somethong with it</strong></span>；所以，一切的开始，就是要先想办法，抓到那个 element；而 querySelector 就是众多选择器中，特别好用的一个；所以，非常有必要学习；熟练的使用它，就等于迈开了前端 JS 编程，的第一大步！</p> <p></p> <h2 id="那么-queryselector-是什么">那么 querySelector 是什么：</h2> <p><code>document.querySelector()</code> 用于选取 html 中的节点（node | element）；相较于传统的 DOM 选择器 (DOM selectors)，其特点是，可以使用 CSS 风格的 Selectors；并且几乎支持所有CSS选择器的 syntax 风格；</p> <p></p> <h2 id="常用方法语法对比">常用方法，语法对比：</h2> <p>常用的 get 某个节点的方法，无外乎三种，通过 class，tag，id；传统的 DOM 选取，与<code>querySelector()</code> 的<strong>syntax</strong> 对比如下：</p> <pre><code class="language-js">// select element by class name document.getElementsByClassName("class_x"); document.querySelectorAll(".class_x");  // select element by tag name document.getElementsByTagName("img"); document.querySelectorAll("img");  // select element by id name document.getElementById("id_x"); document.querySelector("#id_x");</code></pre> <p></p> <h2 id="使用-多个-选取条件或-递进式-的选取条件-descendant-selector">使用 "多个" 选取条件，或 "递进式" 的选取条件 (descendant selector)：</h2> <p>选取条件，可以是一个或者多个；多个的情况，并不限制个数，可以是2个，3个 ... N个；</p> <pre><code class="language-js">// "递进式" 的选取条件 (descendant selector) (可以夸级) (使用"空格"符号) document.getElementsByClassName("class_x").getElementsByTagName("img"); document.querySelectorAll(".class_x img");  // "父子递进式" 选取条件 (不可以夸级, 必须是严格的直系父子) document.querySelectorAll(".parent_class &gt; .child_class &gt; .grandChild_class")  // "父子递进 + 混合式" 选取条件 (使用 "&gt;" 符号) // 选取 parent_class 中的 child_class 中的 grandChild_class，中的 img tag document.querySelectorAll(".parent_class &gt; .child_class &gt; .grandChild_class tag_img")  // "递进式" 的选取条件，属性选取 (attribute) // 选取所有，id属性='large'的，并且class='bg'的，img标签 document.querySelectorAll("img[id='large'][class='bg']"); document.querySelector("img[id='large'][class='bg']");  // "多个" 选取条件, 用逗号隔开 (相当于 A 或 B) document.querySelectorAll(".class_x， .class_y"); document.querySelectorAll(".class_x， img"); document.querySelectorAll(".class_x， #id_x");  // "单个" 选取条件，返回第一个 match document.getElementsByClassName("class_x")[0]; document.querySelector(".class_x");  // "多个" 选取条件，返回第一个 match document.getElementsByClassName("class_x").getElementsByTagName("img")[0]; document.querySelector(".class_x， img");  // 选取类 class_x 中，类名为 big_pic 的 li 标签，下面的，全部兄弟们！ document.querySelectorAll(".class_x li.big_pic ~ li ");  // 选取类 class_x 中，类名为 big_pic 的 li 标签，紧挨着的，下一个兄弟！ document.querySelectorAll(".class_x li.big_pic + li ");</code></pre> <p></p> <h2 id="对比-queryselector-和-jquery">对比 querySelector 和 jQuery：</h2> <ol> <li>首先 querySelector 比 jQuery 要快！因为 querySelector 是内置方法！</li> <li>使用 querySelector，无需要挂在 jQuery 的文件，减少 overhead！</li> <li>jQuery 有各种 filter (例如：":input")！ 而 querySelector，没有 jQuery 这种 filter！</li> <li>所以 querySelector 无法使用任何 (":input" 类的) filter！</li> <li>最终 querySelector 还是首选！</li> </ol> <p></p> <h2 id="其他-queryselector-可使用的-css-选择器">其他 querySelector 可使用的 CSS 选择器：</h2> <p>还有很多没介绍的，querySelector 可使用的 CSS 选择器；例如：伪选择器（Pseudo）；通用选择器（Universal selector）；一般兄弟组合器 "~" (General sibling combinator)；紧邻兄弟组合器 "+" (Adjacent sibling combinator)。详情可参见 reference 中的，第4个，和第5个，link，里面有详细的 CSS 选择器的介绍</p> <p></p> <h2 id="个人评价">个人评价：</h2> <p><code>document.querySelectorAll()</code> 的 "递进式" 选取，很好用；</p> <ol> <li>去掉了 "传统 DOM选择器" 中，nest selector 的麻烦</li> <li>代码更简洁了</li> <li>返回的是 nodeList</li> <li>可进一步使用 nodeList.forEach()</li> </ol> <p>而且，可以看出，当 css selectors 组合起来的时候，那种灵巧多变，是多么的强大啊！<br /> 任何一个 element 都逃不过，组合的选择中。除非这个 element 不在 html 中！</p> <p></p> <h2 id="reference">Reference：</h2> <ol> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector"  target="_blank" rel="nofollow">Document.querySelector() - Web APIs | MDN</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll"  target="_blank" rel="nofollow">Element.querySelectorAll() - Web APIs | MDN</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://developer.mozilla.org/en-US/docs/web/css/descendant_combinator"  target="_blank" rel="nofollow">Descendant combinator - CSS: Cascading Style Sheets | MDN</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors?msclkid=4da4c359c15f11ec8049fc5a2bb2c36e"  target="_blank" rel="nofollow">CSS selectors - CSS: Cascading Style Sheets | MDN</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Selectors"  target="_blank" rel="nofollow">CSS 选择器 - CSS（层叠样式表） | MDN</a></li> </ol> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-73464.htm">Java指令重排序在多线程环境下的应对策略</a></p>
+                                        <p>下一个：<a href="/news/article-74128.htm">一般哪里有领养猫狗的地方呀（一般哪里有领养猫狗的地方呀）</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-59131.htm" title="加盟做什么生意（加盟个什么生意）">加盟做什么生意（加盟个什么生意）</a></li>
+                        <li class="py-2"><a href="/news/article-39464.htm" title="微信小程序navigateTo函数报错errMsg: “navigateTo:fail page “&#8230;“ is not found“">微信小程序navigateTo函数报错errMsg: “navigateTo:fail page “&#8230;“ is not found“</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-free-node-subscribe.htm" title="1月10日→18M/S|2025年最新免费节点Free Stash订阅链接地址">1月10日→18M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-56296.htm" title="1970年农历四月二十七是几号呢（1970年农历4月27日）">1970年农历四月二十七是几号呢（1970年农历4月27日）</a></li>
+                        <li class="py-2"><a href="/news/article-70169.htm" title="小动物医院情景剧（动物医院故事）">小动物医院情景剧（动物医院故事）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-21-clash-stash.htm" title="2月21日→22.9M/S|2025年最新免费节点Free Stash订阅链接地址">2月21日→22.9M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-51942.htm" title="新手开店卖什么产品好（新手开店卖什么产品好一点）">新手开店卖什么产品好（新手开店卖什么产品好一点）</a></li>
+                        <li class="py-2"><a href="/news/article-65722.htm" title="动物医学实训总结500字（动物医学实训报告怎么写）">动物医学实训总结500字（动物医学实训报告怎么写）</a></li>
+                        <li class="py-2"><a href="/news/article-65723.htm" title="怎么在同城领养猫（怎么在同城领养猫呢）">怎么在同城领养猫（怎么在同城领养猫呢）</a></li>
+                        <li class="py-2"><a href="/news/article-51941.htm" title="猫咪3针疫苗一共多少元钱啊图片视频（猫咪三针疫苗管多久）">猫咪3针疫苗一共多少元钱啊图片视频（猫咪三针疫苗管多久）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">47</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
