@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-78890.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>js promise 详解</title>
+        <meta name="description" content="在promise产生之前，js 处理异步的方式是使用回调函数，一个回调函数执行完成，进行下一个回调函数。这样会导致层层嵌套，代码不清晰。容易进入回调地狱   promise的状态  promise 有" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-78890.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="js promise 详解" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/a576d75f53dfaf9ad0f4836bbef08b77.webp" />
+        <meta property="og:release_date" content="2025-03-22T08:47:05" />
+    <meta property="og:updated_time" content="2025-03-22T08:47:05" />
+        <meta property="og:description" content="在promise产生之前，js 处理异步的方式是使用回调函数，一个回调函数执行完成，进行下一个回调函数。这样会导致层层嵌套，代码不清晰。容易进入回调地狱   promise的状态  promise 有" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="js promise 详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/">
+                                                                <span class="logo">Free Stash</span>
+                                                                </a>
+                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>js promise 详解</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <blockquote> <p>在promise产生之前，js 处理异步的方式是使用回调函数，一个回调函数执行完成，进行下一个回调函数。这样会导致层层嵌套，代码不清晰。容易进入回调地狱</p> </blockquote> </h1> <h2>promise的状态</h2> <blockquote> <p>promise 有三种状态&nbsp; pending(进行中)，resolved(成功)，rejected(失败)</p> <p>promise的状态是不可逆的</p> <p>pending---&gt;resolved&nbsp;</p> <p>或者</p> <p>pending---&gt;rejected</p> </blockquote> <h2>promise 的两个回调函数&nbsp; resolved&nbsp; rejected</h2> <blockquote> <p>promise 的参数是一个函数，函数里还有两个参数&nbsp; resolved&nbsp; rejected</p> <p>resolved(res) 处理成功的&nbsp;函数&nbsp; 它传递的参数 会在then方法里输出</p> <p>rejected(err) 处理失败的函数&nbsp; 它传递的参数 会在 catch方法里输出</p> </blockquote> <pre><code class="language-javascript">let p1 = new Promise((resolved, rejected) =&gt; {   let randomVal = Math.random();   if (randomVal &gt; 0.5) {     resolved(randomVal + "成功");   } else {     rejected(randomVal + "失败");   } })   .then((res) =&gt; {     console.log(res)//0.6423699367939153成功   })   .catch((err) =&gt; {     console.log(err)//0.3423699367939153失败   }); </code></pre> <h3>promise.all&nbsp; 同时执行多个promise</h3> <p>promise.all 的参数是多个promise函数，直到慢的一个promise执行完毕才返回所有的promise的结果，有一个promise函数崩溃，整个promise就崩溃，所以要慎用</p> <pre><code class="language-javascript">let p1 = new Promise((resolved, rejected) =&gt; {   let randomVal = Math.random();   if (randomVal &gt; 0.1) {     resolved(randomVal + "成功");   } else {     rejected(randomVal + "失败");   } })  let p2 = new Promise((resolved, rejected) =&gt; {   let randomVal = Math.random();   setTimeout(() =&gt; {     if (randomVal &gt; 0.9) {       resolved("成功" + randomVal);     } else {       rejected("失败" + randomVal);     }   }, 200); });  Promise.all([p1,p2]).then(resList=&gt;{     console.log(resList) }).catch(err=&gt;{     console.log("错误err"+err) }).finally(result=&gt;{     console.log("无论成功或者失败都会执行",result) })</code></pre> <h2>promise.race 多个promise 执行速度pk看谁的速度最快，返回最快的promise的结果</h2> <pre><code class="language-javascript">let p1 = new Promise((resolved, rejected) =&gt; {   let randomVal = Math.random();   if (randomVal &gt; 0.1) {     resolved(randomVal + "成功");   } else {     rejected(randomVal + "失败");   } })  let p2 = new Promise((resolved, rejected) =&gt; {   let randomVal = Math.random();   setTimeout(() =&gt; {     if (randomVal &gt; 0.9) {       resolved("成功" + randomVal);     } else {       rejected("失败" + randomVal);     }   }, 200); });  Promise.race([p1,p2]).then(resList=&gt;{     console.log(resList) }).catch(err=&gt;{     console.log("错误err"+err) }).finally(result=&gt;{     console.log("无论成功或者失败都会执行",result) })</code></pre> </h1> <h3>常见的 宏任务</h3> <p>setTimeout&nbsp; setInterval</p> <h3>常见的微任务</h3> <p>Promise.then Promise.catch Promise.finally</p> <p>MutationObserver</p> <p>process.nextTIck(nodejs里的)</p> <h3>执行顺序</h3> <p>同一层的 先执行主线层然后执行微任务，最后执行 红任务</p> <h2>几道有意思的promise面试题</h2> <h3>场景1&nbsp;</h3> <blockquote> <p>promise resolved函数执行完毕之后才执行 then的方法</p> </blockquote> <pre><code class="language-javascript"> new Promise((resolved,rejected)=&gt;{     console.log("1") }).then(res=&gt;{     console.log("2")     console.log(res) }) console.log("4")</code></pre> <p><span style="color:#fe2c24;">错误解法 和错误的思路</span><br /><s><span style="color:#0d0016;">错误答案&nbsp; 1，4，2 ，1</span></s></p> <p><s><span style="color:#0d0016;">错误思路，</span></s></p> <p><s><span style="color:#0d0016;">一般人想 主线程 同步任务走完，然后走 微任务</span></s></p> <p><span style="color:#0d0016;">实际上 promise里没有走resovled函数的时候是不会走 then里的</span></p> <p><span style="color:#0d0016;">同理&nbsp; promise里没有走rejected函数的时候是不会走 catch里的</span></p> <p><span style="color:#0d0016;">所以正确的答案是</span></p> <p>1 4&nbsp;</p> <h3>场景 2&nbsp;</h3> <blockquote> <p>resovled函数外边包裹了定时器，得定时器计时结束才能 调用resolved，最后走then</p> </blockquote> <pre><code class="language-javascript">new Promise((resolved, rejected) =&gt; {     console.log("1")   setTimeout(() =&gt; {     resolved("2");   }, 20);    console.log("3"); }).then((res) =&gt; {   console.log("4");   console.log(res); }); console.log("5"); setTimeout(ele=&gt;{   console.log("6") },0)</code></pre> <p>这题直接上正确答案</p> <p>1，3，5，6，4，2&nbsp; &nbsp; &nbsp;</p> <p>答案解析</p> <p>1 promise主体函数的代码，是同步主线程的优先执行</p> <p>3 同1&nbsp;</p> <p>5 是主线程</p> <p>6 和 2 4&nbsp; res(2) 相比都是定时器里的代码（红任务），只是 6的延时时间较少，所以优先执行6</p> <p>4 2 是promise 里的resolved走完之后，执行then 里的&nbsp; 4&nbsp; &nbsp; res是 resolved("2")里返回的2,所以打印出 2</p> <h3>场景3 主线程 宏任务 微任务 综合</h3> <pre><code class="language-javascript">console.log("1"); setTimeout(function() {   console.log("2");   process.nextTick(function() {     console.log("3");   });   new Promise(function(resolve) {     console.log("4");     resolve();   }).then(function() {     console.log("5");   }); }); process.nextTick(function() {   console.log("6"); }); new Promise(function(resolve) {   console.log("7");   resolve(); }).then(function() {   console.log("8"); }); setTimeout(function() {   console.log("9");   process.nextTick(function() {     console.log("10");   });   new Promise(function(resolve) {     console.log("11");     resolve();   }).then(function() {     console.log("12");   }); });</code></pre> <p>答案</p> <p>&nbsp; 1 &nbsp;7 6 8 2 4 3 5 9 11 10 12</p> <p>1 主线程</p> <p>7 promis主体函数里的代码 主线程</p> <p>6 process.nextTick 微任务</p> <p>8&nbsp; promise resolve函数处理过走 then&nbsp;</p> <p>2&nbsp; 2345 和 9101112 分别在两个定时器里 由于两个定时器的时间是一致的，所以根据先后i顺序执行，先执行上面的，再执行下边的</p> <p>2345&nbsp; 2是主线程&nbsp;</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4是主线程</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 是微任务</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 5是微任务</p> <p>9101112</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;9 是主线程</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;11 是主线程&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;10 是微任务</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 12 是微任务</p> <p>总结</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; 当主线程 红任务 微任务在一起的时候，先执行主线程，然后执行微任务，最后执行红任务</p> <h3>场景4 promise.resolve().then 和 setTimeout(()=&gt;{},0) pk</h3> <p>首先我们了解一下 promise.resolve()是什么的简写</p> <pre><code class="language-javascript">new Promise((resolve)=&gt;{     resolve() }).then(res=&gt;{     console.log("123") })</code></pre> <p>那么一下两个哪个更快呢</p> <pre><code class="language-javascript">setTimeout(ele=&gt;{     console.log("2") }) Promise.resolve().then(res=&gt;{     console.log("1") })</code></pre> <p>将 Promise.resolve().then 转换成上一个写法可以知道 1 是微任务，2 是宏任务，</p> <p>所以先走1 再走 2</p> <p>我们接下来再看一题</p> <pre><code class="language-javascript">setTimeout(ele=&gt;{     console.log("1")     Promise.resolve().then(res=&gt;{         console.log("2")     }) }) Promise.resolve().then(res=&gt;{     console.log("3")     setTimeout(ele=&gt;{         console.log("4")     }) })</code></pre> <p>先走 微任务 3&nbsp;</p> <p>然后走 上边定时器里的&nbsp;</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; 走主线程 1</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; 走微任务 2</p> <p>然后走下边的 宏任务</p> <p>注意</p> <p>&nbsp; &nbsp;<span style="color:#fe2c24;"> &nbsp; &nbsp; </span><u><span style="color:#fe2c24;">当出现定时器时 按照 延迟时间和创建先后顺序 这两个条件 先后执行定时器，并且只有执行完一个定时器之后，才执行下一个定时器</span></u></p> <h3>场景5 定时器嵌套</h3> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> <pre><code class="language-javascript">setTimeout((ele) =&gt; {   console.log(1);   setTimeout(() =&gt; {     console.log(2);   }, 40); }, 20); setTimeout((ele) =&gt; {   console.log(3); }, 30);</code></pre> <p>这一题</p> <p><s>很多人的答案时1 2 3</s></p> <p><s>他们想的是先走完第一个定时器里的再走第二个定时器里的</s></p> <p>实际上 第一个嵌套的定时器会产生叠加&nbsp;</p> <p>2&nbsp; 的执行时间时 20 + 40 也就是 60</p> <p>而 3 的时间时30 所以时 1&nbsp; 3&nbsp; 2&nbsp;</p> <p><span style="color:#fe2c24;">注意当定时器嵌套时 ，里边的执行时间是会和上边的叠加的</span></p> <p><span style="color:#0d0016;">以上是我对红任务微任务的一些理解，希望对大家能有所帮助，记得点个赞哦</span></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-78202.htm">动物防疫疫苗空瓶如何销毁处理（动物防疫疫苗空瓶如何销毁处理流程）</a></p>
+                                        <p>下一个：<a href="/news/article-78891.htm">动物医院的电话是什么号啊（动物医院的电话号码）</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-40436.htm" title="Spark(30) &#8212; Spark SQL中更多Parquet文件读写(scala)">Spark(30) &#8212; Spark SQL中更多Parquet文件读写(scala)</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-4-free-subscribe-node.htm" title="1月4日→18.2M/S|2025年最新免费节点Free Stash订阅链接地址">1月4日→18.2M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-72801.htm" title="北京美联众合动物医院电话（北京美联众合动物医院招聘）">北京美联众合动物医院电话（北京美联众合动物医院招聘）</a></li>
+                        <li class="py-2"><a href="/news/article-49862.htm" title="猫咪体外驱虫中毒怎么解毒（猫体外驱虫药过量处理方法）">猫咪体外驱虫中毒怎么解毒（猫体外驱虫药过量处理方法）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-27-free-stash-node.htm" title="1月27日→18.9M/S|2025年最新免费节点Free Stash订阅链接地址">1月27日→18.9M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-58672.htm" title="重庆宠物狗狗免费领养中心（2021重庆免费领养狗狗贴吧）">重庆宠物狗狗免费领养中心（2021重庆免费领养狗狗贴吧）</a></li>
+                        <li class="py-2"><a href="/news/article-40927.htm" title="动物疫苗公司广告牌图片大全 动物疫苗公司广告牌图片大全集">动物疫苗公司广告牌图片大全 动物疫苗公司广告牌图片大全集</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-18-share-clash-stash.htm" title="3月18日→20.8M/S|2025年最新免费节点Free Stash订阅链接地址">3月18日→20.8M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-59698.htm" title="c#中判断类是否继承于泛型基类">c#中判断类是否继承于泛型基类</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-5-clash-stash.htm" title="2月5日→18.8M/S|2025年最新免费节点Free Stash订阅链接地址">2月5日→18.8M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">65</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

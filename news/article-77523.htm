@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-77523.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>javaScript中内置对象Date基本操作入门_在线工具</title>
+        <meta name="description" content="Date基础语法 /**  * Date  *  * 1970年1月1日（UTC）起经过的毫秒数。  *  * 语法  * new Date();  * new Date(value);  * new" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-77523.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="javaScript中内置对象Date基本操作入门_在线工具" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/91390f13c74c1b3d0075358e3e6b1163.webp" />
+        <meta property="og:release_date" content="2025-03-20T10:00:25" />
+    <meta property="og:updated_time" content="2025-03-20T10:00:25" />
+        <meta property="og:description" content="Date基础语法 /**  * Date  *  * 1970年1月1日（UTC）起经过的毫秒数。  *  * 语法  * new Date();  * new Date(value);  * new" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="javaScript中内置对象Date基本操作入门_在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/">
+                                                                <span class="logo">Free Stash</span>
+                                                                </a>
+                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>javaScript中内置对象Date基本操作入门_在线工具</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h3 id="date基础语法"><strong>Date基础语法</strong></h3> <pre><code>/**  * Date  *  * 1970年1月1日（UTC）起经过的毫秒数。  *  * 语法  * new Date();  * new Date(value);  * new Date(dateString);  * new Date(year, monthIndex [, day [, hours [, minutes [, seconds [, milliseconds]]]]]);  *  * @params new new Date(): 创建时刻的日期和时间  * @params value:Unix时间戳  * @params dateString:时间戳字符串，能被Date.parse()识别  * @params 多个参数:Date.length，长度为7，可接受的参数个数  *  * year：年份，monthIndex：月份 0-11 0表示1月份，date：一个月中的第几天的整数值，从1开始。默认值为1  * hours ：一天中的小时数的整数值 (24小时制)。默认值为0（午夜）  * minutes ：分钟部分的整数值。默认值为0。  * seconds ：秒部分的整数值。默认值为0。  * milliseconds ：表示一个完整时间的毫秒部分的整数值。默认值为0。  *  * 当Date作为构造函数调用并传入多个参数时，如果数值大于合理范围时（如月份为 13 或者分钟数为 70），相邻的数值会被调整。比如 new Date(2013, 13, 1)等于new Date(2014, * 1, 1)，它们都表示日期2014-02-01（注意月份是从0开始的）。其他数值也是类似，new Date(2013, 2, 1, 0, 70)等于new Date(2013, 2, 1, 1, 10)，都表示同一个时间：  * 2013-03-01T01:10:00。  *  * 当Date作为构造函数调用并传入多个参数时，所定义参数代表的是当地时间。如果需要使用世界协调时 UTC，使用 new Date(Date.UTC(...)) 和相同参数  *  * */  </code></pre> <h3 id="date方法"><strong>Date方法</strong></h3> <pre><code>Date.now(); //  自 1970-1-1 00:00:00  UTC（世界标准时间）至今所经过的毫秒数。 console.log("Date.now()", Date.now()); // 1650598266647  Date.parse(); //  解析一个表示日期的字符串，并返回从 1970-1-1 00:00:00 所经过的毫秒数 console.log("Date.parse()", Date.parse("Dec 25, 1995")); // 1650598266647  </code></pre> <h4 id="dateutc"><strong>Date.UTC()</strong></h4> <pre><code> /**  * Date.UTC();  * Date.UTC(year,month[,date[,hrs[,min[,sec[,ms]]]]])  * @param year 1900 年后的某一年份。  * @param month 0 到 11 之间的一个整数，表示月份。  * @param date 1 到 31 之间的一个整数，表示某月当中的第几天。  * @param hrs 0 到 23 之间的一个整数，表示小时。  * @param min 0 到 59 之间的一个整数，表示分钟。  * @param sec 0 到 59 之间的一个整数，表示秒。  * @param ms 0 到 999 之间的一个整数，表示毫秒  * 接受的参数同日期构造函数接受最多参数时一样，返回从1970-1-1 00:00:00 UTC到指定日期的的毫秒数。  *  * */ const utcDate1 = new Date(Date.UTC(96, 1, 2, 3, 4, 5)); const utcDate2 = new Date(Date.UTC(0, 0, 0, 0, 0, 0));  console.log(utcDate1.toUTCString()); // Fri, 02 Feb 1996 03:04:05 GMT  console.log(utcDate2.toUTCString()); // Sun, 31 Dec 1899 00:00:00 GMT   </code></pre> <h3 id="实例化-new-date通用方法"><strong>实例化 new Date通用方法</strong></h3> <pre><code> console.log(nowDate.toDateString()); //  `以美式英语和人类易读的形式返回一个日期对象日期部分的字符串。  console.log(nowDate.toISOString()); // 方法返回一个 ISO（ISO 8601 Extended Format）格式的字符串：  YYYY-MM-DDTHH:mm:ss.sssZ。时区总是UTC（协调世界时），加一个后缀“Z”标识。 console.log(nowDate.toJSON()); // 返回 Date 对象的字符串形式    /**  * toLocaleDateString  * 返回该日期对象日期部分的字符串，该字符串格式因不同语言而不同。新增的参数 locales 和 options 使程序能够指定使用哪种语言格式化规则，允许定制该方法的表现  * （behavior）。在旧版本浏览器中， locales 和 options 参数被忽略，使用的语言环境和返回的字符串格式是各自独立实现的。  *  * */ const options = {   weekday: "long",   year: "numeric",   month: "long",   day: "numeric", }; console.log(nowDate.toLocaleDateString("de-DE", options));   /**  * toLocaleString  * 方法返回该日期对象的字符串，该字符串格式因不同语言而不同。新增的参数 locales 和 options 使程序能够指定使用哪种语言格式化规则  * 允许定制该方法的表现（behavior）。在旧版本浏览器中， locales 和 options 参数被忽略，使用的语言环境和返回的字符串格式是各自独立实现的。  *  * */   console.log(nowDate.toLocaleString("en-GB", { timeZone: "UTC" }));   /**  * toLocaleTimeString  * 方法返回该日期对象时间部分的字符串，该字符串格式因不同语言而不同。新增的参数 locales 和 options 使程序能够指定使用哪种语言格式化规则  * 允许定制该方法的表现（behavior）。在旧版本浏览器中， locales 和 options 参数被忽略，使用的语言环境和返回的字符串格式是各自独立实现的。  *  * */ console.log(nowDate.toLocaleTimeString("en-US"));  console.log(nowDate.toString()); // 返回一个字符串，表示该Date对象。  console.log(nowDate.toTimeString()); // 以人类易读形式返回一个日期对象时间部分的字符串，该字符串以美式英语格式化。  console.log(nowDate.toUTCString()); // 把一个日期转换为一个字符串，使用UTC时区。  /**  * valueOf() 方法返回一个 Date 对象的原始值。  *  * */ const date1 = new Date(Date.UTC(96, 1, 2, 3, 4, 5)); console.log(date1.valueOf()); // 823230245000  const date2 = new Date("02 Feb 1996 03:04:05 GMT"); console.log(date2.valueOf()); // 823230245000   </code></pre> <h3 id="date时间操作"><strong>Date时间操作</strong></h3> <blockquote> <p>在整理Date时间操作过程中，根据规律，对一些方法进行了归类</p> </blockquote> <h4 id="时间操作相关的get方法"><strong>时间操作相关的get方法</strong></h4> <pre><code> console.log(nowDate.getDate()); // 获取月份的某天  console.log(nowDate.getDay()); // 一周的第几天，0 表示星期天  console.log(nowDate.getFullYear()); // 取代getyear(),获取年份  console.log(nowDate.getHours()); // 一个指定的日期对象的小时  console.log(nowDate.getMilliseconds()); // 指定的日期对象的毫秒数  console.log(nowDate.getMinutes()); // 日期对象的分钟数。  console.log(nowDate.getMonth()); //  指定的日期对象的月份，为基于0的值（0表示一年中的第一月）  console.log(nowDate.getSeconds()); // 指定的日期对象的秒数  console.log(nowDate.getTime()); // 表示从1970年1月1日0时0分0秒（UTC，即协调世界时）距离该日期对象所代表时间的毫秒数。  console.log(nowDate.getTimezoneOffset()); // 返回协调世界时（UTC）相对于当前时区的时间差值，单位为分钟。  </code></pre> <h4 id="以世界时uct为标准获取时间"><strong>以世界时UCT为标准获取时间</strong></h4> <pre><code>console.log(nowDate.getUTCDate()); // 以世界时为标准，返回一个指定的日期对象为一个月中的第几天  console.log(nowDate.getUTCDay()); // 以世界时为标准，返回一个指定的日期对象为一星期中的第几天，其中 0 代表星期天。  console.log(nowDate.getUTCFullYear()); // 以世界时为标准，返回一个指定的日期对象的年份。  console.log(nowDate.getUTCHours()); // 以世界时为标准，返回一个指定的日期对象的小时数。  console.log(nowDate.getUTCMilliseconds()); // 以世界时为标准，返回一个指定的日期对象的毫秒数 。 console.log(nowDate.getUTCMinutes()); // 以世界时为标准，返回一个指定的日期对象的分钟数。  console.log(nowDate.getUTCMonth()); // 以世界时为标准，返回一个指定的日期对象的月份，它是从 0 开始计数的（0 代表一年的第一个月）。  console.log(nowDate.getUTCSeconds()); // 以世界时为标准，返回一个指定的日期对象的秒数。  </code></pre> <h4 id="时间操作相关的设置set时间"><strong>时间操作相关的设置set时间</strong></h4> <pre><code>console.log(nowDate.setDate(24)); // 获取月份的某天  console.log(nowDate.setTime(12)); // 表示从1970年1月1日0时0分0秒（UTC，即协调世界时）距离该日期对象所代表时间的毫秒数。  console.log(nowDate.setHours(12)); // 根据本地时间为一个日期对象设置小时数，返回从1970-01-01 00:00:00 UTC 到更新后的 日期 对象实例所表示时间的毫秒数。  console.log(nowDate.setMilliseconds(456)); // 根据本地时间设置一个日期对象的豪秒数。  console.log(nowDate.setMinutes(40)); // 根据本地时间为一个日期对象设置分钟数。  console.log(nowDate.setMonth(3)); // 根据本地时间为一个设置年份的日期对象设置月份。  console.log(nowDate.setSeconds(3)); // 根据本地时间设置一个日期对象的秒数。  console.log(nowDate.setTime(new Date().getTime())); // 方法以一个表示从1970-1-1 00:00:00 UTC计时的毫秒数为来为 Date 对象设置时间。  console.log(nowDate.setTime(new Date().getTime())); // 方法以一个表示从1970-1-1 00:00:00 UTC计时的毫秒数为来为 Date 对象设置时间。   </code></pre> <h4 id="以世界时为标准设置set时间"><strong>以世界时为标准设置set时间</strong></h4> <pre><code>console.log(nowDate.setUTCDate(19)); // 根据全球时间设置特定date对象的日期。  console.log(nowDate.setUTCFullYear(1975)); // 根据世界标准时间为一个具体日期设置年份  console.log(nowDate.setUTCHours(23)); // 根据世界标准时间为一个具体日期设置小时数,返回从1970-01-01 00:00:00 UTC 到更新后的 日期 对象实例所表示时间的毫秒数。  console.log(nowDate.setUTCMilliseconds(420)); // 根据世界时来设置指定时间的毫秒数。  console.log(nowDate.setUTCMinutes(25)); // 根据世界协调时（UTC）来设置指定日期的分钟数。  console.log(nowDate.setUTCMonth(11)); // 根据世界协调时（UTC）来设置设置一个准确的月份  console.log(nowDate.setUTCSeconds(39)); // 根据世界协调时（UTC）来设置设置一个设置秒数  </code></pre> <h4 id="小结"><strong>小结</strong></h4> <p>以上整理了关于js中内置对象Date的一些基础的操作方法,更加具体的方法可以访问</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date"  target="_blank"  rel="nofollow">JavaScript 标准内置对象 Date</a></p> <hr> <h3 id="推荐date操作插件"><strong>推荐Date操作插件</strong></h3> <ul> <li> <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://momentjs.cn/"  target="_blank"  rel="nofollow"><strong>momentjs</strong> http://momentjs.cn/</a><br /> 基础使用方法：</li> </ul> <pre><code>npm install moment --save  import moment from "moment";  console.log(moment().format("YYYY-MM-DD"));   </code></pre> <ul> <li> <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://dayjs.fenxianglu.cn/"  target="_blank"  rel="nofollow"><strong>dayjs</strong> https://dayjs.fenxianglu.cn/</a><br /> 基础使用方法：</li> </ul> <pre><code>npm install dayjs --save  import dayjs from 'dayjs'  dayjs().format();  // 毫秒时间戳 dayjs(1318781876406).format('YYYY-MM-DD HH:mm:ss'); // 2011-10-17 00:17:56   </code></pre> <h4 id="源码地址">源码地址</h4> <ul> <li> <h5 id="码云-httpsgiteecomlewyonvue-note"> <strong>码云</strong> <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://gitee.com/lewyon/vue-note"  target="_blank"  rel="nofollow">https://gitee.com/lewyon/vue-note</a><br /> </h5> </li> <li> <h5 id="githup-httpsgithubcomakari16vue-note"> <strong>githup</strong> <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/akari16/vue-note"  target="_blank"  rel="nofollow">https://github.com/akari16/vue-note</a><br /> </h5> </li> </ul> <p>文章个人博客地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://lewyon.xyz/dateFun.html"  target="_blank"  rel="nofollow">http://lewyon.xyz/dateFun.html</a></p> <p>欢迎关注公众号：程序猿布欧，不定期更新一些前端入门文章</p> <p>创作不易，转载请注明出处和作者。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-77522.htm">网络地址匹配</a></p>
+                                        <p>下一个：<a href="/news/article-78201.htm">聊城宠物用品批发市场在哪里呀（聊城宠物用品批发市场在哪里呀多少钱）</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-55179.htm" title="成都免费领养宠物（成都免费领养宠物中心在哪里）">成都免费领养宠物（成都免费领养宠物中心在哪里）</a></li>
+                        <li class="py-2"><a href="/news/article-56854.htm" title="宠物领养英语（领养英文翻译）">宠物领养英语（领养英文翻译）</a></li>
+                        <li class="py-2"><a href="/news/article-51942.htm" title="新手开店卖什么产品好（新手开店卖什么产品好一点）">新手开店卖什么产品好（新手开店卖什么产品好一点）</a></li>
+                        <li class="py-2"><a href="/news/article-53548.htm" title="在北京开家宠物店需要多钱（北京开宠物店需要什么手续）">在北京开家宠物店需要多钱（北京开宠物店需要什么手续）</a></li>
+                        <li class="py-2"><a href="/news/article-59698.htm" title="c#中判断类是否继承于泛型基类">c#中判断类是否继承于泛型基类</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-18-free-stash-node.htm" title="2月18日→20.4M/S|2025年最新免费节点Free Stash订阅链接地址">2月18日→20.4M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-70170.htm" title="打动物疫苗要花多少（动物防疫打针收费吗）">打动物疫苗要花多少（动物防疫打针收费吗）</a></li>
+                        <li class="py-2"><a href="/news/article-58672.htm" title="重庆宠物狗狗免费领养中心（2021重庆免费领养狗狗贴吧）">重庆宠物狗狗免费领养中心（2021重庆免费领养狗狗贴吧）</a></li>
+                        <li class="py-2"><a href="/news/article-75483.htm" title="Python- *args 的用法">Python- *args 的用法</a></li>
+                        <li class="py-2"><a href="/news/article-48285.htm" title="spark1.6.1和2.4读取csv文件，转为为DataFrame和使用SQL">spark1.6.1和2.4读取csv文件，转为为DataFrame和使用SQL</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">65</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
