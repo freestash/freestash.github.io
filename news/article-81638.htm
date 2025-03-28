@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-81638.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Node 中的模块化 + module对象 + exports对象</title>
+        <meta name="description" content="◆ 能够说出模块化的好处 ◆ 能够知道 CommonJS 规定了哪些内容 ◆ 能够说出 Node.js 中模块的三大分类各自是什么 ◆ 能够了解模块的加载机制  文章目录  学习目标 一、模块化 二、" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-81638.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="Node 中的模块化 + module对象 + exports对象" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/41c6f8b870ad253c5782c7e5c1944a8e.webp" />
+        <meta property="og:release_date" content="2025-03-26T08:55:18" />
+    <meta property="og:updated_time" content="2025-03-26T08:55:18" />
+        <meta property="og:description" content="◆ 能够说出模块化的好处 ◆ 能够知道 CommonJS 规定了哪些内容 ◆ 能够说出 Node.js 中模块的三大分类各自是什么 ◆ 能够了解模块的加载机制  文章目录  学习目标 一、模块化 二、" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Node 中的模块化 + module对象 + exports对象">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/">
+                                                                <span class="logo">Free Stash</span>
+                                                                </a>
+                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>Node 中的模块化 + module对象 + exports对象</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <p>◆ 能够说出模块化的好处</p> <p>◆ 能够知道 CommonJS 规定了哪些内容</p> <p>◆ 能够说出 Node.js 中模块的三大分类各自是什么</p> <p>◆ 能够了解模块的加载机制</p> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#_0" rel="nofollow">学习目标</a></li> <li><a href="#_12" rel="nofollow">一、模块化</a></li> <li><a href="#Node__18" rel="nofollow">二、Node 中的模块化</a></li> <li> <ul> <li><a href="#1__require__27" rel="nofollow">1. 使用 require 方法加载模块</a></li> <li><a href="#2_module__48" rel="nofollow">2. module 对象</a></li> <li> <ul> <li><a href="#moduleexports__51" rel="nofollow">module.exports 对象</a></li> </ul> </li> <li><a href="#3_exports__80" rel="nofollow">3. exports 对象</a></li> <li><a href="#4_CommonJS__89" rel="nofollow">4. CommonJS 模块化规范</a></li> </ul> </li> </ul> </div> </h1> <ol> <li>模块化是指解决一个复杂问题时，自顶向下逐层<strong>把系统划分成若干模块的过程</strong>。对于整个系统来说，<strong>模块是可组合、分解和更换的单元</strong></li> <li>编程领域中的模块化，就是<strong>遵守固定的规则</strong>，把一个<strong>大文件</strong>拆成<strong>独立并互相依赖的多个小模块</strong></li> </ol> <p></p> </h1> <p><code>Node.js</code> 中根据模块来源的不同，将模块分为了<strong>3 大类</strong>，分别是：</p> <ol> <li> <p><strong>内置模块</strong>（内置模块是由<code>Node.js</code> 官方提供的，例如<code>fs</code>、<code>path</code>、<code>http</code> 等）</p> </li> <li> <p><strong>自定义模块</strong>（用户创建的每个<code>.js</code> 文件，都是自定 义模块）</p> </li> <li> <p><strong>第三方模块</strong>（由第三方开发出来的模块，并非官方提供的内置模块，也不是用户创建的自定义模块，<strong>使用前需要先下载</strong>）</p> </li> </ol> <h2><a id="1__require__27" rel="nofollow"></a>1. 使用 require 方法加载模块</h2> <p>使用强大的<code>require()</code> 方法，可以加载需要的<strong>内置模块</strong>、<strong>用户自定义模块</strong>、<strong>第三方模块</strong>进行使用</p> <pre><code class="prism language-javascript"><span class="token comment">// 1. 加载内置的 fs 模块</span><span class="token keyword">const</span> fs<span class="token operator">=</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token comment">// 2. 加载用户的自定义模块</span><span class="token keyword">const</span> custom<span class="token operator">=</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./custom.js'</span><span class="token punctuation">)</span><span class="token comment">// 3. 加载第三方模块，(使用第三方模块，下面会进行讲解)</span><span class="token keyword">const</span> moment<span class="token operator">=</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'moment'</span><span class="token punctuation">)</span></code></pre> <p><strong>注意</strong></p> <ol> <li>使用 require() 方法加载其他模块时，会执行被加载模块中的代码</li> <li>在使用<code>require</code> 加载用户自定义模块期间，可以省略<code>.js</code> 后缀名</li> </ol> <p><strong>模块作用域的好处：</strong> 和函数作用域类似，在自定义模块中定义的变量、方法等成员，只能在当前模块内被访问，外部文件是访问不到的，这种模块级别的访问限制，叫做模块作用域</p> <p></p> <h2><a id="2_module__48" rel="nofollow"></a>2. module 对象</h2> <p>在每个<code>.js</code> 自定义模块中都有一个<code>module</code> 对象，它里面存储了和当前模块有关的信息</p> <h3><a id="moduleexports__51" rel="nofollow"></a>module.exports 对象</h3> <ol> <li> <p>在自定义模块中，可以使用<code>module.exports</code> 对象，将模块内的成员共享出去，供外界使用</p> </li> <li> <p>外界用<code>require()</code> 方法导入自定义模块时，得到的就是<code>module.exports</code> 所指向的对象</p> </li> </ol> <p><strong>module.exports 向外共享成员</strong></p> <pre><code class="prism language-javascript"><span class="token comment">// 加载模块.js</span><span class="token keyword">const</span> mo<span class="token operator">=</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./被加载的模块.js'</span><span class="token punctuation">)</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>mo<span class="token punctuation">)</span></code></pre> <pre><code class="prism language-javascript"><span class="token comment">// 被加载的模块.js</span><span class="token comment">// 向 module.exports 对象上挂载 username 属性</span> module<span class="token punctuation">.</span>exports<span class="token punctuation">.</span>username<span class="token operator">=</span><span class="token string">'zs'</span><span class="token comment">// 向 module.exports 对象上挂载 sayHello 方法</span> module<span class="token punctuation">.</span>exports<span class="token punctuation">.</span><span class="token function-variable function">sayHello</span><span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hellp'</span><span class="token punctuation">)</span><span class="token punctuation">}</span></code></pre> <p><strong>共享成员时的注意点</strong><br /> 使用<code>require()</code> 方法导入模块时，导入的结果，永远以<code>module.exports</code> 指向的对象为准</p> <p></p> <h2><a id="3_exports__80" rel="nofollow"></a>3. exports 对象</h2> <p>默认情况下，<code>exports</code> 和<code>module.exports</code> 指向同一个对象，最终共享的结果，还是以<code>module.exports</code> 指向的对象为准</p> <p><strong>exports 和 module.exports 的使用误区</strong></p> <ol> <li>时刻谨记，<code>require()</code> 模块时，得到的永远是<code>module.exports</code> 指向的对象</li> <li><strong>注意：为了防止混乱，建议大家不要在同一个模块中同时使用<code>exports</code> 和<code>module.exports</code></strong></li> </ol> <p></p> <h2><a id="4_CommonJS__89" rel="nofollow"></a>4. CommonJS 模块化规范</h2> <ol> <li> <p>Node.js<code>遵循了</code>CommonJS<code>模块化规范，</code>CommonJS `规定了<strong>模块的特性和各模块之间如何相互依赖</strong></p> </li> <li> <p><code>CommonJS</code> 规定：</p> <ul> <li>每个模块内部，<code>module</code> 变量代表当前模块</li> <li><code>module</code> 变量是一个对象，它的<code>exports</code> 属性（即<code>module.exports</code>）是对外的接口</li> <li>加载某个模块，其实是加载该模块的<code>module.exports</code> 属性，<code>require()</code> 方法用于加载模块</li> </ul> </li> </ol> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-80972.htm">猫咪肠胃炎在家自救方法（猫咪呕吐吃什么药可以解决）</a></p>
+                                        <p>下一个：<a href="/news/article-81639.htm">三国杀武将台词语音代码（三国杀武将语音大全）</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-40436.htm" title="Spark(30) &#8212; Spark SQL中更多Parquet文件读写(scala)">Spark(30) &#8212; Spark SQL中更多Parquet文件读写(scala)</a></li>
+                        <li class="py-2"><a href="/news/article-74815.htm" title="关于CSS样式的优先级问题">关于CSS样式的优先级问题</a></li>
+                        <li class="py-2"><a href="/news/article-36500.htm" title="领养回访多久可以结束 领养回访多久可以结束呢">领养回访多久可以结束 领养回访多久可以结束呢</a></li>
+                        <li class="py-2"><a href="/news/article-62051.htm" title="抖音开网店怎么开新手无货源（抖音这么开网店）">抖音开网店怎么开新手无货源（抖音这么开网店）</a></li>
+                        <li class="py-2"><a href="/news/article-45875.htm" title="成都哪里可以免费领养狗（成都哪里可以免费领养狗狗狗）">成都哪里可以免费领养狗（成都哪里可以免费领养狗狗狗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-24-share-clash-stash.htm" title="2月24日→20.9M/S|2025年最新免费节点Free Stash订阅链接地址">2月24日→20.9M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-8-free-subscribe-node.htm" title="3月8日→20.4M/S|2025年最新免费节点Free Stash订阅链接地址">3月8日→20.4M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-28-clash-stash-node.htm" title="3月28日→21.3M/S|2025年最新免费节点Free Stash订阅链接地址">3月28日→21.3M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-44399.htm" title="兽医防疫简报（兽医打疫苗简报）">兽医防疫简报（兽医打疫苗简报）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-free-high-speed-nodes.htm" title="1月16日→19.6M/S|2025年最新免费节点Free Stash订阅链接地址">1月16日→19.6M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
