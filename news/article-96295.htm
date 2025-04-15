@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-96295.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PHP对象接口</title>
+        <meta name="description" content="介绍 接口是面向对象编程的重要功能，通过它可以指定要由类实现的方法，而不必定义应如何实现。 PHP通过interface关键字支持interface 。接口类似于类，但是方法没有定义主体。接口中的方法" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-96295.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="PHP对象接口" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/215d5a10112dbe032ebc9b77b06c5802.webp" />
+        <meta property="og:release_date" content="2025-04-15T06:00:30" />
+    <meta property="og:updated_time" content="2025-04-15T06:00:30" />
+        <meta property="og:description" content="介绍 接口是面向对象编程的重要功能，通过它可以指定要由类实现的方法，而不必定义应如何实现。 PHP通过interface关键字支持interface 。接口类似于类，但是方法没有定义主体。接口中的方法" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="PHP对象接口">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/">
+                                                                <span class="logo">Free Stash</span>
+                                                                </a>
+                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>PHP对象接口</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h2>介绍</h2> <p>接口是面向对象编程的重要功能，通过它可以指定要由类实现的方法，而不必定义应如何实现。</p> <p>PHP通过<strong>interface</strong>关键字支持interface 。接口类似于类，但是方法没有定义主体。接口中的方法必须是公共的。实现这些方法的继承类必须使用<strong>Implements</strong>关键字而不是extends关键字定义，并且必须在父接口中提供所有方法的实现。</p> <h2>语法</h2> <pre>&lt;?php interface&nbsp;testinterface{ &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;testmethod(); } class&nbsp;testclass&nbsp;implements&nbsp;testinterface{ &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;testmethod(){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"implements&nbsp;interfce&nbsp;method"; &nbsp;&nbsp;&nbsp;} } ?&gt;</pre> <p>接口中的所有方法必须由实现类定义，否则PHP解析器将引发异常</p> <h2>示例</h2> <pre>&lt;?php interface&nbsp;testinterface{ &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;test1(); &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;test2(); } class&nbsp;testclass&nbsp;implements&nbsp;testinterface{ &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;test1(){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"implements&nbsp;interface&nbsp;method"; &nbsp;&nbsp;&nbsp;} } $obj=new&nbsp;testclass()?&gt;</pre> <p>输出结果</p> <p>错误如下所示-</p> <pre>PHP&nbsp;Fatal&nbsp;error:&nbsp;Class&nbsp;testclass&nbsp;contains&nbsp;1&nbsp;abstract&nbsp;method&nbsp;and&nbsp;must&nbsp;therefore&nbsp;be&nbsp;declared&nbsp;abstract&nbsp;or&nbsp;implement&nbsp;the&nbsp;remaining&nbsp;methods&nbsp;(testinterface::test2)</pre> <h2>可扩展的界面</h2> <p>就像普通的类一样，也可以使用<strong>extends</strong>关键字从中继承接口。</p> <p>在下面的示例中，父类具有两个抽象方法，其中只有一个在子类中被重新定义。这导致错误如下-</p> <h2>示例</h2> <pre>&lt;?php interface&nbsp;testinterface{ &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;test1(); } interface&nbsp;myinterface&nbsp;extends&nbsp;testinterface{ &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;test2(); } class&nbsp;testclass&nbsp;implements&nbsp;myinterface{ &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;test1(){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"implements&nbsp;test1&nbsp;method"; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;test2(){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"implements&nbsp;test2&nbsp;method"; &nbsp;&nbsp;&nbsp;} } ?&gt;</pre> <h2>使用接口的多重继承</h2> <p>PHP在extends子句中不允许使用多个类。但是，可以通过让子类实现一个或多个接口来实现多重继承。</p> <p>在下面的示例中，myclass扩展了testclass并实现了testinterface以实现多重继承</p> <h2>示例</h2> <pre>&lt;?php interface&nbsp;testinterface{ &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;test1(); } class&nbsp;testclass{ &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;test2(){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"this&nbsp;is&nbsp;test2&nbsp;function&nbsp;in&nbsp;parent&nbsp;class\n"; &nbsp;&nbsp;&nbsp;} } class&nbsp;myclass&nbsp;extends&nbsp;testclass&nbsp;implements&nbsp;testinterface{ &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;test1(){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"implements&nbsp;test1&nbsp;method\n"; &nbsp;&nbsp;&nbsp;} } $obj=new&nbsp;myclass(); $obj-&gt;test1(); $obj-&gt;test2(); ?&gt;</pre> <p>输出结果</p> <p>这将产生以下输出-</p> <pre>implements&nbsp;test1&nbsp;method this&nbsp;is&nbsp;test2&nbsp;function&nbsp;in&nbsp;parent&nbsp;class</pre> <h2>接口实例</h2> <h2>示例</h2> <pre>&lt;?php interface&nbsp;shape{ &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;area(); } class&nbsp;circle&nbsp;implements&nbsp;shape{ &nbsp;&nbsp;&nbsp;private&nbsp;$rad; &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;__construct(){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$this-&gt;rad=5; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;area(){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"area&nbsp;of&nbsp;circle="&nbsp;.&nbsp;M_PI*pow($this-&gt;rad,2)&nbsp;."\n"; &nbsp;&nbsp;&nbsp;} } class&nbsp;rectangle&nbsp;implements&nbsp;shape{ &nbsp;&nbsp;&nbsp;private&nbsp;$width; &nbsp;&nbsp;&nbsp;private&nbsp;$height; &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;__construct(){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$this-&gt;width=20; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$this-&gt;height=10; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;area(){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"area&nbsp;of&nbsp;rectangle="&nbsp;.&nbsp;$this-&gt;width*$this-&gt;height&nbsp;."\n"; &nbsp;&nbsp;&nbsp;} } $c=new&nbsp;circle(); $c-&gt;area(); $r=new&nbsp;rectangle(); $r-&gt;area(); ?&gt;</pre> <p>输出结果</p> <p>上面的脚本产生以下结果</p> <pre>area&nbsp;of&nbsp;circle=78.539816339745 area&nbsp;of&nbsp;rectangle=200</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-95564.htm">如何离线安装VSCode插件</a></p>
+                                        <p>下一个：<a href="/news/article-96298.htm">猫三联是三针还是一针好（猫三联一针是什么意思）</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-75484.htm" title="统一接口返回类的封装Result，超简单易懂适合新手">统一接口返回类的封装Result，超简单易懂适合新手</a></li>
+                        <li class="py-2"><a href="/news/article-93283.htm" title="瑞鹏宠物医院咋样（瑞鹏宠物医院咋样收费）">瑞鹏宠物医院咋样（瑞鹏宠物医院咋样收费）</a></li>
+                        <li class="py-2"><a href="/news/article-80288.htm" title="农大宠物医院医生简介（农大宠物医院营业时间）">农大宠物医院医生简介（农大宠物医院营业时间）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-5-clash-stash-node.htm" title="4月5日→18.1M/S|2025年最新免费节点Free Stash订阅链接地址">4月5日→18.1M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-80289.htm" title="宠物粮食加工厂加盟费多少合适呢 宠物粮食加工厂加盟费多少合适呢知乎">宠物粮食加工厂加盟费多少合适呢 宠物粮食加工厂加盟费多少合适呢知乎</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-30-free-node-subscribe-links.htm" title="3月30日→19.3M/S|2025年最新免费节点Free Stash订阅链接地址">3月30日→19.3M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-94805.htm" title="十大高端手表品牌(高端手表品牌排行榜前100名)">十大高端手表品牌(高端手表品牌排行榜前100名)</a></li>
+                        <li class="py-2"><a href="/news/article-94247.htm" title="resttemplate  返回中文乱码解决">resttemplate  返回中文乱码解决</a></li>
+                        <li class="py-2"><a href="/news/article-87354.htm" title="宠康动物医院电话 宠康动物医院电话号码">宠康动物医院电话 宠康动物医院电话号码</a></li>
+                        <li class="py-2"><a href="/news/article-77522.htm" title="网络地址匹配">网络地址匹配</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

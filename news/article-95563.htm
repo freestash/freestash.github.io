@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-95563.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>关于MySQL支持的所有字符集的查询是什么？</title>
+        <meta name="description" content="借助以下查询，我们可以看到MySQL支持的所有字符集- mysql&gt;&nbsp;Show&nbsp;Character&nbsp;Set; +-----------+--------------" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-95563.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="关于MySQL支持的所有字符集的查询是什么？" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/c92815efd0a8aca0440e316be52c7a23.webp" />
+        <meta property="og:release_date" content="2025-04-14T08:02:38" />
+    <meta property="og:updated_time" content="2025-04-14T08:02:38" />
+        <meta property="og:description" content="借助以下查询，我们可以看到MySQL支持的所有字符集- mysql&gt;&nbsp;Show&nbsp;Character&nbsp;Set; +-----------+--------------" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="关于MySQL支持的所有字符集的查询是什么？">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/">
+                                                                <span class="logo">Free Stash</span>
+                                                                </a>
+                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>关于MySQL支持的所有字符集的查询是什么？</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>借助以下查询，我们可以看到MySQL支持的所有字符集-</p> <pre>mysql&gt;&nbsp;Show&nbsp;Character&nbsp;Set; +-----------+-----------------------------+---------------------+--------+ |&nbsp;Charset&nbsp;&nbsp;&nbsp;|&nbsp;Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Default&nbsp;collation&nbsp;&nbsp;&nbsp;|&nbsp;Maxlen&nbsp;| +----------&nbsp;+-----------------------------+---------------------+--------+ |&nbsp;big5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Big5&nbsp;Traditional&nbsp;Chinese&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;big5_chinese_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;| |&nbsp;dec8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;DEC&nbsp;West&nbsp;European&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;dec8_swedish_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;cp850&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;DOS&nbsp;West&nbsp;European&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;cp850_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;hp8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;HP&nbsp;West&nbsp;European&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;hp8_english_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;koi8r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;KOI8-R&nbsp;Relcom&nbsp;Russian&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;koi8r_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;latin1&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;cp1252&nbsp;West&nbsp;European&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;latin1_swedish_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;latin2&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ISO&nbsp;8859-2&nbsp;Central&nbsp;European&nbsp;|&nbsp;latin2_general_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;swe7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;7bit&nbsp;Swedish&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;swe7_swedish_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;ascii&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;US&nbsp;ASCII&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ascii_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;ujis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;EUC-JP&nbsp;Japanese&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ujis_japanese_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;| |&nbsp;sjis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Shift-JIS&nbsp;Japanese&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;sjis_japanese_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;| |&nbsp;hebrew&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ISO&nbsp;8859-8&nbsp;Hebrew&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;hebrew_general_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;tis620&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;TIS620&nbsp;Thai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;tis620_thai_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;euckr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;EUC-KR&nbsp;Korean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;euckr_korean_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;| |&nbsp;koi8u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;KOI8-U&nbsp;Ukrainian&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;koi8u_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;gb2312&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;GB2312&nbsp;Simplified&nbsp;Chinese&nbsp;&nbsp;&nbsp;|&nbsp;gb2312_chinese_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;| |&nbsp;greek&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ISO&nbsp;8859-7&nbsp;Greek&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;greek_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;cp1250&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Windows&nbsp;Central&nbsp;European&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;cp1250_general_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;gbk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;GBK&nbsp;Simplified&nbsp;Chinese&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;gbk_chinese_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;| |&nbsp;latin5&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ISO&nbsp;8859-9&nbsp;Turkish&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;latin5_turkish_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;armscii8&nbsp;&nbsp;|&nbsp;ARMSCII-8&nbsp;Armenian&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;armscii8_general_ci&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;utf8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;UTF-8&nbsp;Unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;utf8_general_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;| |&nbsp;ucs2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;UCS-2&nbsp;Unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ucs2_general_ci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;| |&nbsp;cp866&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;DOS&nbsp;Russian&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;cp866_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;keybcs2&nbsp;&nbsp;&nbsp;|&nbsp;DOS&nbsp;Kamenicky&nbsp;Czech-Slovak&nbsp;&nbsp;|&nbsp;keybcs2_general_ci&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;macce&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Mac&nbsp;Central&nbsp;European&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;macce_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;macroman&nbsp;&nbsp;|&nbsp;Mac&nbsp;West&nbsp;European&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;macroman_general_ci&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;cp852&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;DOS&nbsp;Central&nbsp;European&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;cp852_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;latin7&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;ISO&nbsp;8859-13&nbsp;Baltic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;latin7_general_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;utf8mb4&nbsp;&nbsp;&nbsp;|&nbsp;UTF-8&nbsp;Unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;utf8mb4_general_ci&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;| |&nbsp;cp1251&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Windows&nbsp;Cyrillic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;cp1251_general_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;utf16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;UTF-16&nbsp;Unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;utf16_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;| |&nbsp;cp1256&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Windows&nbsp;Arabic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;cp1256_general_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;cp1257&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Windows&nbsp;Baltic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;cp1257_general_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;utf32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;UTF-32&nbsp;Unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;utf32_general_ci&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;| |&nbsp;binary&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Binary&nbsp;pseudo&nbsp;charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;binary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;geostd8&nbsp;&nbsp;&nbsp;|&nbsp;GEOSTD8&nbsp;Georgian&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;geostd8_general_ci&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;| |&nbsp;cp932&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;SJIS&nbsp;for&nbsp;Windows&nbsp;Japanese&nbsp;&nbsp;&nbsp;|&nbsp;cp932_japanese_ci&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;| |&nbsp;eucjpms&nbsp;&nbsp;&nbsp;|&nbsp;UJIS&nbsp;for&nbsp;Windows&nbsp;Japanese&nbsp;&nbsp;&nbsp;|&nbsp;eucjpms_japanese_ci&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;| +-----------+-----------------------------+---------------------+--------+ 39&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.14&nbsp;sec)</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-94805.htm">十大高端手表品牌(高端手表品牌排行榜前100名)</a></p>
+                                        <p>下一个：<a href="/news/article-95564.htm">如何离线安装VSCode插件</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-20-free-subscribe-node.htm" title="3月20日→22.5M/S|2025年最新免费节点Free Stash订阅链接地址">3月20日→22.5M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-16-free-subscribe-node.htm" title="3月16日→22.1M/S|2025年最新免费节点Free Stash订阅链接地址">3月16日→22.1M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-76840.htm" title="vue2.x版本中computed和watch的使用入门详解-关联和区别_在线工具">vue2.x版本中computed和watch的使用入门详解-关联和区别_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-94247.htm" title="resttemplate  返回中文乱码解决">resttemplate  返回中文乱码解决</a></li>
+                        <li class="py-2"><a href="/news/article-83061.htm" title="成都动物防疫中心电话（成都动物防疫站&#25171;&#38024;免费吗）">成都动物防疫中心电话（成都动物防疫站&#25171;&#38024;免费吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-31-clash-stash-node.htm" title="3月31日→19M/S|2025年最新免费节点Free Stash订阅链接地址">3月31日→19M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-28-clash-stash-node.htm" title="3月28日→21.3M/S|2025年最新免费节点Free Stash订阅链接地址">3月28日→21.3M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-77523.htm" title="javaScript中内置对象Date基本操作入门_在线工具">javaScript中内置对象Date基本操作入门_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-90289.htm" title="厦门宠物店寄养宠物多少钱一天（厦门 宠物店）">厦门宠物店寄养宠物多少钱一天（厦门 宠物店）</a></li>
+                        <li class="py-2"><a href="/news/article-88098.htm" title="免费领养狗狗的网站平台是什么 免费领养狗狗的网站平台是什么软件">免费领养狗狗的网站平台是什么 免费领养狗狗的网站平台是什么软件</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
