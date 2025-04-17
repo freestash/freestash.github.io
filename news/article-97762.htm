@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-97762.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>[vmware to openstack] 安装virtio驱动</title>
+        <meta name="description" content="描述   从vmware的虚拟机迁移到opensatck，由于vmware虚拟机磁盘类型采用的是scsi，要迁移到opensatck平台运行，发现虚拟机无法起来，原因是vmware虚拟机没有安装vir" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-97762.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="[vmware to openstack] 安装virtio驱动" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/d95bb2e599adc80a17585197f5401b9f.webp" />
+        <meta property="og:release_date" content="2025-04-17T09:00:29" />
+    <meta property="og:updated_time" content="2025-04-17T09:00:29" />
+        <meta property="og:description" content="描述   从vmware的虚拟机迁移到opensatck，由于vmware虚拟机磁盘类型采用的是scsi，要迁移到opensatck平台运行，发现虚拟机无法起来，原因是vmware虚拟机没有安装vir" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="[vmware to openstack] 安装virtio驱动">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/">
+                                                                <span class="logo">Free Stash</span>
+                                                                </a>
+                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>[vmware to openstack] 安装virtio驱动</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h4 id="描述">描述</h4> <p>  从vmware的虚拟机迁移到opensatck，由于vmware虚拟机磁盘类型采用的是scsi，要迁移到opensatck平台运行，发现虚拟机无法起来，原因是vmware虚拟机没有安装virtio驱动，所以迁移之前要确保虚拟机支持virtio和安装了virtio驱动。</p> <h5 id="前置条件">前置条件</h5> <p>根据您服务器的操作系统，判断是否需要<strong>修复临时文件系统</strong>启用virtio驱动。</p> <table> <thead> <tr> <th style="text-align: center">系统版本</th> <th style="text-align: center">说明</th> </tr> </thead> <tbody> <tr> <td style="text-align: center">CentOS 6/7/8及以上版本、Ubuntu 12/14/16/18/20及以上版本、<br /> Debian 7/8/9/10及以上版本、SUSE 11/12/15及以上版本</td> <td style="text-align: center">如果服务器操作系统如左侧所示，在导入自定义镜像时，openstack将会自动处理virtio驱动。 默认已安装virtio驱动的系统，但有时openstack image注入<code>hw_scsi_mode=virtio-scsi</code><code>hw_disk_bus=scsi</code>元数据不生效，需要注意<strong>步骤二: 修复临时文件系统。</strong></td> </tr> </tbody> </table> <h5 id="步骤一检查服务器内核是否支持virtio驱动">步骤一：检查服务器内核是否支持virtio驱动</h5> <p>  通过检查，发现源服务器内核支持virtio驱动，但是临时文件系统initramfs或者initrd中没有包含virtio驱动时，需要修复临时文件系统。以CentOS等为例。</p> <p>1、运行grep -i virtio /boot/config-$(uname -r)检查当前操作系统的内核是否支持virtio驱动。</p> <pre><code class="language-bash">$ grep -i virtio /boot/config-$(uname -r) CONFIG_VIRTIO_BLK=m CONFIG_SCSI_VIRTIO=m CONFIG_VIRTIO_NET=m CONFIG_VIRTIO_CONSOLE=m CONFIG_HW_RANDOM_VIRTIO=m CONFIG_VIRTIO=m # Virtio drivers CONFIG_VIRTIO_PCI=m CONFIG_VIRTIO_BALLOON=m # CONFIG_VIRTIO_MMIO is not set</code></pre> <blockquote> <p>请检查CONFIG_VIRTIO_BLK和CONFIG_VIRTIO_NET这两个参数。</p> </blockquote> <table> <thead> <tr> <th style="text-align: center">检查结果</th> <th style="text-align: center">说明</th> </tr> </thead> <tbody> <tr> <td style="text-align: center">没有这两个参数</td> <td style="text-align: center">表示该操作系统没有安装virtio相关驱动，暂时不能直接导入openstack云平台。需要为您的服务器[<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://help.aliyun.com/document_detail/62423.html#Sample"  target="_blank" rel="nofollow">编译安装virtio驱动</a>]</td> </tr> <tr> <td style="text-align: center">参数取值为m</td> <td style="text-align: center">请执行下一步确认virtio驱动是否包含在临时文件系统initramfs或者initrd中</td> </tr> <tr> <td style="text-align: center">参数取值为y</td> <td style="text-align: center">表示包含了virtio驱动，您可以直接导入自定义的镜像到openstack平台。[<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/acommoners/p/15924889.html"  target="_blank" rel="nofollow">vmware虚拟机导入openstack</a>]</td> </tr> </tbody> </table> <p>2、执行命令lsinitrd /boot/initramfs-$(uname -r).img | grep virtio确认virtio驱动是否包含在临时文件系统initramfs或者initrd中。</p> <pre><code class="language-bash">$ lsinitrd /boot/initramfs-$(uname -r).img | grep virtio -rw-r--r--   1 root     root         7880 Sep 14  2019 usr/lib/modules/3.10.0-1062.1.1.el7.x86_64/kernel/drivers/block/virtio_blk.ko.xz -rw-r--r--   1 root     root        14324 Sep 14  2019 usr/lib/modules/3.10.0-1062.1.1.el7.x86_64/kernel/drivers/net/virtio_net.ko.xz -rw-r--r--   1 root     root         8180 Sep 14  2019 usr/lib/modules/3.10.0-1062.1.1.el7.x86_64/kernel/drivers/scsi/virtio_scsi.ko.xz drwxr-xr-x   2 root     root            0 Sep 21  2019 usr/lib/modules/3.10.0-1062.1.1.el7.x86_64/kernel/drivers/virtio -rw-r--r--   1 root     root         4552 Sep 14  2019 usr/lib/modules/3.10.0-1062.1.1.el7.x86_64/kernel/drivers/virtio/virtio.ko.xz -rw-r--r--   1 root     root         9908 Sep 14  2019 usr/lib/modules/3.10.0-1062.1.1.el7.x86_64/kernel/drivers/virtio/virtio_pci.ko.xz -rw-r--r--   1 root     root         8328 Sep 14  2019 usr/lib/modules/3.10.0-1062.1.1.el7.x86_64/kernel/drivers/virtio/virtio_ring.ko.xz</code></pre> <p><strong>确认结果说明：</strong></p> <ul> <li>如上图所示，表示initramfs已经包含了virtio_blk驱动，以及其所依赖的virtio.ko、virtio_pci.ko和virtio_ring.ko，您可以直接导入到openstack</li> <li>如果临时文件系统initramfs没有包含virtio驱动，则需要修复临时文件系统。具体操作，请参见步骤二：修复临时文件系统。</li> </ul> <h5 id="步骤二修复临时文件系统">步骤二：修复临时文件系统</h5> <ul> <li>CentOS/RedHat 8</li> <li></li> </ul> <pre><code class="language-bash">$ mkinitrd -f --allow-missing \             --with=virtio_blk --preload=virtio_blk \             --with=virtio_net --preload=virtio_net \             --with=virtio_console --preload=virtio_console \             /boot/initramfs-$(uname -r).img $(uname -r)</code></pre> <ul> <li>CentOS/RedHat 6/7</li> </ul> <pre><code class="language-bash">$ mkinitrd -f --allow-missing \             --with=xen-blkfront --preload=xen-blkfront \             --with=virtio_blk --preload=virtio_blk \             --with=virtio_pci --preload=virtio_pci \             --with=virtio_console --preload=virtio_console \             /boot/initramfs-$(uname -r).img $(uname -r)</code></pre> <ul> <li>CentOS/RedHat 5</li> </ul> <pre><code class="language-bash">$ mkinitrd -f --allow-missing \             --with=xen-vbd  --preload=xen-vbd \             --with=xen-platform-pci --preload=xen-platform-pci \             --with=virtio_blk --preload=virtio_blk \             --with=virtio_pci --preload=virtio_pci \             --with=virtio_console --preload=virtio_console \             /boot/initrd-$(uname -r).img $(uname -r)</code></pre> <ul> <li>Debian/Ubuntu</li> </ul> <pre><code class="language-bash">$ echo -e 'xen-blkfront\nvirtio_blk\nvirtio_pci\nvirtio_console' &gt;&gt; \ /etc/initramfs-tools/modules mkinitramfs -o /boot/initrd.img-$(uname -r)</code></pre> <h5 id="检查virtio驱动的安装情况">检查virtio驱动的安装情况</h5> <pre><code class="language-bash">$ find /lib/modules/"$(uname -r)"/ -name "virtio*" | grep -E "virtio*" $ grep -E "virtio*" &lt; /lib/modules/"$(uname -r)"/modules.builtin</code></pre> <blockquote> <p>如果任一命令输出virtio_blk、virtio_pci、virtio_console等文件列表，表明您已经正确安装了virtio驱动。</p> </blockquote> <h5 id="参考文献">参考文献</h5> <p>2022<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://help.aliyun.com/document_detail/62423.html#Sample"  target="_blank" rel="nofollow">阿里云帮助中心</a></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-96981.htm">宠物粮商标取名大全图片（宠物粮属于哪类商标）</a></p>
+                                        <p>下一个：<a href="/news/article-97763.htm">动物疫苗接种时间间隔多长时间打（动物疫苗接种时间间隔多长时间打第一针）</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-16-free-subscribe-node.htm" title="3月16日→22.1M/S|2025年最新免费节点Free Stash订阅链接地址">3月16日→22.1M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-97763.htm" title="动物疫苗接种时间间隔多长时间打（动物疫苗接种时间间隔多长时间打第一针）">动物疫苗接种时间间隔多长时间打（动物疫苗接种时间间隔多长时间打第一针）</a></li>
+                        <li class="py-2"><a href="/news/article-71490.htm" title="动物防疫站疫苗多少钱一次打的（动物防疫站在哪个位置）">动物防疫站疫苗多少钱一次打的（动物防疫站在哪个位置）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-6-free-node-subscribe-links.htm" title="3月6日→22.3M/S|2025年最新免费节点Free Stash订阅链接地址">3月6日→22.3M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-73463.htm" title="详解数据库连接池概念、原理、运行机制等">详解数据库连接池概念、原理、运行机制等</a></li>
+                        <li class="py-2"><a href="/news/article-76173.htm" title="动物疫苗多少钱打一次针（动物疫苗一般多少钱）">动物疫苗多少钱打一次针（动物疫苗一般多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-91354.htm" title="全国兽药50强企业名单公布最新（全国兽药50强企业名单公布最新版）">全国兽药50强企业名单公布最新（全国兽药50强企业名单公布最新版）</a></li>
+                        <li class="py-2"><a href="/news/article-95563.htm" title="关于MySQL支持的所有字符集的查询是什么？">关于MySQL支持的所有字符集的查询是什么？</a></li>
+                        <li class="py-2"><a href="/news/article-66973.htm" title="动物疫苗使用前的注意事项有哪些（动物疫苗注射工作注意事项）">动物疫苗使用前的注意事项有哪些（动物疫苗注射工作注意事项）</a></li>
+                        <li class="py-2"><a href="/news/article-88097.htm" title="宠物领养协议书电子版模板下载（宠物领养协议是否有法律效力）">宠物领养协议书电子版模板下载（宠物领养协议是否有法律效力）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">50</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
