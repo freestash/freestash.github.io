@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-100725.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Go 语言入门之Go 计时器介绍_Golang</title>
+        <meta name="description" content="目录  引言 Go 的计时器 Ticker 计时器是如何工作的？ Ticker 使用方式 总结    引言 一般来说，很多时候我们面临这样一种情况，即我们需要运行时间记录器，它不断向我们显示当前时间或" />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-100725.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="Go 语言入门之Go 计时器介绍_Golang" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/9311d074f4d5047d3611637eec715385.webp" />
+        <meta property="og:release_date" content="2025-04-21T06:50:46" />
+    <meta property="og:updated_time" content="2025-04-21T06:50:46" />
+        <meta property="og:description" content="目录  引言 Go 的计时器 Ticker 计时器是如何工作的？ Ticker 使用方式 总结    引言 一般来说，很多时候我们面临这样一种情况，即我们需要运行时间记录器，它不断向我们显示当前时间或" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Go 语言入门之Go 计时器介绍_Golang">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/">
+                                                                <span class="logo">Free Stash</span>
+                                                                </a>
+                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>Go 语言入门之Go 计时器介绍_Golang</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail">
+                      				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">引言</a></li> <li><a href="#_label1" rel="nofollow">Go 的计时器</a></li> <li><a href="#_label2" rel="nofollow">Ticker 计时器是如何工作的？</a></li> <li><a href="#_label3" rel="nofollow">Ticker 使用方式</a></li> <li><a href="#_label4" rel="nofollow">总结</a></li> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>引言</h2> <p>一般来说，很多时候我们面临这样一种情况，即我们需要运行时间记录器，它不断向我们显示当前时间或在给定的时间间隔内保持执行一定的代码和平，在这种情况下，我们应该使用 ​<code>​Ticker​</code>​​，使用这个我们需要使用 go 语言的 ​<code>​time​</code>​​ 包，我们有一个名为 ​<code>​NewTicker()​</code>​​ 的方法，它允许我们停止和启动时间代码，我们需要通过传递 ​<code>​chan​</code>​​ 和 ​<code>​bool​</code>​ 作为将使用的参数来创建一个代码通道检查它是否打开，如果通道打开意味着计时器将继续。</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>Go 的计时器</h2> <p><strong>Go 提供了非常简单的语法来实现一个计时器，定时器的结构体定义：</strong></p> <div class="ay1code"> <pre class="brush:go;">type Ticker struct {  C &lt;-chan Time // 抛出来的channel，给上层系统使用，实现计时  r runtimeTimer // 给系统管理使用的定时器，系统通过该字段确定定时器是否到时，如果到时，调用对应的函数向C中推送当前时间。  }</pre> </div> <p>Ticker对外仅暴露一个 <strong>channel</strong>，指定的时间到来时就往该 channel 中写入系统时间，也即一个事件。</p> <p><strong>Ticker 的使用方式也很简单，代码如下：</strong></p> <div class="ay1code"> <pre class="brush:go;">import time  TimeTicker := time.NewTicker(1 * time.Second)  TimeTicker.Stop()</pre> </div> <ul> <li>​<code>​time​</code>​​ : 如果想要使用​<code>​time​</code>​ 中的计时器，那么需要将其导入代码中</li> <li>​<code>​NewTicker()​</code>​​ 函数：这个很好理解，新建一个计时器，然后该计时器以时间表达式作为参数，比如一秒​<code>​1*time.Second​</code>​​ ，而不是直接传入​<code>​1​</code>​​ ，也可以传入其他时间方式，比如​<code>​2*time.Millisecond​</code>​</li> <li>最后，我们可以使用时间表达式调用由​<code>​NewTicker​</code>​​ 函数创建的变量上的任何活动。例如，在上面的语法中，我们使用了​<code>​TimeTicker.Stop()​</code>​​ 来停止时间计时器。我们可以在特定条件下使用它，比如定义倒数 10 秒的计时器，就可以检查时间是否满足 10 秒，一旦 10 秒发生，我们可以调用​<code>​TimeTicker.stop()​</code>​。</li> </ul> <p><strong>我们可以每隔一秒输出一个结果，比如实现一个倒数 10 个数的功能：</strong></p> <div class="ay1code"> <pre class="brush:go;">package main  import (  "fmt"  "time"  )  func main() {  TimeTicker := time.NewTicker(1 * time.Second)  i := 10  for {  &lt;-TimeTicker.C  fmt.Println("i = ", i)  i--  if i == 0 {  TimeTicker.Stop()  break  }  }  }</pre> </div> <p><strong>然后执行该程序：</strong></p> <blockquote> <p>$ go run main.go<br />i = 10<br />i = 9<br />i = 8<br />i = 7<br />i = 6<br />i = 5<br />i = 4<br />i = 3<br />i = 2<br />i = 1</p> </blockquote> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>Ticker 计时器是如何工作的？</h2> <p>​<code>​NewTicker​</code>​​创建的计时器与​<code>​NewTimer​</code>​​创建的计时器持有的时间​<code>​channel​</code>​​一样都是带一个缓存的​<code>​channel​</code>​​，每次触发后执行的函数也是​<code>​sendTime​</code>​​，这样即保证了无论有误接收方​<code>​Ticker​</code>​触发时间事件时都不会阻塞：</p> <div class="ay1code"> <pre class="brush:go;">func NewTicker(d Duration) *Ticker {  if d &lt;= 0 {  panic(errors.New("non-positive interval for NewTicker"))  }  // Give the channel a 1-element time buffer.  // If the client falls behind while reading, we drop ticks  // on the floor until the client catches up.  c := make(chan Time, 1)  t := &amp;Ticker{  C: c,  r: runtimeTimer{  when: when(d),  period: int64(d),  f: sendTime,  arg: c,  },  }  startTimer(&amp;t.r)  return t  }</pre> </div> <p>NewTicker()只是构造了一个Ticker，然后把Ticker.r通过startTimer()交给系统协程维护。</p> <p>其中<code>period</code>为事件触发的周期。</p> <p>其中​<code>​sendTime()​</code>​方法便是定时器触发时的动作：</p> <div class="ay1code"> <pre class="brush:go;">func sendTime(c interface{}, seq uintptr) {  select {  case c.(chan Time) &lt;- Now():  default:  }  }</pre> </div> <p>​<code>​sendTime​</code>​ 接收一个管道作为参数，其主要任务是向管道中写入当前时间。</p> <p><strong>停止Ticker</strong>:</p> <p>停止<code>Ticker</code>，只是简单的把Ticker从系统协程中移除。</p> <p><strong>函数主要实现如下：</strong></p> <div class="ay1code"> <pre class="brush:go;">func (t *Ticker) Stop() {  stopTimer(&amp;t.r)  }</pre> </div> <p>​<code>​stopTicker()​</code>​ 即通知系统协程把该 Ticker 移除，即不再监控。系统协程只是移除 Ticker 并不会关闭管道，以避免用户协程读取错误。</p> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>Ticker 使用方式</h2> <p><strong>例子一：</strong></p> <div class="ay1code"> <pre class="brush:go;">package main  import (  "fmt"  "time"  )  func main() {  TimeTicker := time.NewTicker(3 * time.Second)  tickerChannel := make(chan bool)  go func() {  for {  select {  case timeticker := &lt;-TimeTicker.C:  fmt.Println("The time for current is : ", timeticker)  case &lt;-tickerChannel:  return  }  }  }()  time.Sleep(6 * time.Second)  TimeTicker.Stop()  tickerChannel &lt;- true  fmt.Println("Time for running ticker is completed")  }</pre> </div> <p><strong>运行该代码：</strong></p> <blockquote> <p>$ go run main.go<br />The time for current is : 2022-04-29 22:37:13.93862 +0800 CST m=+3.000267823<br />The time for current is : 2022-04-29 22:37:16.939081 +0800 CST m=+6.000707515<br />Time for running ticker is completed</p> </blockquote> <p><strong>例子二：</strong></p> <div class="ay1code"> <pre class="brush:go;">package main  import (  "fmt"  "time"  )  func main() {  tm := time.Millisecond  tickerTicker := time.NewTicker(400 * tm)  tickerChaneel := make(chan bool)  go func() {  for {  select {  case &lt;-tickerChaneel:  return  case tmtr := &lt;-tickerTicker.C:  fmt.Println("Ticker time at current is", tmtr)  }  }  }()  time.Sleep(1400 * time.Millisecond)  tickerTicker.Stop()  tickerChaneel &lt;- true  fmt.Println("Ticker has stopped now")  }</pre> </div> <p><strong>运行该代码：</strong></p> <blockquote> <p>$ go run main.go<br />Ticker time at current is 2022-04-29 22:39:51.13057 +0800 CST m=+0.400159916<br />Ticker time at current is 2022-04-29 22:39:51.531516 +0800 CST m=+0.801102997<br />Ticker time at current is 2022-04-29 22:39:51.931238 +0800 CST m=+1.200822301<br />Ticker has stopped now</p> </blockquote> <p class="maodian"><a name="_label4" rel="nofollow"></a></p> <h2>总结</h2> <p>本文简单了解了 go 计时器 ​<code>​Ticker​</code>​​ 的基本概念，介绍了它的工作原理，并且我们专注于 go 语言中 ​<code>​ticker​</code>​ 的语法和使用。最后展现了 go 语言中的一些重要示例。</p> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-100724.htm">springMvc之拦截器的使用</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-81639.htm" title="三国杀武将台词语音代码（三国杀武将语音大全）">三国杀武将台词语音代码（三国杀武将语音大全）</a></li>
+                        <li class="py-2"><a href="/news/article-72800.htm" title="Spring Cloud中使用Feign实现负载均衡详解">Spring Cloud中使用Feign实现负载均衡详解</a></li>
+                        <li class="py-2"><a href="/news/article-90289.htm" title="厦门宠物店寄养宠物多少钱一天（厦门 宠物店）">厦门宠物店寄养宠物多少钱一天（厦门 宠物店）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-1-free-stash-node.htm" title="4月1日→22.3M/S|2025年最新免费节点Free Stash订阅链接地址">4月1日→22.3M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-71490.htm" title="动物防疫站疫苗多少钱一次打的（动物防疫站在哪个位置）">动物防疫站疫苗多少钱一次打的（动物防疫站在哪个位置）</a></li>
+                        <li class="py-2"><a href="/news/article-89535.htm" title="宠物粮食批发进货渠道有哪些呢视频讲解下载（宠物粮从哪里进货便宜）">宠物粮食批发进货渠道有哪些呢视频讲解下载（宠物粮从哪里进货便宜）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-8-free-subscribe-node.htm" title="3月8日→20.4M/S|2025年最新免费节点Free Stash订阅链接地址">3月8日→20.4M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-93280.htm" title="企业应用架构研究系列二十八：身份认证 Beginning Out With IdentityServer4">企业应用架构研究系列二十八：身份认证 Beginning Out With IdentityServer4</a></li>
+                        <li class="py-2"><a href="/news/article-75483.htm" title="Python- *args 的用法">Python- *args 的用法</a></li>
+                        <li class="py-2"><a href="/news/article-83769.htm" title="动物防疫注射器使用方法（动物疫苗注射器）">动物防疫注射器使用方法（动物疫苗注射器）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
