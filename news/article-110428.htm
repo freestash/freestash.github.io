@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestash.github.io/news/article-110428.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Springcloud通过maven打包包含公共common模块的项目</title>
+        <meta name="description" content="工程最外层pom文件添加以下编译插件（在&lt;dependencyManagement&gt;&lt;/dependencyManagement&gt;外面）  &lt;build&gt;     " />
+        <link rel="icon" href="/assets/website/img/freestash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestash.github.io/news/article-110428.htm" />
+    <meta property="og:site_name" content="Free Stash机场节点订阅官网" />
+    <meta property="og:title" content="Springcloud通过maven打包包含公共common模块的项目" />
+    <meta property="og:image" content="https://freestash.github.io/uploads/20240908-2/73ca72e38d4d5d89d4ef19e94ca62819.webp" />
+        <meta property="og:release_date" content="2025-05-03T10:28:26" />
+    <meta property="og:updated_time" content="2025-05-03T10:28:26" />
+        <meta property="og:description" content="工程最外层pom文件添加以下编译插件（在&lt;dependencyManagement&gt;&lt;/dependencyManagement&gt;外面）  &lt;build&gt;     " />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Springcloud通过maven打包包含公共common模块的项目">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/website/css/freestash/bootstrap.min.css" rel="stylesheet">
+    <!-- Flaticon CSS -->
+    <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
+    <!-- font-awesome CSS -->
+    <link href="/assets/website/css/freestash/font-awesome.min.css" rel="stylesheet">
+    <!-- Offcanvas CSS -->
+    <link href="/assets/website/css/freestash/hippo-off-canvas.css" rel="stylesheet">
+    <!-- animate CSS -->
+    <link href="/assets/website/css/freestash/animate.css" rel="stylesheet">
+    <!-- language CSS -->
+    <link href="/assets/website/css/freestash/language-select.css" rel="stylesheet">
+    <!-- owl.carousel CSS -->
+    <link href="owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+    <!-- magnific-popup -->
+    <link href="/assets/website/css/freestash/magnific-popup.css" rel="stylesheet">
+    <!-- Main menu -->
+    <link href="/assets/website/css/freestash/menu.css" rel="stylesheet">
+    <!-- Template Common Styles -->
+    <link href="/assets/website/css/freestash/template.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/assets/website/css/freestash/style.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/assets/website/css/freestash/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    
+    <script src="/assets/website/js/frontend/freestash/vendor/modernizr-2.8.1.min.js"></script>
+    <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="/assets/website/js/frontend/freestash/vendor/html5shim.js"></script>
+            <script src="/assets/website/js/frontend/freestash/vendor/respond.min.js"></script>
+        <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JCKZCKJR4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5JCKZCKJR4');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="page-top" data-page="detail">
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container mainnav">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="/">
+                                                                <span class="logo">Free Stash</span>
+                                                                </a>
+                                <!-- offcanvas-trigger -->
+                                <button type="button" class="navbar-toggle collapsed pull-right visible-xs">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </header>
+                <section class="page-title-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="page-header-wrap">
+                                    <div class="page-header">
+                                        <h1>Springcloud通过maven打包包含公共common模块的项目</h1>
+                                    </div>
+                                    <ol class="breadcrumb">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li class="active">正文</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- services start -->
+                <section class="service-home section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                                <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p>工程最外层pom文件添加以下编译插件（在<code>&lt;dependencyManagement&gt;&lt;/dependencyManagement&gt;</code>外面）</p> <pre><code class="prism language-xml"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">&gt;</span></span>         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">&gt;</span></span>             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-maven-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>executions</span><span class="token punctuation">&gt;</span></span>                     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>execution</span><span class="token punctuation">&gt;</span></span>                         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goals</span><span class="token punctuation">&gt;</span></span>                             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goal</span><span class="token punctuation">&gt;</span></span>repackage<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goal</span><span class="token punctuation">&gt;</span></span>                         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goals</span><span class="token punctuation">&gt;</span></span>                     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>execution</span><span class="token punctuation">&gt;</span></span>                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>executions</span><span class="token punctuation">&gt;</span></span>             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resources</span><span class="token punctuation">&gt;</span></span>             <span class="token comment">&lt;!-- 项目编译打包时将java目录中的*.xml文件进行打包，默认是不进行打包的 --&gt;</span>             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resource</span><span class="token punctuation">&gt;</span></span>                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>directory</span><span class="token punctuation">&gt;</span></span>src/main/java<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>directory</span><span class="token punctuation">&gt;</span></span>                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>includes</span><span class="token punctuation">&gt;</span></span>                     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">&gt;</span></span>**/*.xml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">&gt;</span></span>  <span class="token comment">&lt;!-- 两个 **  表示多级目录,一个 * 表示只有一级目录--&gt;</span>                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>includes</span><span class="token punctuation">&gt;</span></span>                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filtering</span><span class="token punctuation">&gt;</span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filtering</span><span class="token punctuation">&gt;</span></span>             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resource</span><span class="token punctuation">&gt;</span></span>              <span class="token comment">&lt;!-- 项目编译打包时将resource目录中的配置文件进行打包，默认是不进行打包的 --&gt;</span>             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resource</span><span class="token punctuation">&gt;</span></span>                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>directory</span><span class="token punctuation">&gt;</span></span>src/main/resources<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>directory</span><span class="token punctuation">&gt;</span></span>                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>includes</span><span class="token punctuation">&gt;</span></span>                     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">&gt;</span></span>**/*.properties<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">&gt;</span></span>                     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">&gt;</span></span>**/*.yml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">&gt;</span></span>                     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">&gt;</span></span>**/*.xml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">&gt;</span></span>                     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span><span class="token punctuation">&gt;</span></span>**/*.tld<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>include</span><span class="token punctuation">&gt;</span></span>                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>includes</span><span class="token punctuation">&gt;</span></span>                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filtering</span><span class="token punctuation">&gt;</span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filtering</span><span class="token punctuation">&gt;</span></span>             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resource</span><span class="token punctuation">&gt;</span></span>         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resources</span><span class="token punctuation">&gt;</span></span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">&gt;</span></span> </code></pre> <p>公共模块的pom中添加</p> <pre><code class="prism language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">&gt;</span></span>         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">&gt;</span></span>             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-maven-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>                     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mainClass</span><span class="token punctuation">&gt;</span></span>none<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mainClass</span><span class="token punctuation">&gt;</span></span>                     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>classifier</span><span class="token punctuation">&gt;</span></span>exec<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>classifier</span><span class="token punctuation">&gt;</span></span>                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">&gt;</span></span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">&gt;</span></span> </code></pre> <p>如果不加<code>&lt;mainClass&gt;none&lt;/mainClass&gt;</code>，会报错提示没有主应用。</p> <p>然后再Maven Projects插件中找到对应的父工程，点开Lifecycle，点击install就行了。</p> </p></div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-109592.htm">河南省动物疫苗招标公告查询网（2021年河南动物疫苗招标公告）</a></p>
+                                        <p>下一个：<a href="/news/article-110431.htm">宠物粮在哪里买好一点（买宠物粮食去哪个网站比较好）</a></p>
+                                    </div>
+                                            </div>
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-25-free-node-subscribe-links.htm" title="4月25日→19.3M/S|2025年最新免费节点Free Stash订阅链接地址">4月25日→19.3M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-98452.htm" title="宠物粮食的上市公司有哪些 宠物粮食的上市公司有哪些公司">宠物粮食的上市公司有哪些 宠物粮食的上市公司有哪些公司</a></li>
+                        <li class="py-2"><a href="/news/article-101369.htm" title="三国杀谋武将技能.（三国杀 计谋）">三国杀谋武将技能.（三国杀 计谋）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-17-node-share-links.htm" title="4月17日→18.6M/S|2025年最新免费节点Free Stash订阅链接地址">4月17日→18.6M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-96298.htm" title="猫三联是三针还是一针好（猫三联一针是什么意思）">猫三联是三针还是一针好（猫三联一针是什么意思）</a></li>
+                        <li class="py-2"><a href="/news/article-108731.htm" title="动物注射疫苗简报怎么写的啊（动物疫苗管理制度）">动物注射疫苗简报怎么写的啊（动物疫苗管理制度）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-26-share-clash-stash.htm" title="4月26日→18.8M/S|2025年最新免费节点Free Stash订阅链接地址">4月26日→18.8M/S|2025年最新免费节点Free Stash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-103719.htm" title="让猫挠了轻微出血有事吗过了24小时打疫苗（让猫挠了轻微出血有事吗过了24小时打疫苗有用吗）">让猫挠了轻微出血有事吗过了24小时打疫苗（让猫挠了轻微出血有事吗过了24小时打疫苗有用吗）</a></li>
+                        <li class="py-2"><a href="/news/article-91353.htm" title="springboot简单实现redis商品秒杀功能，成功解决商品超售问题">springboot简单实现redis商品秒杀功能，成功解决商品超售问题</a></li>
+                        <li class="py-2"><a href="/news/article-96295.htm" title="PHP对象接口">PHP对象接口</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                            </div>
+                        </div> <!-- /.row -->
+                    </div><!-- /.container -->
+                </section>
+                <!-- services end -->
+                <!-- copyright-section start -->
+                <footer class="copyright-section">
+                    <div class="container text-center">
+                        <div class="copyright-info">
+                            <a href="/">Free Stash机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div><!-- /.container -->
+                </footer>
+                <!-- copyright-section end -->
+            </div> <!-- .st-content -->
+        </div> <!-- .st-pusher -->
+                <!-- OFF CANVAS MENU -->
+        <div class="offcanvas-menu offcanvas-effect">
+            <div class="offcanvas-wrap">
+                <div class="off-canvas-header">
+                    <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
+                </div>
+                <ul id="offcanvasMenu" class="list-unstyled visible-xs visible-sm">
+                                        <li><a href="/">首页</a></li>
+                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a href="/client.htm">客户端</a></li>
+                                        <li><a href="/news/">新闻资讯</a></li>
+                                        <li><a href="#">关于</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </div>
+        </div><!-- .offcanvas-menu -->
+    </div><!-- /st-container -->
+        <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="status-mes"></div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/assets/website/js/frontend/freestash/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/website/js/frontend/freestash/bootstrap.min.js"></script>
+    <!-- owl.carousel -->
+    <script src="/assets/website/js/frontend/freestash/owl.carousel/owl.carousel.min.js"></script>
+    <!-- Magnific-popup -->
+    <script src="/assets/website/js/frontend/freestash/jquery.magnific-popup.min.js"></script>
+    <!-- Offcanvas Menu -->
+    <script src="/assets/website/js/frontend/freestash/hippo-offcanvas.js"></script>
+    <!-- inview -->
+    <script src="/assets/website/js/frontend/freestash/jquery.inview.min.js"></script>
+    <!-- stellar -->
+    <script src="/assets/website/js/frontend/freestash/jquery.stellar.js"></script>
+    <!-- countTo -->
+    <script src="/assets/website/js/frontend/freestash/jquery.countTo.js"></script>
+    <!-- classie -->
+    <script src="/assets/website/js/frontend/freestash/classie.js"></script>
+    <!-- selectFx -->
+    <script src="/assets/website/js/frontend/freestash/selectFx.js"></script>
+    <!-- sticky kit -->
+    <script src="/assets/website/js/frontend/freestash/jquery.sticky-kit.min.js"></script>
+    <!--TWITTER FETCHER-->
+    <script src="/assets/website/js/frontend/freestash/twitterFetcher_min.js"></script>
+    <!-- Custom Script -->
+    <script src="/assets/website/js/frontend/freestash/scripts.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
